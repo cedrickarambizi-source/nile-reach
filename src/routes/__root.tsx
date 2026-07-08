@@ -96,9 +96,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap",
       },
     ],
+
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -131,7 +132,20 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <a
+          href="https://wa.me/250700000000?text=Hi%20Nile%20Reach%2C%20I%27d%20like%20to%20talk%20about%20a%20project."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whatsapp-float hover:scale-105"
+          aria-label="Chat on WhatsApp"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+            <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.1.55 4.15 1.6 5.96L0 24l6.31-1.65a11.87 11.87 0 0 0 5.74 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.17-1.24-6.16-3.43-8.44zM12.06 21.3h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.75.98 1-3.65-.22-.37a9.4 9.4 0 0 1-1.44-4.86c0-5.19 4.22-9.41 9.41-9.41 2.51 0 4.87.98 6.64 2.76a9.34 9.34 0 0 1 2.75 6.65c0 5.19-4.22 9.41-9.25 9.41zm5.16-7.05c-.28-.14-1.67-.83-1.93-.92-.26-.09-.45-.14-.63.14-.19.28-.72.92-.88 1.11-.16.19-.32.21-.6.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.4-1.67-1.57-1.95-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.49.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.63-1.52-.87-2.09-.23-.55-.46-.47-.63-.48h-.54c-.19 0-.49.07-.75.35-.26.28-.98.96-.98 2.33 0 1.38 1 2.7 1.14 2.89.14.19 1.97 3.01 4.78 4.22.67.29 1.19.47 1.6.6.67.21 1.28.18 1.76.11.54-.08 1.67-.68 1.9-1.34.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33z"/>
+          </svg>
+          WhatsApp
+        </a>
       </div>
     </QueryClientProvider>
   );
 }
+

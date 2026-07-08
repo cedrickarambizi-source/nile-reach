@@ -5,41 +5,44 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-serif: "Space Grotesk", "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, sans-serif;
 
-  --color-nile-dark: #050807;
-  --color-nile-deep: #0B2421;
-  --color-nile-river: #0E3D37;
-  --color-nile-gold: #C5A059;
-  --color-nile-gold-soft: #D9BE84;
-  --color-nile-clay: #F7F3EE;
-  --color-nile-clay-dim: #B8B1A4;
+  /* Semantic brand palette — Deep Navy / Royal Blue / Electric Cyan.
+     Token names retained for compatibility; values remapped. */
+  --color-nile-dark: #030814;          /* page background */
+  --color-nile-deep: #071A35;          /* primary deep navy */
+  --color-nile-river: #1D4ED8;         /* royal blue */
+  --color-nile-gold: #00D9FF;          /* electric cyan accent */
+  --color-nile-gold-soft: #7DD3FC;     /* soft cyan */
+  --color-nile-clay: #FFFFFF;          /* white foreground */
+  --color-nile-clay-dim: #F7F9FC;      /* light gray */
 
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
-  --radius-xl: 16px;
-  --radius-2xl: 24px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+  --radius-2xl: 32px;
 
   --color-background: var(--color-nile-dark);
   --color-foreground: var(--color-nile-clay);
   --color-border: rgba(255,255,255,0.08);
   --color-input: rgba(255,255,255,0.1);
   --color-ring: var(--color-nile-gold);
-  --color-primary: var(--color-nile-gold);
-  --color-primary-foreground: var(--color-nile-dark);
+  --color-primary: var(--color-nile-river);
+  --color-primary-foreground: var(--color-nile-clay);
   --color-muted: rgba(255,255,255,0.04);
-  --color-muted-foreground: rgba(247,243,238,0.55);
-  --color-accent: var(--color-nile-river);
-  --color-accent-foreground: var(--color-nile-clay);
+  --color-muted-foreground: rgba(247,249,252,0.6);
+  --color-accent: var(--color-nile-gold);
+  --color-accent-foreground: var(--color-nile-dark);
   --color-card: var(--color-nile-deep);
   --color-card-foreground: var(--color-nile-clay);
   --color-popover: var(--color-nile-deep);
   --color-popover-foreground: var(--color-nile-clay);
   --color-secondary: var(--color-nile-river);
   --color-secondary-foreground: var(--color-nile-clay);
-  --color-destructive: #b23a3a;
+  --color-destructive: #ef4444;
   --color-destructive-foreground: var(--color-nile-clay);
 }
 
@@ -47,19 +50,27 @@
   *, ::before, ::after { border-color: var(--color-border); }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--color-nile-dark);
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(29,78,216,0.28), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(0,217,255,0.10), transparent 60%),
+      var(--color-nile-dark);
     color: var(--color-nile-clay);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
   ::selection { background: var(--color-nile-gold); color: var(--color-nile-dark); }
-  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
 }
 
 @utility glass-layer {
-  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(29,78,216,0.06) 100%);
   border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+  backdrop-filter: blur(18px) saturate(140%);
 }
 @utility text-balance { text-wrap: balance; }
 @utility eyebrow {
@@ -69,4 +80,32 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-nile-gold);
+}
+@utility gradient-text {
+  background: linear-gradient(120deg, #FFFFFF 0%, #7DD3FC 45%, #00D9FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility glow-border {
+  position: relative;
+}
+@utility whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 20px 40px -10px rgba(37,211,102,0.55);
+  transition: transform 0.2s ease;
 }
