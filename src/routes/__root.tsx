@@ -126,14 +126,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-nile-dark text-nile-clay">
+      <div className="min-h-screen bg-white text-[#1D1D1F]">
         <SiteNav />
-        <main className="pt-0">
+        <main>
           <Outlet />
         </main>
         <SiteFooter />
         <a
-          href="https://wa.me/250700000000?text=Hi%20Nile%20Reach%2C%20I%27d%20like%20to%20talk%20about%20a%20project."
+          href="https://wa.me/250796692269?text=Hi%20Nile%20Reach%2C%20I%27d%20like%20to%20talk%20about%20a%20project."
           target="_blank"
           rel="noopener noreferrer"
           className="whatsapp-float hover:scale-105"
@@ -148,4 +148,5 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
 
