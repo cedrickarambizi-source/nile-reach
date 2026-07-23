@@ -1,52 +1,118 @@
 import { Link } from "@tanstack/react-router";
 
+const groups = [
+  {
+    title: "Services",
+    links: [
+      { to: "/services", label: "SEO" },
+      { to: "/services", label: "Paid Media" },
+      { to: "/services", label: "Brand Strategy" },
+      { to: "/services", label: "AI Automation" },
+      { to: "/services", label: "Web & Product" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { to: "/about", label: "About" },
+      { to: "/team", label: "Team" },
+      { to: "/careers", label: "Careers" },
+      { to: "/work", label: "Work" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { to: "/industries", label: "Industries" },
+      { to: "/pricing", label: "Pricing" },
+      { to: "/contact", label: "Insights" },
+    ],
+  },
+  {
+    title: "Contact",
+    links: [
+      { to: "/contact", label: "hello@nilereach.rw" },
+      { to: "/contact", label: "+250 796 692 269" },
+      { to: "/contact", label: "Remera, Kigali" },
+    ],
+  },
+] as const;
+
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/5 bg-nile-dark text-nile-clay/50">
-      <div className="max-w-7xl mx-auto px-6 py-20 grid gap-14 md:grid-cols-4">
-        <div className="md:col-span-2 max-w-sm">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="size-6 bg-nile-gold rounded-sm rotate-45" aria-hidden />
-            <span className="font-serif text-xl text-nile-clay">Nile Reach</span>
-          </div>
-          <p className="text-sm leading-relaxed">
-            A next-generation Digital &amp; AI Marketing Agency in Kigali, Rwanda —
-            helping brands reach across Africa and the world.
+    <footer className="on-dark relative overflow-hidden text-white">
+      {/* Closing CTA */}
+      <div className="relative">
+        <div className="absolute inset-0 bg-[linear-gradient(125deg,#0A0A1F_0%,#1E1B4B_45%,#4338CA_100%)]" />
+        <div className="absolute -top-40 right-[-10%] size-[520px] rounded-full bg-violet-500/30 blur-[140px]" />
+        <div className="absolute bottom-[-10%] left-[-5%] size-[440px] rounded-full bg-indigo-500/30 blur-[140px]" />
+
+        <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-24 text-center">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-white/60 mb-6">Let's build</p>
+          <h2 className="text-white text-5xl md:text-7xl font-semibold tracking-tight leading-[1.02] max-w-4xl mx-auto">
+            Let's grow something{" "}
+            <span className="italic font-light bg-gradient-to-r from-violet-200 to-indigo-100 bg-clip-text text-transparent">
+              worth remembering.
+            </span>
+          </h2>
+          <p className="mt-6 text-white/70 max-w-xl mx-auto text-lg">
+            A 30-minute strategy call with a Nile Reach partner. Walk away with three moves you can start Monday.
           </p>
-          <div className="mt-6 space-y-1 text-sm text-nile-clay">
-            <p>hello@nilereach.rw</p>
-            <p>+250 796 692 269</p>
-            <p className="text-nile-clay/50">Remera,Kigali, Rwanda</p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-white text-[#0A0A1F] px-7 py-3.5 text-sm font-medium hover:shadow-[0_20px_60px_-10px_rgba(255,255,255,0.35)] hover:-translate-y-0.5 transition-all"
+            >
+              Book a strategy call
+              <span aria-hidden>→</span>
+            </Link>
+            <Link
+              to="/work"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 text-white px-7 py-3.5 text-sm font-medium hover:border-white/60 transition-colors"
+            >
+              See recent work
+            </Link>
           </div>
-        </div>
-
-        <div>
-          <p className="eyebrow mb-4">Agency</p>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/about" className="hover:text-nile-gold">About</Link></li>
-            <li><Link to="/team" className="hover:text-nile-gold">Team</Link></li>
-            <li><Link to="/careers" className="hover:text-nile-gold">Careers</Link></li>
-            <li><Link to="/contact" className="hover:text-nile-gold">Contact</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <p className="eyebrow mb-4">Work</p>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/services" className="hover:text-nile-gold">Services</Link></li>
-            <li><Link to="/industries" className="hover:text-nile-gold">Industries</Link></li>
-            <li><Link to="/work" className="hover:text-nile-gold">Case Studies</Link></li>
-            <li><Link to="/pricing" className="hover:text-nile-gold">Pricing</Link></li>
-          </ul>
         </div>
       </div>
-      <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.3em]">
-          <p>© {new Date().getFullYear()} Nile Reach. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-nile-gold">Privacy</a>
-            <a href="#" className="hover:text-nile-gold">Terms</a>
-            <a href="#" className="hover:text-nile-gold">LinkedIn</a>
+
+      {/* Footer grid */}
+      <div className="relative bg-[#050512]">
+        <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+            <div className="col-span-2 md:col-span-1">
+              <Link to="/" className="flex items-center gap-2.5 text-white">
+                <span className="grid place-items-center size-8 rounded-md bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-sm font-bold">N</span>
+                <span className="text-base font-medium tracking-tight">Nile Reach</span>
+              </Link>
+              <p className="mt-5 text-sm text-white/55 leading-relaxed max-w-xs">
+                Digital & AI marketing built in Kigali, reaching across Africa.
+              </p>
+            </div>
+
+            {groups.map((g) => (
+              <div key={g.title}>
+                <p className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-4">{g.title}</p>
+                <ul className="space-y-3">
+                  {g.links.map((l) => (
+                    <li key={l.label}>
+                      <Link to={l.to} className="text-sm text-white/75 hover:text-white transition-colors">
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 pt-6 border-t border-white/10 flex flex-wrap gap-4 items-center justify-between text-[12px] text-white/45">
+            <p>© {new Date().getFullYear()} Nile Reach Ltd. All rights reserved.</p>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-white/80 transition-colors">Privacy</a>
+              <a href="#" className="hover:text-white/80 transition-colors">Terms</a>
+              <a href="#" className="hover:text-white/80 transition-colors">Cookies</a>
+            </div>
           </div>
         </div>
       </div>
