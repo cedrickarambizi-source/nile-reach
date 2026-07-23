@@ -10,11 +10,11 @@ export const Route = createFileRoute("/")({
         content:
           "Nile Reach is a Kigali-based digital & AI marketing agency helping ambitious brands across Africa scale faster with SEO, paid media, automation, and design.",
       },
-      { property: "og:title", content: "Nile Reach — AI-Powered Digital Growth" },
+      { property: "og:title", content: "Nile Reach — AI-Powered Digital Growth Agency, Kigali" },
       {
         property: "og:description",
         content:
-          "Helping ambitious companies across Africa scale faster through AI, marketing, automation, and digital innovation.",
+          "Nile Reach is a Kigali-based digital & AI marketing agency helping ambitious brands across Africa scale faster with SEO, paid media, automation, and design.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -73,25 +73,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Nile Reach — Digital & AI Marketing Agency, Kigali" },
+      { title: "Nile Reach — AI-Powered Digital Growth Agency, Kigali" },
       {
         name: "description",
         content:
-          "Nile Reach is a Kigali-based Digital & AI Marketing Agency helping retail, healthcare, e-commerce and corporate brands grow across Africa and globally.",
+          "Nile Reach is a Kigali-based digital & AI marketing agency helping ambitious brands across Africa scale faster with SEO, paid media, automation, and design.",
       },
       { name: "author", content: "Nile Reach" },
-      { property: "og:title", content: "Nile Reach — Digital & AI Marketing Agency" },
+      { property: "og:title", content: "Nile Reach — AI-Powered Digital Growth Agency, Kigali" },
       {
         property: "og:description",
         content:
-          "Digital and AI marketing built in Kigali, reaching across Africa. SEO, paid media, branding, web design and AI automation.",
+          "Nile Reach is a Kigali-based digital & AI marketing agency helping ambitious brands across Africa scale faster with SEO, paid media, automation, and design.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Nile Reach — AI-Powered Digital Growth Agency, Kigali" },
+      { name: "twitter:description", content: "Nile Reach is a Kigali-based digital & AI marketing agency helping ambitious brands across Africa scale faster with SEO, paid media, automation, and design." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/CIXySmq6NVPtxaCSZTCkXQ2dMEX2/social-images/social-1784828181479-8fe6e9db-8391-4287-8b7e-8f594235a979.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/CIXySmq6NVPtxaCSZTCkXQ2dMEX2/social-images/social-1784828181479-8fe6e9db-8391-4287-8b7e-8f594235a979.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
