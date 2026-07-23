@@ -15,8 +15,8 @@ export function SiteFooter() {
           </p>
           <div className="mt-6 space-y-1 text-sm text-nile-clay">
             <p>hello@nilereach.rw</p>
-            <p>+250 700 000 000</p>
-            <p className="text-nile-clay/50">Kigali, Rwanda</p>
+            <p>+250 796 692 269</p>
+            <p className="text-nile-clay/50">Remera,Kigali, Rwanda</p>
           </div>
         </div>
 
