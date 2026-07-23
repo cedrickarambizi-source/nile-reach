@@ -130,13 +130,6 @@
   }
 }
 
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 40%);
-  mix-blend-mode: screen;
-  pointer-events: none;
-}
-
 @utility whatsapp-float {
   position: fixed;
   right: 1.25rem;
@@ -156,7 +149,6 @@
   transition: transform .2s ease;
 }
 
-/* Nav dropdown animation */
 @keyframes dropdown-in {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -165,21 +157,21 @@
   animation: dropdown-in .18s ease-out both;
 }
 
-/* Underline hover for nav links */
 @utility link-underline {
   position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform .3s ease;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
 }
-@utility link-underline::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -4px;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform .3s ease;
-}
-@utility link-underline:hover::after {
-  transform: scaleX(1);
-  transform-origin: left center;
-}
+
