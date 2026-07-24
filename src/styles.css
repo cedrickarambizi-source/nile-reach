@@ -19,11 +19,12 @@
   --color-nile-clay: #1D1D1F;          /* Apple-ink primary text */
   --color-nile-clay-dim: #6E6E73;      /* muted gray text */
 
-  /* Dedicated dark tokens for hero + footer only */
-  --color-ink: #0A0A1F;                /* deep navy/indigo base */
-  --color-ink-deep: #050512;
-  --color-violet: #7C3AED;
-  --color-indigo: #4338CA;
+  /* Dedicated dark tokens for hero + footer only — brand gradient system */
+  --color-ink: #1B1035;
+  --color-ink-deep: #120823;
+  --color-violet: #6E5BFF;
+  --color-indigo: #4B2E83;
+  --color-glow: #8A7CFF;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -112,13 +113,15 @@
   color: transparent;
 }
 
-/* Liquid-silk hero background — flowing diagonal fabric, not a flat gradient */
+/* Liquid-silk hero background — slow-drifting fabric */
 @utility hero-silk {
   background:
-    radial-gradient(1000px 700px at 85% 15%, rgba(139,92,246,0.55), transparent 60%),
-    radial-gradient(900px 800px at 15% 85%, rgba(37,99,235,0.55), transparent 60%),
-    radial-gradient(700px 500px at 60% 50%, rgba(236,72,153,0.28), transparent 65%),
-    linear-gradient(125deg, #0A0A1F 0%, #1E1B4B 35%, #4338CA 70%, #7C3AED 100%);
+    radial-gradient(1000px 700px at 85% 15%, rgba(138,124,255,0.55), transparent 60%),
+    radial-gradient(900px 800px at 15% 85%, rgba(75,46,131,0.65), transparent 60%),
+    radial-gradient(700px 500px at 60% 50%, rgba(110,91,255,0.28), transparent 65%),
+    linear-gradient(125deg, #1B1035 0%, #2A1758 35%, #4B2E83 70%, #6E5BFF 100%);
+  background-size: 200% 200%;
+  animation: silk-drift 20s ease-in-out infinite;
   &::before {
     content: "";
     position: absolute; inset: 0;
@@ -128,6 +131,13 @@
     mix-blend-mode: screen;
     pointer-events: none;
   }
+}
+@keyframes silk-drift {
+  0%, 100% { background-position: 0% 50%, 100% 50%, 50% 50%, 0% 0%; }
+  50% { background-position: 30% 60%, 70% 40%, 60% 45%, 100% 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-silk { animation: none; }
 }
 
 @utility whatsapp-float {
