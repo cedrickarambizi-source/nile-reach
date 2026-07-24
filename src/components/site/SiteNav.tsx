@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import logoAsset from "@/assets/nile-reach-logo.png.asset.json";
 
 type SubItem = { to: string; label: string; desc: string; icon: string };
 type NavItem = { to: string; label: string; children?: SubItem[] };
@@ -56,7 +57,9 @@ export function SiteNav() {
     >
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 text-white shrink-0" onMouseEnter={() => setOpenMenu(null)}>
-          <span className="grid place-items-center size-7 rounded-md bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-xs font-bold">N</span>
+          <span className="grid place-items-center size-8 rounded-lg bg-white/95 p-1">
+            <img src={logoAsset.url} alt="Nile Reach" className="h-full w-full object-contain" />
+          </span>
           <span className="text-[15px] font-medium tracking-tight">Nile Reach</span>
         </Link>
 
