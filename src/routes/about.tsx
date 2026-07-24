@@ -33,6 +33,7 @@ function About() {
       <PageHeader
         eyebrow="Our story"
         title={<>Named after a river that <span className="gradient-text">never stops moving</span>.</>}
+        scene="constellation"
       />
 
       {/* STORY */}

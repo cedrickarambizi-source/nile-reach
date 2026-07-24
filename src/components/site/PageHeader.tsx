@@ -1,25 +1,33 @@
 import type { ReactNode } from "react";
+import { Scene3D } from "./Scene3D";
 
 export function PageHeader({
   eyebrow,
   title,
   intro,
   children,
+  scene,
 }: {
   eyebrow: string;
   title: ReactNode;
   intro?: ReactNode;
   children?: ReactNode;
+  scene?: string;
 }) {
   return (
     <section className="on-dark relative overflow-hidden hero-silk text-white pt-40 pb-24 md:pt-48 md:pb-28">
+      {scene && (
+        <div className="absolute inset-0 opacity-60 pointer-events-none">
+          <Scene3D variant={scene} className="absolute inset-0" />
+        </div>
+      )}
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-white/70 mb-6">{eyebrow}</p>
+        <p className="text-[13px] uppercase tracking-[0.15em] font-medium text-[#8A7CFF] mb-6">{eyebrow}</p>
         <h1 className="text-white text-5xl md:text-7xl lg:text-[84px] font-semibold leading-[1.02] tracking-[-0.03em] text-balance max-w-5xl">
           {title}
         </h1>
         {intro && (
-          <p className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed font-light">
+          <p className="mt-8 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed font-light">
             {intro}
           </p>
         )}
