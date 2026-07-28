@@ -95,26 +95,6 @@ const services = [
   },
 ];
 
-const cases = [
-  {
-    client: "Kigali Retail Group",
-    sector: "Retail · Rwanda",
-    result: "3.4× qualified leads in 90 days from a rebuilt search + paid engine.",
-    visual: "orbit",
-  },
-  {
-    client: "Umoja Health",
-    sector: "Healthcare · East Africa",
-    result: "68% lower cost-per-booking after an AI WhatsApp intake agent went live.",
-    visual: "particles",
-  },
-  {
-    client: "Nyanza Commerce",
-    sector: "E-commerce · Pan-African",
-    result: "312% ROAS across a re-architected Meta + Google funnel in one quarter.",
-    visual: "wave",
-  },
-];
 
 const faqs = [
   {
