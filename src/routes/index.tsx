@@ -1,6 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Scene3D } from "@/components/site/Scene3D";
+import { Counter } from "@/components/site/Counter";
+import { LogoMarquee } from "@/components/site/LogoMarquee";
+import { ProjectCard } from "@/components/site/ProjectCard";
+import { projects } from "@/lib/projects";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
