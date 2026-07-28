@@ -1,47 +1,169 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
+import { ProjectCard } from "../components/site/ProjectCard";
+import { LogoMarquee } from "../components/site/LogoMarquee";
+import { projects, screenshotUrl, faviconUrl } from "@/lib/projects";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
     meta: [
-      { title: "Work — Nile Reach" },
-      { name: "description", content: "Selected case studies and results from Nile Reach client engagements across Africa." },
-      { property: "og:title", content: "Work — Nile Reach" },
-      { property: "og:description", content: "Case studies in retail, healthcare and e-commerce." },
+      { title: "Our Work — Nile Reach Portfolio | Websites, SEO & Branding" },
+      {
+        name: "description",
+        content:
+          "Explore Nile Reach's portfolio: websites, SEO, branding, and Google Business projects for Fadmoor, MEP Erictric, Pro MEP, RwaSoft, Hope Technical, and more.",
+      },
+      { property: "og:title", content: "Our Work — Nile Reach Portfolio" },
+      {
+        property: "og:description",
+        content:
+          "Websites, SEO, branding, and Google Business projects delivered by Nile Reach for ambitious brands across Rwanda.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Nile Reach Portfolio",
+          itemListElement: projects.map((p, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "CreativeWork",
+              name: p.name,
+              url: p.website,
+              description: p.description,
+              about: p.industry,
+            },
+          })),
+        }),
+      },
     ],
   }),
   component: Work,
 });
-
-const cases = [
-  { sector: "E-commerce · Rwanda", metric: "3.2×", title: "Organic traffic in 90 days", body: "A full-funnel SEO and content overhaul turned an underperforming storefront into the category's top organic result." },
-  { sector: "Healthcare · East Africa", metric: "-41%", title: "Cost per qualified lead", body: "AI-assisted audience targeting and creative testing cut acquisition cost while patient inquiry volume grew." },
-  { sector: "Retail · Regional", metric: "+58%", title: "Social-driven store visits", body: "A rebuilt content calendar and always-on community management turned followers into footfall." },
-  { sector: "Corporate · Kigali", metric: "12wk", title: "Brand + site relaunch", body: "New positioning, identity system and marketing site shipped in twelve weeks, ready for a Series A raise." },
-];
 
 function Work() {
   return (
     <>
       <PageHeader
         eyebrow="Selected Work"
-        title={<>Results our clients can point to.</>}
-        intro="A snapshot of the outcomes our engagements target. Ask us for referenceable case studies during your intake."
+        title={<>Websites, branding & SEO<br />that move real businesses.</>}
+        intro="A portfolio of recent client engagements — corporate websites, complete digital branding, Google Business optimization, and SEO shipped by Nile Reach."
       />
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-          {cases.map((c) => (
-            <article key={c.title} className="glass-layer rounded-xl p-10 hover:border-nile-gold/40 transition-colors">
-              <p className="text-[10px] uppercase tracking-[0.25em] text-nile-gold mb-8">{c.sector}</p>
-              <div className="font-serif text-7xl text-nile-clay mb-4">{c.metric}</div>
-              <h2 className="text-xl font-medium mb-3">{c.title}</h2>
-              <p className="text-nile-clay/60 leading-relaxed">{c.body}</p>
-            </article>
-          ))}
+
+      <LogoMarquee />
+
+      {/* Grid of all projects */}
+      <section className="bg-white py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-14 max-w-3xl">
+            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">
+              Recent projects · {projects.length}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+              Every project shipped with intent, on the record.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((p) => (
+              <ProjectCard key={p.slug} project={p} />
+            ))}
+          </div>
         </div>
-        <p className="max-w-7xl mx-auto px-6 mt-12 text-sm italic text-nile-clay/40">
-          Figures are illustrative of engagement outcomes. Named references available on request.
-        </p>
+      </section>
+
+      {/* Detailed case rows */}
+      <section className="bg-[#F5F5F7] py-24">
+        <div className="max-w-6xl mx-auto px-6 space-y-16">
+          {projects.map((p, i) => {
+            const shot = screenshotUrl(p.domain);
+            const favicon = faviconUrl(p.domain);
+            return (
+              <article
+                key={p.slug}
+                id={p.slug}
+                className="scroll-mt-28 grid md:grid-cols-2 gap-10 items-center bg-white rounded-[24px] p-6 md:p-10 border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.05)]"
+              >
+                <div
+                  className={`relative aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-50 to-violet-50 ${
+                    i % 2 === 1 ? "md:order-2" : ""
+                  }`}
+                >
+                  {shot ? (
+                    <img
+                      src={shot}
+                      alt={`${p.name} — ${p.industry} website by Nile Reach`}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover object-top"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 grid place-items-center">
+                      <div className="text-center px-6">
+                        <div className="text-5xl font-semibold tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                          {p.name}
+                        </div>
+                        <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-[#6E6E73]">Case study</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-2.5 mb-4">
+                    {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83]">{p.badge}</span>
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-semibold text-[#1D1D1F] tracking-tight leading-tight">
+                    {p.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-[#6E6E73]">{p.industry}</p>
+                  <p className="mt-5 text-[16px] text-[#3A3A3C] leading-relaxed">{p.description}</p>
+
+                  <div className="mt-6">
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-[#6E6E73] mb-3">Services delivered</p>
+                    <ul className="flex flex-wrap gap-2">
+                      {p.services.map((s) => (
+                        <li
+                          key={s}
+                          className="text-[12px] rounded-full border border-black/8 bg-[#F5F5F7] text-[#1D1D1F] px-3 py-1.5"
+                        >
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {p.tech && (
+                    <div className="mt-5">
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-[#6E6E73] mb-3">Stack & capabilities</p>
+                      <p className="text-sm text-[#3A3A3C]">{p.tech.join(" · ")}</p>
+                    </div>
+                  )}
+
+                  {p.website && (
+                    <a
+                      href={p.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#1D1D1F] text-white px-6 py-3 text-sm font-medium hover:bg-[#4B2E83] transition-colors"
+                    >
+                      Visit live website
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+                        <path d="M7 17 17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </section>
     </>
   );
