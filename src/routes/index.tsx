@@ -291,47 +291,55 @@ function Home() {
         </div>
       </section>
 
-      {/* FEATURED WORK STRIP */}
-      <section className="bg-white py-24 md:py-32 border-t border-black/5">
+      {/* OUR RECENT PROJECTS */}
+      <section className="bg-[#FAFAFC] py-24 md:py-32 border-t border-black/5">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-14 gap-6">
+          <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
             <div className="max-w-2xl">
-              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Selected work</p>
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05]">
-                Most campaigns optimize for clicks. Ours optimize for compounding growth.
+              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Our recent projects</p>
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+                Real websites. Real brands. Shipped by Nile Reach.
               </h2>
             </div>
-            <Link to="/work" className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0">
-              All case studies →
+            <Link to="/work" className="inline-flex items-center gap-2 text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0">
+              View full portfolio →
             </Link>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {cases.map((c) => (
-              <Link
-                to="/work"
-                key={c.client}
-                className="group relative rounded-[20px] p-8 overflow-hidden border border-transparent hover:border-[#6E5BFF]/40 transition-all duration-500"
-                style={{
-                  background: "linear-gradient(160deg, #1B1035 0%, #2A1758 55%, #4B2E83 100%)",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-                  transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
-                }}
-              >
-                <div className="h-48 rounded-xl overflow-hidden mb-6 relative"
-                  style={{ background: "radial-gradient(circle at 50% 55%, rgba(138,124,255,0.3), rgba(27,16,53,0.9))" }}>
-                  <Scene3D variant={c.visual} className="absolute inset-0" />
-                </div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-[#8A7CFF] mb-2">{c.sector}</p>
-                <h3 className="text-xl font-semibold text-white leading-snug mb-3">{c.client}</h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">{c.result}</p>
-                <div className="mt-6 pt-5 border-t border-white/10 text-sm text-white/85 inline-flex items-center gap-1.5 group-hover:gap-3 transition-all">
-                  Read case study <span>→</span>
-                </div>
-              </Link>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((p) => (
+              <ProjectCard key={p.slug} project={p} />
             ))}
           </div>
         </div>
       </section>
+
+      {/* CTA */}
+      <section className="on-dark relative overflow-hidden hero-silk text-white py-24 md:py-32">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-white/70 mb-6">Ready to grow</p>
+          <h2 className="text-white text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-balance">
+            Ready to transform your business online?
+          </h2>
+          <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
+            We help businesses build powerful websites, improve Google visibility, create professional branding, and generate more leads through modern digital solutions.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-white text-[#0A0A1F] px-7 py-3.5 text-sm font-medium hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(255,255,255,0.35)] transition-all"
+            >
+              Start your project <span aria-hidden>→</span>
+            </Link>
+            <Link
+              to="/work"
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 text-white px-7 py-3.5 text-sm font-medium hover:border-white/70 transition-colors"
+            >
+              View portfolio
+            </Link>
+          </div>
+        </div>
+      </section>
+
 
       {/* FAQ */}
       <section className="bg-[#F5F5F7] py-24 md:py-32">
