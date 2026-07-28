@@ -211,22 +211,28 @@ function Home() {
         </div>
       </section>
 
-      {/* PROOF BAR */}
+      {/* PROOF BAR — animated stats */}
       <section className="bg-white border-b border-black/5">
-        <div className="max-w-7xl mx-auto px-6 py-10 md:py-14 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-6 py-14 md:py-20 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { n: "+340%", l: "Avg. organic growth" },
-            { n: "120+", l: "Brands scaled" },
-            { n: "12", l: "Markets served" },
-            { n: "98%", l: "Client retention" },
+            { to: 6, suffix: "+", l: "Successful client projects" },
+            { to: 100, suffix: "%", l: "Client satisfaction" },
+            { to: 6, suffix: "", l: "Complete brand transformations" },
+            { to: 3, suffix: "", l: "Disciplines — Web · SEO · Branding" },
           ].map((x) => (
             <div key={x.l} className="text-center">
-              <div className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F]">{x.n}</div>
+              <div className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F]">
+                <Counter to={x.to} suffix={x.suffix} />
+              </div>
               <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#6E6E73]">{x.l}</div>
             </div>
           ))}
         </div>
       </section>
+
+      {/* TRUSTED — logo marquee */}
+      <LogoMarquee />
+
 
       {/* TAB CONTENT */}
       <section className="bg-white py-20 md:py-28">
