@@ -194,3 +194,50 @@
 }
 
 
+
+/* ---------------------------------------------- premium UI primitives */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-glow);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* Nav pill: gradient sweep + underline growing from center */
+@utility nav-pill {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: linear-gradient(120deg, rgba(255,255,255,0.10), rgba(138,124,255,0.16));
+    opacity: 0;
+    transition: opacity .3s cubic-bezier(0.16,1,0.3,1);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 16px; right: 16px; bottom: 4px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .35s cubic-bezier(0.16,1,0.3,1);
+  }
+  &:hover::before { opacity: 1; }
+  &:hover::after { transform: scaleX(1); }
+}
+
+@utility btn-glow {
+  box-shadow: 0 0 0 0 rgba(138,124,255,0);
+  transition: box-shadow .4s cubic-bezier(0.16,1,0.3,1), transform .3s cubic-bezier(0.16,1,0.3,1);
+  &:hover { box-shadow: 0 10px 30px -8px rgba(138,124,255,0.55); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+}
