@@ -164,7 +164,7 @@ function Home() {
       </section>
 
       {/* SERVICE TAB BAR — sliding underline */}
-      <section className="border-b border-black/8 bg-white sticky top-14 z-30 backdrop-blur-md">
+      <section className="border-b border-black/8 bg-white sticky top-[72px] z-30 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative flex items-stretch gap-8 overflow-x-auto no-scrollbar">
             {serviceTabs.map((t) => {
