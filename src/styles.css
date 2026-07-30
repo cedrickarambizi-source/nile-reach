@@ -4,27 +4,51 @@
 
 @custom-variant dark (&:is(.dark *));
 
+:root {
+  /* Raw surface + accent vars — swapped at runtime by the theme engine. */
+  --nile-dark: #FFFFFF;        /* page bg */
+  --nile-deep: #F5F5F7;        /* subtle section bg */
+  --nile-river: #4338CA;       /* accent primary */
+  --nile-gold: #7C3AED;        /* accent secondary */
+  --nile-gold-soft: #A78BFA;
+  --nile-clay: #1D1D1F;        /* primary text */
+  --nile-clay-dim: #6E6E73;    /* muted text */
+  --nile-card: #FFFFFF;
+  --nile-border: rgba(0,0,0,0.08);
+  --nile-muted: rgba(0,0,0,0.03);
+  --glow: #8A7CFF;
+}
+
+html.dark {
+  --nile-dark: #08080C;
+  --nile-deep: #101018;
+  --nile-clay: #F5F5F7;
+  --nile-clay-dim: #9A9AA3;
+  --nile-card: #121219;
+  --nile-border: rgba(255,255,255,0.10);
+  --nile-muted: rgba(255,255,255,0.04);
+}
+
 @theme inline {
   --font-serif: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Light-first system. Legacy `nile-*` token names retained so existing
-     class references keep working, remapped to new light semantics. */
-  --color-nile-dark: #FFFFFF;          /* page bg (was dark, now white) */
-  --color-nile-deep: #F5F5F7;          /* light gray content sections */
-  --color-nile-river: #4338CA;         /* indigo */
-  --color-nile-gold: #7C3AED;          /* violet accent */
-  --color-nile-gold-soft: #A78BFA;     /* soft violet */
-  --color-nile-clay: #1D1D1F;          /* Apple-ink primary text */
-  --color-nile-clay-dim: #6E6E73;      /* muted gray text */
+  /* Legacy `nile-*` token names retained; values resolve through runtime vars. */
+  --color-nile-dark: var(--nile-dark);
+  --color-nile-deep: var(--nile-deep);
+  --color-nile-river: var(--nile-river);
+  --color-nile-gold: var(--nile-gold);
+  --color-nile-gold-soft: var(--nile-gold-soft);
+  --color-nile-clay: var(--nile-clay);
+  --color-nile-clay-dim: var(--nile-clay-dim);
 
   /* Dedicated dark tokens for hero + footer only — brand gradient system */
   --color-ink: #1B1035;
   --color-ink-deep: #120823;
   --color-violet: #6E5BFF;
   --color-indigo: #4B2E83;
-  --color-glow: #8A7CFF;
+  --color-glow: var(--glow);
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -32,35 +56,37 @@
   --radius-xl: 20px;
   --radius-2xl: 28px;
 
-  --color-background: var(--color-nile-dark);
-  --color-foreground: var(--color-nile-clay);
-  --color-border: rgba(0,0,0,0.08);
-  --color-input: rgba(0,0,0,0.08);
-  --color-ring: var(--color-nile-river);
-  --color-primary: var(--color-nile-river);
+  --color-background: var(--nile-dark);
+  --color-foreground: var(--nile-clay);
+  --color-border: var(--nile-border);
+  --color-input: var(--nile-border);
+  --color-ring: var(--nile-river);
+  --color-primary: var(--nile-river);
   --color-primary-foreground: #FFFFFF;
-  --color-muted: rgba(0,0,0,0.03);
-  --color-muted-foreground: var(--color-nile-clay-dim);
-  --color-accent: var(--color-nile-gold);
+  --color-muted: var(--nile-muted);
+  --color-muted-foreground: var(--nile-clay-dim);
+  --color-accent: var(--nile-gold);
   --color-accent-foreground: #FFFFFF;
-  --color-card: #FFFFFF;
-  --color-card-foreground: var(--color-nile-clay);
-  --color-popover: #FFFFFF;
-  --color-popover-foreground: var(--color-nile-clay);
-  --color-secondary: var(--color-nile-deep);
-  --color-secondary-foreground: var(--color-nile-clay);
+  --color-card: var(--nile-card);
+  --color-card-foreground: var(--nile-clay);
+  --color-popover: var(--nile-card);
+  --color-popover-foreground: var(--nile-clay);
+  --color-secondary: var(--nile-deep);
+  --color-secondary-foreground: var(--nile-clay);
   --color-destructive: #ef4444;
   --color-destructive-foreground: #FFFFFF;
 }
 
+
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    background: #FFFFFF;
+    background: var(--nile-dark);
     color: var(--color-nile-clay);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color .5s cubic-bezier(0.16,1,0.3,1), color .5s cubic-bezier(0.16,1,0.3,1);
   }
   ::selection { background: var(--color-nile-gold); color: #FFFFFF; }
   h1, h2, h3, h4 {
@@ -72,14 +98,23 @@
 
   /* Overlay classes used across the codebase were originally designed for a
      dark theme (border-white/5, bg-white/[0.03]). Remap them to work on the
-     new light surfaces so existing markup keeps its subtle separators. */
-  .border-white\/5  { border-color: rgba(0,0,0,0.06) !important; }
-  .border-white\/10 { border-color: rgba(0,0,0,0.08) !important; }
-  .border-white\/15 { border-color: rgba(0,0,0,0.12) !important; }
-  .border-white\/20 { border-color: rgba(0,0,0,0.16) !important; }
-  .bg-white\/5      { background-color: rgba(0,0,0,0.03) !important; }
-  .bg-white\/\[0\.03\] { background-color: rgba(0,0,0,0.025) !important; }
-  .hover\:bg-white\/5:hover { background-color: rgba(0,0,0,0.04) !important; }
+     light surfaces so existing markup keeps its subtle separators. */
+  html:not(.dark) .border-white\/5  { border-color: rgba(0,0,0,0.06) !important; }
+  html:not(.dark) .border-white\/10 { border-color: rgba(0,0,0,0.08) !important; }
+  html:not(.dark) .border-white\/15 { border-color: rgba(0,0,0,0.12) !important; }
+  html:not(.dark) .border-white\/20 { border-color: rgba(0,0,0,0.16) !important; }
+  html:not(.dark) .bg-white\/5      { background-color: rgba(0,0,0,0.03) !important; }
+  html:not(.dark) .bg-white\/\[0\.03\] { background-color: rgba(0,0,0,0.025) !important; }
+  html:not(.dark) .hover\:bg-white\/5:hover { background-color: rgba(0,0,0,0.04) !important; }
+
+  /* Dark theme: remap the light-first hardcoded surfaces used across pages. */
+  html.dark .bg-white:not(.on-dark *) { background-color: var(--nile-card) !important; }
+  html.dark .bg-\[\#F5F5F7\]:not(.on-dark *) { background-color: var(--nile-deep) !important; }
+  html.dark .text-\[\#1D1D1F\]:not(.on-dark *) { color: var(--nile-clay) !important; }
+  html.dark .text-\[\#6E6E73\]:not(.on-dark *) { color: var(--nile-clay-dim) !important; }
+  html.dark .border-black\/5 { border-color: rgba(255,255,255,0.08) !important; }
+  html.dark .border-black\/10 { border-color: rgba(255,255,255,0.12) !important; }
+
 
   /* But keep true-dark sections (hero + footer) unaffected via .on-dark scope */
   .on-dark, .on-dark h1, .on-dark h2, .on-dark h3, .on-dark h4 { color: #FFFFFF; }
@@ -240,4 +275,12 @@
     animation-duration: .001ms !important;
     transition-duration: .001ms !important;
   }
+}
+
+@keyframes palette-in {
+  from { opacity: 0; transform: translateY(-10px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@utility palette-in {
+  animation: palette-in .28s cubic-bezier(0.16,1,0.3,1) both;
 }
