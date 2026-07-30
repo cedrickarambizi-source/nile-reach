@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import logoAsset from "@/assets/nile-reach-logo.png.asset.json";
 
-type SubItem = { to: string; label: string; desc: string; icon: JSX.Element };
+type SubItem = { to: string; label: string; desc: string; icon: ReactNode };
 type NavItem = { to: string; label: string; children?: SubItem[] };
 
 /* ---------------------------------------------------------------- icons */
@@ -57,7 +57,7 @@ const nav: NavItem[] = [
 ];
 
 /* ------------------------------------------------------- magnetic link */
-function MagneticItem({ children }: { children: ReactNodeLike }) {
+function MagneticItem({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLSpanElement>(null);
   const onMove = (e: React.MouseEvent) => {
     const el = ref.current;
@@ -81,7 +81,6 @@ function MagneticItem({ children }: { children: ReactNodeLike }) {
     </span>
   );
 }
-type ReactNodeLike = React.ReactNode;
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
