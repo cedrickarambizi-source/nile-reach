@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import logoAsset from "@/assets/nile-reach-logo.png.asset.json";
+import { NavControls } from "./NavControls";
+import { CommandPalette } from "./CommandPalette";
+import { useTheme } from "./theme";
 
 type SubItem = { to: string; label: string; desc: string; icon: ReactNode };
 type NavItem = { to: string; label: string; children?: SubItem[] };
@@ -90,6 +93,7 @@ export function SiteNav() {
   const [mobileSection, setMobileSection] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const lastY = useRef(0);
+  const { t } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
@@ -157,7 +161,7 @@ export function SiteNav() {
                   }`}
                   activeProps={{ className: "text-white" }}
                 >
-                  <MagneticItem>{item.label}</MagneticItem>
+                  <MagneticItem>{t(item.label)}</MagneticItem>
                 </Link>
               </li>
             ))}
@@ -173,14 +177,17 @@ export function SiteNav() {
             className="hidden md:inline-flex items-center gap-2 h-9 rounded-[999px] border border-white/15 bg-white/5 px-3 text-[12px] text-white/60 hover:text-white hover:border-white/30 transition-colors duration-300"
           >
             {IconSearch}
-            <span className="hidden xl:inline">Search</span>
+            <span className="hidden xl:inline">{t("Search")}</span>
             <kbd className="hidden xl:inline rounded-[6px] border border-white/15 px-1.5 py-0.5 text-[10px] text-white/45">⌘K</kbd>
           </button>
+          <div className="hidden md:flex items-center gap-2">
+            <NavControls />
+          </div>
           <Link
             to="/contact"
             className="btn-glow hidden sm:inline-flex items-center rounded-[12px] bg-white text-[#0B0B0F] px-4 h-9 text-[13px] font-medium transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03]"
           >
-            Book a call
+            {t("Book a call")}
           </Link>
           <button
             onClick={() => setMobileOpen((v) => !v)}
@@ -239,23 +246,7 @@ export function SiteNav() {
         </div>
       )}
 
-      {/* Inline search */}
-      {searchOpen && (
-        <div className="hidden md:block border-t border-white/10 bg-[#0B0B0F]/90 backdrop-blur-[30px]">
-          <div className="mx-auto w-full max-w-[1440px] px-6 py-4 flex items-center gap-3 text-white/60">
-            {IconSearch}
-            <input
-              autoFocus
-              aria-label="Search Nile Reach"
-              placeholder="Search services, work, insights…"
-              className="w-full bg-transparent outline-none text-white placeholder:text-white/40 text-[15px]"
-            />
-            <button onClick={() => setSearchOpen(false)} className="text-[11px] rounded-[6px] border border-white/15 px-2 py-1 hover:text-white">
-              Esc
-            </button>
-          </div>
-        </div>
-      )}
+      <CommandPalette open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {/* Mobile */}
       {mobileOpen && (
@@ -311,7 +302,7 @@ export function SiteNav() {
             onClick={() => setMobileOpen(false)}
             className="mt-6 flex items-center justify-center rounded-[12px] bg-white text-[#0B0B0F] px-4 py-3 text-[14px] font-medium"
           >
-            Book a call
+            {t("Book a call")}
           </Link>
         </div>
       )}

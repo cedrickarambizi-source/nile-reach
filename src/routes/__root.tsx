@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNav } from "../components/site/SiteNav";
+import { ThemeProvider } from "../components/site/theme";
+import { SmoothScroll } from "../components/site/SmoothScroll";
 import { SiteFooter } from "../components/site/SiteFooter";
 
 function NotFoundComponent() {
@@ -129,6 +131,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+      <SmoothScroll />
       <div className="min-h-screen bg-white text-[#1D1D1F]">
         <SiteNav />
         <main>
@@ -148,6 +152,7 @@ function RootComponent() {
           WhatsApp
         </a>
       </div>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
