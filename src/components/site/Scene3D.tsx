@@ -1,11 +1,8 @@
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Component, Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
 
 // Lazy-load r3f only when a scene enters the viewport, protecting LCP.
 const CanvasLazy = lazy(async () => {
-  const [{ Canvas, useFrame }, drei] = await Promise.all([
-    import("@react-three/fiber"),
-    import("@react-three/drei"),
-  ]);
+  const { Canvas, useFrame } = await import("@react-three/fiber");
   const THREE = await import("three");
 
   function Orbit() {
@@ -149,12 +146,34 @@ const CanvasLazy = lazy(async () => {
         {variant === "prism" && <Prism />}
         {variant === "constellation" && <Constellation />}
         {variant === "wave" && <Wave />}
-        <drei.Environment preset="city" />
+        <hemisphereLight args={["#8A7CFF", "#1B1035", 0.5]} />
       </Canvas>
     );
   };
   return { default: Comp };
 });
+
+const fallbackGradient = (
+  <div className="w-full h-full bg-gradient-to-br from-[#1B1035]/10 via-[#4B2E83]/10 to-[#6E5BFF]/10" />
+);
+
+/**
+ * Contains failures local to a single decorative 3D scene — e.g. a dropped
+ * connection mid chunk-load on mobile — so they degrade to the soft gradient
+ * placeholder instead of bubbling up and crashing the whole page.
+ */
+class SceneErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error: unknown) {
+    console.warn("Scene3D failed to load, falling back to placeholder:", error);
+  }
+  render() {
+    return this.state.hasError ? fallbackGradient : this.props.children;
+  }
+}
 
 export function Scene3D({ variant, className = "" }: { variant: string; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -170,9 +189,11 @@ export function Scene3D({ variant, className = "" }: { variant: string; classNam
   return (
     <div ref={ref} className={className}>
       {visible && (
-        <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-[#1B1035]/10 via-[#4B2E83]/10 to-[#6E5BFF]/10" />}>
-          <CanvasLazy variant={variant} />
-        </Suspense>
+        <SceneErrorBoundary>
+          <Suspense fallback={fallbackGradient}>
+            <CanvasLazy variant={variant} />
+          </Suspense>
+        </SceneErrorBoundary>
       )}
     </div>
   );
