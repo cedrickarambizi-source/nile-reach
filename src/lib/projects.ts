@@ -63,8 +63,8 @@ export const projects: Project[] = [
     slug: "nile-reach",
     name: "Nile Reach",
     industry: "Digital Marketing Agency",
-    website: "https://nilereach.com/",
-    domain: "nilereach.com",
+    website: "https://nilereach.site/",
+    domain: "nilereach.site",
     services: [
       "Website Design & Development",
       "Company Profile Design",
@@ -91,6 +91,8 @@ export const projects: Project[] = [
     slug: "hope-technical",
     name: "Hope Technical Ltd",
     industry: "Engineering & Technical Services",
+    website: "https://www.hopetechnicalltd.com/",
+    domain: "hopetechnicalltd.com",
     services: [
       "Website Design & Development",
       "Company Profile Design",
