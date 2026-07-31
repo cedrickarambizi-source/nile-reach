@@ -4,6 +4,7 @@ import { Scene3D } from "@/components/site/Scene3D";
 import { Counter } from "@/components/site/Counter";
 import { LogoMarquee } from "@/components/site/LogoMarquee";
 import { ProjectCard } from "@/components/site/ProjectCard";
+import { Cta } from "@/components/site/Cta";
 import { projects } from "@/lib/projects";
 
 
@@ -304,18 +305,12 @@ function Home() {
             We help businesses build powerful websites, improve Google visibility, create professional branding, and generate more leads through modern digital solutions.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white text-[#0A0A1F] px-7 py-3.5 text-sm font-medium hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(255,255,255,0.35)] transition-all"
-            >
+            <Cta to="/contact" variant="solid-light">
               Start your project <span aria-hidden>→</span>
-            </Link>
-            <Link
-              to="/work"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 text-white px-7 py-3.5 text-sm font-medium hover:border-white/70 transition-colors"
-            >
+            </Cta>
+            <Cta to="/work" variant="outline-light">
               View portfolio
-            </Link>
+            </Cta>
           </div>
         </div>
       </section>

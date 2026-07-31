@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
 import { ProjectCard } from "../components/site/ProjectCard";
 import { LogoMarquee } from "../components/site/LogoMarquee";
+import { Cta, ExternalLinkIcon } from "../components/site/Cta";
 import { projects, screenshotUrl, faviconUrl } from "@/lib/projects";
 
 export const Route = createFileRoute("/work")({
@@ -147,17 +148,10 @@ function Work() {
                   )}
 
                   {p.website && (
-                    <a
-                      href={p.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#1D1D1F] text-white px-6 py-3 text-sm font-medium hover:bg-[#4B2E83] transition-colors"
-                    >
+                    <Cta href={p.website} variant="solid-dark" className="mt-8">
                       Visit live website
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
-                        <path d="M7 17 17 7M9 7h8v8" />
-                      </svg>
-                    </a>
+                      <ExternalLinkIcon className="size-3" />
+                    </Cta>
                   )}
                 </div>
               </article>

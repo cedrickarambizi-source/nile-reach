@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { NileReachMark } from "./NileReachLogo";
+import { Cta } from "./Cta";
 
 const groups = [
   {
@@ -60,19 +61,13 @@ export function SiteFooter() {
             A 30-minute strategy call with a Nile Reach partner. Walk away with three moves you can start Monday.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white text-[#0A0A1F] px-7 py-3.5 text-sm font-medium hover:shadow-[0_20px_60px_-10px_rgba(255,255,255,0.35)] hover:-translate-y-0.5 transition-all"
-            >
+            <Cta to="/contact" variant="solid-light">
               Book a strategy call
               <span aria-hidden>→</span>
-            </Link>
-            <Link
-              to="/work"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 text-white px-7 py-3.5 text-sm font-medium hover:border-white/60 transition-colors"
-            >
+            </Cta>
+            <Cta to="/work" variant="outline-light">
               See recent work
-            </Link>
+            </Cta>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { type Project, screenshotUrl, faviconUrl } from "@/lib/projects";
+import { Cta, ExternalLinkIcon } from "./Cta";
 
 export function ProjectCard({ project }: { project: Project }) {
   const shot = screenshotUrl(project.domain);
@@ -67,17 +68,10 @@ export function ProjectCard({ project }: { project: Project }) {
             View project <span aria-hidden>→</span>
           </Link>
           {project.website && (
-            <a
-              href={project.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-[#1D1D1F] text-white px-3.5 py-1.5 text-[12px] font-medium hover:bg-[#4B2E83] transition-colors"
-            >
+            <Cta href={project.website} variant="solid-dark" size="sm" className="ml-auto">
               Live site
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
-                <path d="M7 17 17 7M9 7h8v8" />
-              </svg>
-            </a>
+              <ExternalLinkIcon />
+            </Cta>
           )}
         </div>
       </div>
