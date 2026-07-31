@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import logoAsset from "@/assets/nile-reach-logo.png.asset.json";
+import { NileReachMark } from "./NileReachLogo";
 import { NavControls } from "./NavControls";
 import { CommandPalette } from "./CommandPalette";
 import { useTheme } from "./theme";
@@ -144,7 +144,7 @@ export function SiteNav() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 text-white shrink-0" onMouseEnter={close}>
           <span className="grid place-items-center size-9 rounded-[12px] bg-white/95 p-1.5">
-            <img src={logoAsset.url} alt="Nile Reach" className="h-full w-full object-contain" />
+            <NileReachMark className="h-full w-full" />
           </span>
           <span className="text-[15px] font-medium tracking-[-0.01em]">Nile Reach</span>
         </Link>

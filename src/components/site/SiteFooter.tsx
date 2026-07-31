@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { NileReachMark } from "./NileReachLogo";
 
 const groups = [
   {
@@ -82,7 +83,9 @@ export function SiteFooter() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
             <div className="col-span-2 md:col-span-1">
               <Link to="/" className="flex items-center gap-2.5 text-white">
-                <span className="grid place-items-center size-8 rounded-md bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-sm font-bold">N</span>
+                <span className="grid place-items-center size-9 rounded-[10px] bg-white p-1.5 shrink-0">
+                  <NileReachMark className="h-full w-full" />
+                </span>
                 <span className="text-base font-medium tracking-tight">Nile Reach</span>
               </Link>
               <p className="mt-5 text-sm text-white/55 leading-relaxed max-w-xs">
