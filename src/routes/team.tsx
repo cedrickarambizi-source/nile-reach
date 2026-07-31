@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
+import cedricPhoto from "@/assets/team-cedric-karambizi.jpg";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/team")({
 });
 
 const people = [
-  { name: "Cedric Karambizi", role: "CEO & Founder", initials: "CK", bio: "Sets the agency's direction and leads major client partnerships across the region." },
+  { name: "Cedric Karambizi", role: "CEO & Founder", initials: "CK", photo: cedricPhoto, bio: "Sets the agency's direction and leads major client partnerships across the region." },
   { name: "Kagoro Mugisha Peter", role: "Marketing Director", initials: "KM", bio: "Owns marketing strategy and creative direction for the agency's most complex accounts." },
   { name: "Bryan Michelage", role: "IT Administrator", initials: "BM", bio: "Runs the technical infrastructure, data and AI tooling that powers every engagement." },
   { name: "Aline Umutoni", role: "Head of Growth", initials: "AU", bio: "Leads paid media, SEO and analytics across retail, healthcare and e-commerce accounts." },
@@ -41,11 +42,26 @@ function Team() {
         <div className="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {people.map((p, i) => (
             <article key={p.name} className="group">
-              <div className={`w-full aspect-[4/5] mb-6 bg-linear-to-br ${palettes[i % palettes.length]} border border-white/10 flex items-end p-6 relative overflow-hidden`}>
-                <span className="absolute top-6 right-6 text-[10px] uppercase tracking-[0.3em] text-nile-clay/50">
+              <div className="w-full aspect-[4/5] mb-6 border border-white/10 relative overflow-hidden">
+                {p.photo ? (
+                  <>
+                    <img
+                      src={p.photo}
+                      alt={p.name}
+                      className="absolute inset-0 h-full w-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10" />
+                  </>
+                ) : (
+                  <div className={`absolute inset-0 bg-linear-to-br ${palettes[i % palettes.length]} flex items-end p-6`}>
+                    <span className="font-serif text-8xl text-nile-clay/90 leading-none">{p.initials}</span>
+                  </div>
+                )}
+                <span
+                  className={`absolute top-6 right-6 text-[10px] uppercase tracking-[0.3em] z-10 ${p.photo ? "text-white/80" : "text-nile-clay/50"}`}
+                >
                   0{i + 1}
                 </span>
-                <span className="font-serif text-8xl text-nile-clay/90 leading-none">{p.initials}</span>
               </div>
               <h3 className="font-serif text-2xl">{p.name}</h3>
               <p className="text-nile-gold text-[10px] font-bold uppercase tracking-[0.25em] mt-2 mb-4">
