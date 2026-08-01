@@ -33,31 +33,33 @@ const nav: NavItem[] = [
     to: "/services",
     label: "Services",
     children: [
-      { to: "/services", label: "SEO", desc: "Rank where intent already lives.", icon: IconTarget },
-      { to: "/services", label: "Paid Media", desc: "ROAS-first performance systems.", icon: IconChart },
-      { to: "/services", label: "Brand Strategy", desc: "Positioning that travels.", icon: IconCompass },
-      { to: "/services", label: "Content Marketing", desc: "Editorial that compounds.", icon: IconPen },
-      { to: "/services", label: "Web Development", desc: "Sites engineered to convert.", icon: IconCode },
-      { to: "/services", label: "UI / UX", desc: "Interfaces with a point of view.", icon: IconLayers },
-      { to: "/services", label: "Automation", desc: "Workflows that remove friction.", icon: IconSpark },
-      { to: "/services", label: "AI Solutions", desc: "Agents, chat, and prediction.", icon: IconBrain },
-      { to: "/services", label: "Consulting", desc: "Growth architecture, quarterly.", icon: IconBook },
+      { to: "/services", label: "Digital Transformation", desc: "Strategy, assessment, roadmap.", icon: IconCompass },
+      { to: "/services", label: "AI & Automation", desc: "Assistants, bots, workflows.", icon: IconBrain },
+      { to: "/services", label: "Growth Marketing", desc: "SEO, paid, content, email.", icon: IconChart },
+      { to: "/services", label: "Web & Software", desc: "Sites, platforms, CRM.", icon: IconCode },
+      { to: "/services", label: "Data & Analytics", desc: "Dashboards and reporting.", icon: IconLayers },
+      { to: "/industries", label: "Industries", desc: "Sector-specific playbooks.", icon: IconGrid },
+      { to: "/insights", label: "Insights", desc: "Thinking for leaders.", icon: IconBook },
+      { to: "/pricing", label: "Investment", desc: "How engagements are priced.", icon: IconTarget },
+      { to: "/contact", label: "Growth Audit", desc: "Free digital assessment.", icon: IconSpark },
     ],
   },
   { to: "/work", label: "Work" },
   { to: "/case-studies", label: "Case Studies" },
+  { to: "/insights", label: "Insights" },
   {
     to: "/about",
     label: "About",
     children: [
       { to: "/about", label: "Our Story", desc: "Kigali, 2023 — and forward.", icon: IconFlag },
       { to: "/industries", label: "Industries", desc: "Sectors we know deeply.", icon: IconGrid },
+      { to: "/team", label: "Team", desc: "The people behind the work.", icon: IconPen },
       { to: "/careers", label: "Careers", desc: "Build Nile Reach with us.", icon: IconSpark },
     ],
   },
-  { to: "/team", label: "Team" },
   { to: "/pricing", label: "Pricing" },
   { to: "/contact", label: "Contact" },
+
 ];
 
 /* ------------------------------------------------------- magnetic link */
@@ -151,7 +153,7 @@ export function SiteNav() {
         </Link>
 
         {/* Centered nav */}
-        <nav aria-label="Primary" className="hidden lg:block absolute left-1/2 -translate-x-1/2">
+        <nav aria-label="Primary" className="hidden xl:block absolute left-1/2 -translate-x-1/2">
           <ul className="flex items-center gap-1 text-[14px] font-medium text-white/75">
             {nav.map((item) => (
               <li key={item.label} onMouseEnter={() => setOpenMenu(item.children ? item.label : null)}>
@@ -192,7 +194,7 @@ export function SiteNav() {
           </Link>
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="lg:hidden grid place-items-center size-11 rounded-[12px] text-white hover:bg-white/10 transition"
+            className="xl:hidden grid place-items-center size-11 rounded-[12px] text-white hover:bg-white/10 transition"
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
           >
@@ -206,7 +208,7 @@ export function SiteNav() {
 
       {/* Mega menu */}
       {active?.children && (
-        <div className="hidden lg:block absolute inset-x-0 top-full">
+        <div className="hidden xl:block absolute inset-x-0 top-full">
           <div className="mx-auto w-full max-w-[1440px] px-6">
             <div className="dropdown-in bg-white text-[#1D1D1F] rounded-[20px] shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-black/5 p-6 grid grid-cols-[1fr_260px] gap-6 mb-8">
               <div className="grid grid-cols-3 gap-1">
@@ -251,7 +253,7 @@ export function SiteNav() {
 
       {/* Mobile */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-[#0B0B0F]/95 backdrop-blur-[30px] px-6 pb-8 pt-4 max-h-[calc(100dvh-72px)] overflow-y-auto">
+        <div className="xl:hidden border-t border-white/10 bg-[#0B0B0F]/95 backdrop-blur-[30px] px-6 pb-8 pt-4 max-h-[calc(100dvh-72px)] overflow-y-auto">
           <ul className="divide-y divide-white/10">
             {nav.map((item) => (
               <li key={item.label} className="py-1">
