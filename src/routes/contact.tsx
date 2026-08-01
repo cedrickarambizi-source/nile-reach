@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
 import { useState } from "react";
+import { BUSINESS, canonical } from "../lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -10,6 +11,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact Nile Reach" },
       { property: "og:description", content: "Start a project with a Kigali-based digital and AI marketing agency." },
     ],
+    links: [canonical("/contact")],
   }),
   component: Contact,
 });
@@ -28,19 +30,19 @@ function Contact() {
           <aside className="space-y-10">
             <div>
               <p className="eyebrow mb-3">Office</p>
-              <p className="font-serif text-2xl">Kigali, Rwanda</p>
+              <p className="font-serif text-2xl">{BUSINESS.addressLine}</p>
               <p className="text-sm text-nile-clay/50 mt-2">By appointment</p>
             </div>
             <div>
               <p className="eyebrow mb-3">Email</p>
-              <a href="mailto:hello@nilereach.rw" className="font-serif text-2xl hover:text-nile-gold transition-colors">
-                hello@nilereach.rw
+              <a href={`mailto:${BUSINESS.email}`} className="font-serif text-2xl hover:text-nile-gold transition-colors">
+                {BUSINESS.email}
               </a>
             </div>
             <div>
               <p className="eyebrow mb-3">Phone</p>
-              <a href="tel:+250700000000" className="font-serif text-2xl hover:text-nile-gold transition-colors">
-                +250 700 000 000
+              <a href={BUSINESS.phoneHref} className="font-serif text-2xl hover:text-nile-gold transition-colors">
+                {BUSINESS.phone}
               </a>
             </div>
             <div>

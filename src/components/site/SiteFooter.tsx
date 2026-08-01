@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { NileReachMark } from "./NileReachLogo";
 import { Cta } from "./Cta";
+import { BUSINESS } from "@/lib/seo";
 
 const groups = [
   {
@@ -33,8 +34,8 @@ const groups = [
   {
     title: "Contact",
     links: [
-      { to: "/contact", label: "hello@nilereach.rw" },
-      { to: "/contact", label: "+250 796 692 269" },
+      { to: "/contact", label: BUSINESS.email },
+      { to: "/contact", label: BUSINESS.phone },
       { to: "/contact", label: "Remera, Kigali" },
     ],
   },

@@ -5,6 +5,7 @@ import { Counter } from "@/components/site/Counter";
 import { LogoMarquee } from "@/components/site/LogoMarquee";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { Cta } from "@/components/site/Cta";
+import { canonical } from "@/lib/seo";
 import { projects } from "@/lib/projects";
 
 
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [canonical("/")],
   }),
   component: Home,
 });

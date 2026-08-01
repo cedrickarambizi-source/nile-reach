@@ -15,6 +15,7 @@ import { SiteNav } from "../components/site/SiteNav";
 import { ThemeProvider } from "../components/site/theme";
 import { SmoothScroll } from "../components/site/SmoothScroll";
 import { SiteFooter } from "../components/site/SiteFooter";
+import { SITE_URL, BUSINESS } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -102,6 +103,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "ProfessionalService",
+              "@id": `${SITE_URL}/#organization`,
+              name: "Nile Reach",
+              url: `${SITE_URL}/`,
+              logo: `${SITE_URL}/logo.png`,
+              image: `${SITE_URL}/logo.png`,
+              description:
+                "Nile Reach is a Kigali-based digital & AI marketing agency helping ambitious brands across Africa scale faster with SEO, paid media, automation, and design.",
+              telephone: BUSINESS.phoneHref.replace("tel:", ""),
+              email: BUSINESS.email,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Remera",
+                addressLocality: BUSINESS.locality,
+                addressCountry: BUSINESS.country,
+              },
+              areaServed: ["Rwanda", "East Africa"],
+              priceRange: "$$",
+            },
+            {
+              "@type": "WebSite",
+              "@id": `${SITE_URL}/#website`,
+              name: "Nile Reach",
+              url: `${SITE_URL}/`,
+              publisher: { "@id": `${SITE_URL}/#organization` },
+            },
+          ],
+        }),
       },
     ],
 

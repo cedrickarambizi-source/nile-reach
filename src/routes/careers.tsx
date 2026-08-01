@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
+import { canonical } from "../lib/seo";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -9,6 +10,7 @@ export const Route = createFileRoute("/careers")({
       { property: "og:title", content: "Careers at Nile Reach" },
       { property: "og:description", content: "Help brands move further. Open roles in Kigali." },
     ],
+    links: [canonical("/careers")],
   }),
   component: Careers,
 });

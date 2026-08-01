@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
 import cedricPhoto from "@/assets/team-cedric-karambizi.jpg";
+import { canonical, SITE_URL } from "../lib/seo";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -9,6 +10,20 @@ export const Route = createFileRoute("/team")({
       { name: "description", content: "Meet the leadership of Nile Reach — Cedric Karambizi, Kagoro Mugisha Peter, Bryan Michelage and team." },
       { property: "og:title", content: "The Nile Reach Team" },
       { property: "og:description", content: "Leadership and specialists behind Nile Reach in Kigali, Rwanda." },
+    ],
+    links: [canonical("/team")],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Cedric Karambizi",
+          jobTitle: "CEO & Founder",
+          worksFor: { "@id": `${SITE_URL}/#organization` },
+          url: `${SITE_URL}/team`,
+        }),
+      },
     ],
   }),
   component: Team,

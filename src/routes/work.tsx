@@ -4,6 +4,7 @@ import { ProjectCard } from "../components/site/ProjectCard";
 import { LogoMarquee } from "../components/site/LogoMarquee";
 import { Cta, ExternalLinkIcon } from "../components/site/Cta";
 import { projects, screenshotUrl, faviconUrl } from "@/lib/projects";
+import { canonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/work")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [canonical("/work")],
     scripts: [
       {
         type: "application/ld+json",
