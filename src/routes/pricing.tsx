@@ -6,10 +6,10 @@ import { canonical } from "../lib/seo";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Pricing — Nile Reach" },
-      { name: "description", content: "Transparent monthly growth partnerships from RWF 300,000. Starter, Business, Professional and Enterprise plans plus one-time project pricing." },
-      { property: "og:title", content: "Pricing — Nile Reach" },
-      { property: "og:description", content: "Simple pricing. Powerful growth. Monthly retainers from RWF 300K to RWF 1.5M." },
+      { title: "Pricing — Solutions Designed to Accelerate Your Business Growth | Nile Reach" },
+      { name: "description", content: "From digital marketing to complete business transformation, Nile Reach helps organizations improve visibility, automate operations, generate qualified leads, and grow revenue." },
+      { property: "og:title", content: "Solutions Designed to Accelerate Your Business Growth — Nile Reach" },
+      { property: "og:description", content: "A Digital Growth & AI Transformation Partner — not just a marketing agency." },
     ],
     links: [canonical("/pricing")],
   }),
@@ -19,10 +19,13 @@ export const Route = createFileRoute("/pricing")({
 type Tier = {
   name: string;
   price: string;
+  altPrice?: string;
   cadence: string;
+  duration?: string;
   tag: string;
   body: string;
   features: string[];
+  industries?: string[];
   cta: string;
   highlight?: boolean;
 };
@@ -30,101 +33,114 @@ type Tier = {
 const tiers: Tier[] = [
   {
     name: "Starter Growth",
-    price: "RWF 300,000",
+    price: "RWF 500,000",
     cadence: "/ month",
-    tag: "For startups & small business",
-    body: "Everything you need to get found, look credible and start growing consistently.",
+    tag: "Small businesses & startups",
+    body: "For businesses that need a professional online presence and consistent digital visibility.",
     features: [
-      "Professional website maintenance",
-      "Basic SEO optimization",
-      "Google Business Profile management",
-      "12 social media posts / month",
-      "Facebook & Instagram management",
-      "Monthly performance report",
-      "WhatsApp support",
-      "Basic graphic design",
-      "Basic AI assistance",
-      "1 strategy meeting / month",
+      "Social media management",
+      "Content creation",
+      "Google Business Profile optimization",
+      "Basic SEO",
+      "Monthly performance reports",
+      "Website updates",
+      "Digital presence improvement",
     ],
     cta: "Start Growing",
   },
   {
     name: "Business Growth",
-    price: "RWF 600,000",
+    price: "RWF 2,000,000–5,000,000",
     cadence: "/ month",
     tag: "Most popular",
-    body: "For growing companies that need consistent, multi-channel marketing.",
+    body: "For companies that want predictable leads, stronger marketing systems, and measurable growth.",
     features: [
-      "Everything in Starter",
-      "Advanced SEO",
+      "Everything in Starter Growth",
+      "Advanced SEO strategy",
       "Google Ads management",
-      "Facebook & Instagram Ads",
-      "LinkedIn marketing",
-      "20 social media posts",
-      "Blog content creation",
-      "Email marketing",
-      "AI chatbot integration",
-      "Landing pages & CRO",
-      "Bi-weekly strategy meetings",
+      "Facebook & Instagram advertising",
+      "Lead generation campaigns",
+      "Landing page creation",
+      "Email marketing automation",
+      "CRM setup",
+      "Monthly growth strategy meetings",
+      "Conversion optimization",
     ],
-    cta: "Choose Business",
+    cta: "Grow My Business",
     highlight: true,
   },
   {
-    name: "Professional Growth",
-    price: "RWF 900,000",
-    cadence: "/ month",
-    tag: "For established businesses",
-    body: "A full digital marketing engine with AI automation baked in.",
+    name: "Digital Transformation",
+    price: "RWF 10,000,000–50,000,000",
+    cadence: "/ project",
+    duration: "3–6 month engagement",
+    tag: "Full modernization",
+    body: "For companies ready to modernize operations and build scalable digital systems.",
     features: [
-      "Everything in Business",
-      "Full digital marketing strategy",
-      "AI business automation",
-      "CRM integration",
-      "Sales funnel development",
-      "Unlimited landing pages",
-      "Reputation management",
-      "Video marketing",
-      "Photography consultation",
-      "Weekly performance meetings",
-      "Priority support",
+      "Business digital audit",
+      "Digital transformation roadmap",
+      "Corporate website transformation",
+      "SEO growth system",
+      "CRM implementation",
+      "AI chatbot integration",
+      "Marketing automation",
+      "Analytics dashboard",
+      "Sales pipeline optimization",
+      "Team training",
     ],
-    cta: "Scale Faster",
+    cta: "Request Transformation Consultation",
   },
   {
-    name: "Enterprise",
-    price: "RWF 1,500,000",
+    name: "Enterprise Growth Partner",
+    price: "RWF 5,000,000–20,000,000",
+    altPrice: "$5,000–$20,000 / month for international clients",
     cadence: "/ month",
-    tag: "For corporations",
-    body: "A dedicated growth pod with unlimited campaigns, automation and executive reporting.",
+    tag: "Strategic partnership",
+    body: "A long-term strategic partnership for organizations seeking continuous digital growth.",
     features: [
-      "Dedicated marketing team",
-      "Complete business automation",
-      "Unlimited advertising campaigns",
-      "Unlimited graphic design",
-      "Full website management",
-      "Custom software integrations",
-      "Executive marketing reports & KPI dashboard",
-      "24/7 priority support",
-      "Dedicated account manager",
-      "Quarterly growth planning",
-      "Multi-location marketing",
-      "Advanced analytics & competitor monitoring",
+      "Dedicated growth manager",
+      "Complete digital strategy",
+      "SEO team",
+      "Content team",
+      "Paid advertising management",
+      "AI automation solutions",
+      "Business intelligence dashboards",
+      "Marketing performance analysis",
+      "Quarterly executive strategy reviews",
     ],
-    cta: "Contact Sales",
+    cta: "Become a Growth Partner",
+  },
+  {
+    name: "AI Automation Solutions",
+    price: "RWF 5,000,000–30,000,000",
+    cadence: "/ project",
+    tag: "AI & automation",
+    body: "Custom AI assistants and automation that run parts of the business for you.",
+    features: [
+      "AI customer assistants",
+      "WhatsApp automation",
+      "AI sales assistants",
+      "Workflow automation",
+      "Document processing automation",
+      "Internal knowledge assistants",
+      "Business process optimization",
+    ],
+    industries: [
+      "Construction — lead management, tender tracking, follow-up automation",
+      "Hotels — AI booking assistant, guest communication automation",
+      "Healthcare — appointment automation, patient communication systems",
+    ],
+    cta: "Build AI Solutions",
   },
 ];
 
-const oneTime = [
-  ["Business Website", "RWF 300,000"],
-  ["E-commerce Website", "RWF 700,000"],
-  ["Corporate Website", "RWF 1,200,000"],
-  ["Branding Package", "RWF 250,000"],
-  ["Logo Design", "RWF 80,000"],
-  ["SEO Audit", "RWF 150,000"],
-  ["Google Business Profile Setup", "RWF 100,000"],
-  ["AI Chatbot Setup", "RWF 400,000"],
-  ["Business Automation", "RWF 800,000"],
+const whoWeHelp = [
+  "Construction & Engineering",
+  "Real Estate Developers",
+  "Hotels & Hospitality",
+  "Healthcare Organizations",
+  "Retail Companies",
+  "Manufacturing Companies",
 ];
 
 const faqs = [
@@ -140,13 +156,13 @@ function Pricing() {
     <>
       <PageHeader
         eyebrow="Pricing"
-        title={<>Simple pricing. <span className="gradient-text">Powerful growth.</span></>}
-        intro="Choose a monthly growth partnership designed to help your business attract more customers, generate more leads and automate operations with AI."
+        title={<>Solutions Designed to <span className="gradient-text">Accelerate Your Business Growth</span></>}
+        intro="From digital marketing to complete business transformation, Nile Reach helps organizations improve visibility, automate operations, generate qualified leads, and grow revenue."
       />
 
       {/* PLANS */}
       <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {tiers.map((t) => (
             <article
               key={t.name}
@@ -165,10 +181,14 @@ function Pricing() {
               <h3 className="text-2xl font-semibold mb-2">{t.name}</h3>
               <p className="text-sm text-nile-clay/60 leading-relaxed mb-6">{t.body}</p>
               <div className="mb-8">
-                <div className="text-3xl md:text-4xl font-semibold gradient-text">{t.price}</div>
-                <div className="text-nile-clay/50 text-xs mt-1">{t.cadence}</div>
+                <div className="text-2xl md:text-3xl font-semibold gradient-text leading-tight">{t.price}</div>
+                <div className="text-nile-clay/50 text-xs mt-1">
+                  {t.cadence}
+                  {t.duration && <span> · {t.duration}</span>}
+                </div>
+                {t.altPrice && <div className="text-nile-clay/50 text-xs mt-1">{t.altPrice}</div>}
               </div>
-              <ul className="space-y-3 mb-8 flex-1">
+              <ul className="space-y-3 mb-6 flex-1">
                 {t.features.map((f) => (
                   <li key={f} className="flex gap-3 text-sm text-nile-clay/75">
                     <span className="text-nile-gold mt-0.5">✓</span>
@@ -176,6 +196,16 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
+              {t.industries && (
+                <div className="mb-6 pt-5 border-t border-white/10">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-nile-clay/40 mb-3">Built for</p>
+                  <ul className="space-y-2">
+                    {t.industries.map((ind) => (
+                      <li key={ind} className="text-xs text-nile-clay/60 leading-relaxed">{ind}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <Link
                 to="/contact"
                 className={`text-center px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all ${
@@ -191,34 +221,23 @@ function Pricing() {
         </div>
       </section>
 
-      {/* ONE-TIME SERVICES */}
+      {/* WHO WE HELP */}
       <section className="py-20 border-t border-white/5 bg-nile-deep/30">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-14">
-            <p className="eyebrow mb-4">One-time projects</p>
-            <h2 className="text-3xl md:text-4xl">Project-based work at transparent rates.</h2>
-            <p className="text-nile-clay/60 mt-4 max-w-2xl mx-auto">
-              Need a one-off build or setup? Below are our published starting prices. Every project
-              begins with a scoping call to confirm requirements.
-            </p>
+            <p className="eyebrow mb-4">Who we help</p>
+            <h2 className="text-3xl md:text-4xl">Vertical expertise, not generic playbooks.</h2>
           </div>
-          <div className="glass-layer rounded-2xl overflow-hidden">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="text-[10px] uppercase tracking-[0.25em] text-nile-clay/50 border-b border-white/10">
-                  <th className="py-4 px-6 font-semibold">Service</th>
-                  <th className="py-4 px-6 font-semibold text-right">Starting price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {oneTime.map(([svc, price]) => (
-                  <tr key={svc} className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
-                    <td className="py-4 px-6 text-sm">{svc}</td>
-                    <td className="py-4 px-6 text-sm text-right font-semibold text-nile-gold">{price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {whoWeHelp.map((industry) => (
+              <div
+                key={industry}
+                className="glass-layer rounded-xl px-6 py-5 text-sm font-medium text-nile-clay/85 flex items-center gap-3"
+              >
+                <span className="size-1.5 rounded-full bg-nile-gold shrink-0" />
+                {industry}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -243,17 +262,26 @@ function Pricing() {
             <div className="absolute -top-32 -right-32 size-96 bg-nile-river/30 rounded-full blur-[120px]" />
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl mb-4">
-                Book a <span className="gradient-text">free strategy session</span>.
+                Ready to <span className="gradient-text">transform your business</span>?
               </h2>
               <p className="text-nile-clay/70 mb-8 max-w-xl mx-auto">
-                30 minutes with a Nile Reach strategist. Walk away with 2–3 growth moves you can start immediately — free of charge.
+                Book a strategy consultation with Nile Reach and discover how digital technology, AI
+                automation, and growth marketing can help your organization achieve better results.
               </p>
-              <Link
-                to="/contact"
-                className="inline-block bg-gradient-to-r from-nile-river to-nile-gold text-nile-dark px-8 py-4 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:opacity-95 transition-opacity"
-              >
-                Book my session
-              </Link>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <Link
+                  to="/contact"
+                  className="inline-block bg-gradient-to-r from-nile-river to-nile-gold text-nile-dark px-8 py-4 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:opacity-95 transition-opacity"
+                >
+                  Book Strategy Call
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-block border border-white/15 text-nile-clay px-8 py-4 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:border-nile-gold hover:text-nile-gold transition-colors"
+                >
+                  Request Free Digital Audit
+                </Link>
+              </div>
             </div>
           </div>
         </div>
