@@ -349,7 +349,7 @@ function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t) => (
-              <figure key={t.author} className="rounded-[24px] border border-black/8 bg-[#F5F5F7] p-9 flex flex-col">
+              <figure key={t.role} className="rounded-[24px] border border-black/8 bg-[#F5F5F7] p-9 flex flex-col">
                 <blockquote className="text-[17px] text-[#1D1D1F] leading-relaxed flex-1">“{t.quote}”</blockquote>
                 <figcaption className="mt-7 pt-6 border-t border-black/8">
                   <p className="text-[15px] font-semibold text-[#1D1D1F]">{t.author}</p>
