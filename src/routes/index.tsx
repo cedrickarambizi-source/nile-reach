@@ -3,26 +3,26 @@ import { useState } from "react";
 import { Scene3D } from "@/components/site/Scene3D";
 import { Counter } from "@/components/site/Counter";
 import { LogoMarquee } from "@/components/site/LogoMarquee";
-import { ProjectCard } from "@/components/site/ProjectCard";
 import { Cta } from "@/components/site/Cta";
 import { canonical } from "@/lib/seo";
-import { projects } from "@/lib/projects";
-
+import { getAllCaseStudies } from "@/lib/caseStudies";
+import { faviconUrl } from "@/lib/projects";
+import { problems, serviceCategories, industries, process, whyNileReach, testimonials, insights } from "@/lib/consulting";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nile Reach — Growth, engineered. Kigali → Africa." },
+      { title: "Nile Reach — Digital Growth & AI Transformation Partner" },
       {
         name: "description",
         content:
-          "A Kigali-born digital & AI marketing agency building compounding growth systems for ambitious African brands — SEO, paid media, brand strategy, and AI-native automation.",
+          "Nile Reach partners with African businesses to build digital systems, automate operations with AI, and accelerate revenue growth — consulting, technology, and data.",
       },
-      { property: "og:title", content: "Nile Reach — Growth, engineered." },
+      { property: "og:title", content: "Nile Reach — Digital Growth & AI Transformation Partner" },
       {
         property: "og:description",
         content:
-          "Attention is the only currency that compounds. We build the systems that capture it — for brands scaling across Africa and beyond.",
+          "Digital transformation consulting, AI automation, growth marketing, web & software, and analytics for ambitious companies across Africa.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,180 +32,80 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const serviceTabs = [
-  {
-    key: "seo",
-    label: "SEO",
-    heading: "Rank where the intent already lives.",
-    body: "Most SEO chases keywords. We engineer for the moments a buyer is actually deciding — technical, local, and AI-native search, tuned to the way Google and LLMs will rank in 2026.",
-  },
-  {
-    key: "paid",
-    label: "Paid Media",
-    heading: "Media that pays back, not media that performs.",
-    body: "Full-funnel campaigns on Google, Meta, LinkedIn and TikTok — planned around ROAS, creative-tested weekly, and reported against pipeline instead of clicks.",
-  },
-  {
-    key: "brand",
-    label: "Brand Strategy",
-    heading: "A brand is a promise the market chooses to remember.",
-    body: "Positioning, naming and identity systems that outlive the next campaign — and give every team downstream a story worth repeating.",
-  },
-  {
-    key: "content",
-    label: "Content",
-    heading: "Editorial that compounds quarter over quarter.",
-    body: "Owned media, thought leadership and social creative built as a library — not a sprint. Value stacks; audiences show up on their own.",
-  },
-];
-
-const services = [
-  {
-    tag: "SEO & Discovery",
-    title: "Get found by the buyers already searching.",
-    body: "Technical audits, local SEO, and AI-native content strategy — built for how Google and LLMs actually rank in 2026.",
-    visual: "orbit",
-  },
-  {
-    tag: "AI Automation",
-    title: "Agents that run the back office.",
-    body: "Chatbots, WhatsApp flows, and CRM agents that qualify, book, and follow up 24/7 — in your voice, not a template.",
-    visual: "particles",
-  },
-  {
-    tag: "Web & Product",
-    title: "Sites engineered to convert.",
-    body: "Fast, accessible, editorial-grade websites and storefronts — instrumented from day one against a real growth model.",
-    visual: "prism",
-  },
-  {
-    tag: "Paid Media",
-    title: "Full-funnel performance, weekly.",
-    body: "Google, Meta, LinkedIn and TikTok — planned around ROAS, creative-tested every week, reported against revenue.",
-    visual: "wave",
-  },
-  {
-    tag: "Brand & Content",
-    title: "A story that outlives the campaign.",
-    body: "Positioning, naming, identity, and editorial systems — the brand asset your future team will still be building on.",
-    visual: "ribbon",
-  },
-  {
-    tag: "Analytics",
-    title: "Decisions grounded in what the data says.",
-    body: "GA4, Looker Studio, attribution and quarterly growth planning — built on evidence, not vibes.",
-    visual: "constellation",
-  },
-];
-
-
 const faqs = [
   {
-    q: "What actually makes Nile Reach different from a traditional agency?",
-    a: "We combine performance craft with AI-native operations. Every engagement is instrumented with automation, so senior operators — not account layers — do the work you're paying for.",
+    q: "How is Nile Reach different from a marketing agency?",
+    a: "We start with the business, not the channel. Every engagement opens with a digital audit and a growth roadmap — then we implement the websites, automation, campaigns and dashboards that roadmap calls for, and stay on to optimise them.",
   },
   {
-    q: "Which industries do you serve?",
-    a: "Retail, healthcare, e-commerce, hospitality, financial services, and B2B corporates. We hold deep vertical expertise for the sectors moving Africa's economy.",
+    q: "Which industries do you specialise in?",
+    a: "Construction and engineering, real estate, healthcare, hospitality, retail, and growing SMEs and enterprises across Africa. We build sector-specific playbooks rather than reusing one template.",
   },
   {
-    q: "Do you work outside Rwanda?",
-    a: "Yes. We serve clients across East Africa and internationally. Engagements are managed remotely, with monthly on-site or executive syncs where it matters.",
+    q: "What does a typical engagement look like?",
+    a: "Discovery and audit, then a strategy and roadmap, then phased implementation, then a continuous optimisation cycle with quarterly business reviews. Most partnerships run twelve months or longer.",
   },
   {
-    q: "How is pricing structured?",
-    a: "Monthly retainers from RWF 300,000 up to RWF 1.5M, plus one-time projects like websites and branding. Every plan is scoped to a growth KPI — not a deliverable list.",
+    q: "Do you work with companies outside Rwanda?",
+    a: "Yes. We work across East Africa and internationally, delivered remotely with executive syncs and on-site workshops where the work demands it.",
   },
   {
-    q: "How quickly can we start?",
-    a: "Kickoff usually happens within 7–10 business days of signing. Paid campaigns can be live in two weeks; SEO and content compound over three to six months.",
+    q: "How do we start?",
+    a: "Book a strategy consultation, or request the free digital growth audit. Both begin with a structured conversation about where your revenue and operations lose momentum today.",
   },
 ];
 
 function Home() {
-  const [tab, setTab] = useState(serviceTabs[0].key);
-  const current = serviceTabs.find((t) => t.key === tab)!;
+  const caseStudies = getAllCaseStudies().slice(0, 2);
 
   return (
     <>
-      {/* HERO — liquid-silk gradient, typography-led */}
-      <section className="on-dark relative overflow-hidden hero-silk min-h-[90vh] flex items-center pt-40 pb-32 text-white">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-          <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-8" style={{ color: "#8A7CFF" }}>
-            2026 Growth Outlook · Kigali → Africa
-          </p>
-          <h1 className="text-white text-[44px] leading-[1.05] sm:text-6xl md:text-7xl lg:text-[88px] font-semibold tracking-[-0.03em] max-w-5xl text-balance">
-            Attention is the only currency
-            <br />
-            <span className="italic font-light bg-gradient-to-r from-white via-violet-100 to-indigo-200 bg-clip-text text-transparent">
-              that compounds.
-            </span>
-          </h1>
-          <p className="mt-8 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed font-light">
-            Nile Reach is a digital & AI marketing agency building the systems that
-            capture it — for ambitious African brands scaling from Kigali outward.
-          </p>
-          <div className="mt-10 flex items-center gap-8 text-sm">
-            <Link
-              to="/about"
-              className="group inline-flex items-center gap-2 text-white font-medium border-b border-white/40 hover:border-white pb-1 transition-colors"
-            >
-              Read the approach
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </Link>
-            <Link to="/work" className="text-white/60 hover:text-white transition-colors">
-              See recent work
-            </Link>
-          </div>
+      {/* 1 — HERO */}
+      <section className="on-dark relative overflow-hidden hero-silk min-h-[92vh] flex items-center pt-40 pb-28 text-white">
+        <div className="absolute inset-0 opacity-50 pointer-events-none">
+          <Scene3D variant="constellation" className="absolute inset-0" />
         </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
+          <div>
+            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-8" style={{ color: "#8A7CFF" }}>
+              Digital Growth &amp; AI Transformation Partner
+            </p>
+            <h1 className="text-white text-[40px] leading-[1.06] sm:text-5xl md:text-6xl lg:text-[72px] font-semibold tracking-[-0.03em] text-balance">
+              Transform your business with digital growth,{" "}
+              <span className="italic font-light bg-gradient-to-r from-white via-violet-100 to-indigo-200 bg-clip-text text-transparent">
+                AI automation &amp; technology
+              </span>
+            </h1>
+            <p className="mt-8 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed font-light">
+              Nile Reach partners with ambitious companies to build digital systems, attract more
+              customers, automate operations, and accelerate business growth.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Cta to="/contact" variant="solid-light">
+                Book a Strategy Consultation <span aria-hidden>→</span>
+              </Cta>
+              <Cta to="/contact" hash="audit" variant="outline-light">
+                Request Free Digital Growth Audit
+              </Cta>
+            </div>
+          </div>
 
-        {/* Scroll cue */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-70 animate-fade-in" style={{ animationDelay: "1s", animationFillMode: "both" }}>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-white/60">Scroll</span>
-          <span className="block w-px h-10 bg-gradient-to-b from-white/70 to-transparent" />
+          <DashboardVisual />
         </div>
       </section>
 
-      {/* SERVICE TAB BAR — sliding underline */}
-      <section className="border-b border-black/8 bg-white sticky top-[72px] z-30 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="relative flex items-stretch gap-8 overflow-x-auto no-scrollbar">
-            {serviceTabs.map((t) => {
-              const active = tab === t.key;
-              return (
-                <button
-                  key={t.key}
-                  onClick={() => setTab(t.key)}
-                  className={`relative py-5 text-[13px] font-medium whitespace-nowrap transition-colors ${
-                    active ? "text-[#1D1D1F]" : "text-[#6E6E73] hover:text-[#1D1D1F]"
-                  }`}
-                >
-                  {t.label}
-                  <span
-                    className={`absolute inset-x-0 -bottom-px h-[2px] bg-[#1D1D1F] transition-transform duration-500 origin-left ${
-                      active ? "scale-x-100" : "scale-x-0"
-                    }`}
-                    style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
-                  />
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* PROOF BAR — animated stats */}
+      {/* PROOF BAR */}
       <section className="bg-white border-b border-black/5">
-        <div className="max-w-7xl mx-auto px-6 py-14 md:py-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-6 py-14 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { to: 6, suffix: "+", l: "Successful client projects" },
-            { to: 100, suffix: "%", l: "Client satisfaction" },
-            { to: 6, suffix: "", l: "Complete brand transformations" },
-            { to: 3, suffix: "", l: "Disciplines — Web · SEO · Branding" },
+            { to: 6, suffix: "+", l: "Transformation engagements" },
+            { to: 5, suffix: "", l: "Industries served" },
+            { to: 100, suffix: "%", l: "Client retention to date" },
+            { to: 2023, suffix: "", l: "Founded in Kigali", plain: true },
           ].map((x) => (
             <div key={x.l} className="text-center">
               <div className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F]">
-                <Counter to={x.to} suffix={x.suffix} />
+                {x.plain ? "2023" : <Counter to={x.to} suffix={x.suffix} />}
               </div>
               <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#6E6E73]">{x.l}</div>
             </div>
@@ -213,60 +113,51 @@ function Home() {
         </div>
       </section>
 
-      {/* TRUSTED — logo marquee */}
       <LogoMarquee />
 
-
-      {/* TAB CONTENT */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-start">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
-            {current.heading}
-          </h2>
-          <div>
-            <p className="text-lg text-[#3A3A3C] leading-relaxed max-w-lg">{current.body}</p>
-            <Link
-              to="/services"
-              className="mt-6 inline-flex items-center gap-2 text-[#4B2E83] font-medium text-sm hover:gap-3 transition-all"
-            >
-              Explore {current.label.toLowerCase()}
-              <span>→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES GRID — 3D staged */}
-      <section className="bg-[#F5F5F7] py-24 md:py-32">
+      {/* 2 — BUSINESS PROBLEMS WE SOLVE */}
+      <section className="bg-white py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-16">
-            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Capabilities</p>
+            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">The mandate</p>
             <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
-              One partner for the entire growth stack.
+              Business challenges we help solve.
             </h2>
+            <p className="mt-6 text-lg text-[#6E6E73] leading-relaxed max-w-2xl">
+              Most growth problems are not marketing problems. They are visibility, pipeline, process
+              and data problems — and each one has an engineering answer.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((s) => (
+          <div className="grid md:grid-cols-2 gap-6">
+            {problems.map((p, i) => (
               <article
-                key={s.title}
-                className="group bg-white rounded-[20px] p-10 border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-500"
+                key={p.problem}
+                className="group rounded-[24px] border border-black/8 bg-[#F5F5F7] p-9 md:p-10 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#4B2E83]/25 hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
                 style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
               >
-                <div className="mb-6 h-48 rounded-2xl overflow-hidden relative"
-                  style={{ background: "radial-gradient(circle at 50% 55%, #EEEBFF 0%, #FFFFFF 55%, #F5F3FF 100%)" }}>
-                  <Scene3D variant={s.visual} className="absolute inset-0" />
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83]">Challenge 0{i + 1}</span>
+                  <span className="grid place-items-center size-9 rounded-full bg-white border border-black/8 text-[#4B2E83]">
+                    {p.icon}
+                  </span>
                 </div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-2">{s.tag}</p>
-                <h3 className="text-2xl font-semibold text-[#1D1D1F] leading-snug mb-3">{s.title}</h3>
-                <p className="text-[15px] text-[#6E6E73] leading-relaxed">{s.body}</p>
-                <div className="mt-6 pt-5 border-t border-black/5 text-sm">
-                  <Link
-                    to="/services"
-                    className="text-[#1D1D1F] font-medium inline-flex items-center gap-1.5 group-hover:text-[#4B2E83] transition-colors"
-                  >
-                    Learn more <span>→</span>
-                  </Link>
+                <h3 className="text-2xl md:text-[28px] font-semibold text-[#1D1D1F] tracking-tight leading-snug">
+                  {p.problem}
+                </h3>
+                <p className="mt-4 text-[15px] text-[#3A3A3C] leading-relaxed">{p.pain}</p>
+                <div className="mt-7 pt-6 border-t border-black/8">
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-[#6E6E73] mb-3">How we solve it</p>
+                  <ul className="flex flex-wrap gap-2">
+                    {p.solutions.map((s) => (
+                      <li
+                        key={s}
+                        className="text-[12px] rounded-full border border-black/8 bg-white text-[#1D1D1F] px-3 py-1.5"
+                      >
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             ))}
@@ -274,49 +165,280 @@ function Home() {
         </div>
       </section>
 
-      {/* OUR RECENT PROJECTS */}
-      <section className="bg-[#FAFAFC] py-24 md:py-32 border-t border-black/5">
+      {/* 3 — SERVICES */}
+      <section className="bg-[#F5F5F7] py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
-            <div className="max-w-2xl">
-              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Our recent projects</p>
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
-                Real websites. Real brands. Shipped by Nile Reach.
+          <div className="flex items-end justify-between gap-8 flex-wrap mb-16">
+            <div className="max-w-3xl">
+              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Our services</p>
+              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+                Five practices. One transformation partner.
               </h2>
             </div>
-            <Link to="/work" className="inline-flex items-center gap-2 text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0">
-              View full portfolio →
+            <Link
+              to="/services"
+              className="text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0"
+            >
+              Explore all services →
             </Link>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((p) => (
-              <ProjectCard key={p.slug} project={p} />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {serviceCategories.map((s) => (
+              <article
+                key={s.title}
+                className="group bg-white rounded-[24px] p-9 border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_18px_50px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-500 flex flex-col"
+                style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+              >
+                <div
+                  className="mb-7 h-40 rounded-2xl overflow-hidden relative"
+                  style={{ background: "radial-gradient(circle at 50% 55%, #EEEBFF 0%, #FFFFFF 55%, #F5F3FF 100%)" }}
+                >
+                  <Scene3D variant={s.visual} className="absolute inset-0" />
+                </div>
+                <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-2">{s.letter}</p>
+                <h3 className="text-[22px] font-semibold text-[#1D1D1F] leading-snug mb-3 tracking-tight">{s.title}</h3>
+                <p className="text-[15px] text-[#6E6E73] leading-relaxed">{s.body}</p>
+                <ul className="mt-6 space-y-2.5 border-t border-black/6 pt-5">
+                  {s.items.map((it) => (
+                    <li key={it} className="text-[14px] text-[#3A3A3C] flex gap-3">
+                      <span className="text-[#4B2E83]">—</span>
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="on-dark relative overflow-hidden hero-silk text-white py-24 md:py-32">
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-white/70 mb-6">Ready to grow</p>
-          <h2 className="text-white text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-balance">
-            Ready to transform your business online?
-          </h2>
-          <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
-            We help businesses build powerful websites, improve Google visibility, create professional branding, and generate more leads through modern digital solutions.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Cta to="/contact" variant="solid-light">
-              Start your project <span aria-hidden>→</span>
-            </Cta>
-            <Cta to="/work" variant="outline-light">
-              View portfolio
-            </Cta>
+      {/* 4 — INDUSTRIES */}
+      <section className="bg-white py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl mb-14">
+            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Sector expertise</p>
+            <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+              Industries we transform.
+            </h2>
+          </div>
+          <div className="border-t border-black/10">
+            {industries.map((ind, i) => (
+              <Link
+                key={ind.name}
+                to="/industries"
+                className="group grid md:grid-cols-[80px_1fr_1.3fr_40px] items-start gap-6 py-8 border-b border-black/10 transition-colors hover:bg-[#FAFAFC]"
+              >
+                <span className="text-[12px] tracking-[0.22em] text-[#6E6E73] pt-1.5">0{i + 1}</span>
+                <h3 className="text-2xl md:text-[28px] font-semibold tracking-tight text-[#1D1D1F] group-hover:text-[#4B2E83] transition-colors">
+                  {ind.name}
+                </h3>
+                <p className="text-[15px] text-[#6E6E73] leading-relaxed max-w-xl">{ind.body}</p>
+                <span
+                  aria-hidden
+                  className="hidden md:block text-[#1D1D1F] pt-1.5 transition-transform duration-300 group-hover:translate-x-1.5"
+                >
+                  →
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* 5 — PROCESS */}
+      <section className="on-dark relative overflow-hidden hero-silk text-white py-24 md:py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl mb-16">
+            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#8A7CFF]">How we work</p>
+            <h2 className="text-white text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-balance">
+              A digital transformation process built for boards, not briefs.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/12 rounded-[24px] overflow-hidden">
+            {process.map((step, i) => (
+              <div key={step.title} className="bg-[#0A0A1F]/60 backdrop-blur-sm p-8 md:p-9">
+                <p className="text-[52px] font-semibold leading-none text-white/15 tracking-tight">0{i + 1}</p>
+                <h3 className="mt-6 text-xl font-semibold text-white tracking-tight">{step.title}</h3>
+                <p className="mt-3 text-[15px] text-white/70 leading-relaxed">{step.body}</p>
+                <ul className="mt-5 space-y-2">
+                  {step.outputs.map((o) => (
+                    <li key={o} className="text-[13px] text-white/55 flex gap-2.5">
+                      <span className="text-[#8A7CFF]">•</span>
+                      {o}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6 — CASE STUDIES */}
+      <section className="bg-[#FAFAFC] py-24 md:py-32 border-t border-black/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-end justify-between gap-8 flex-wrap mb-14">
+            <div className="max-w-2xl">
+              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Selected work</p>
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+                Challenge. Solution. Result.
+              </h2>
+            </div>
+            <Link
+              to="/case-studies"
+              className="text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0"
+            >
+              All case studies →
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {caseStudies.map((cs) => {
+              const favicon = faviconUrl(cs.domain);
+              return (
+                <Link
+                  key={cs.slug}
+                  to="/case-studies/$slug"
+                  params={{ slug: cs.slug }}
+                  className="group block rounded-[24px] border border-black/8 bg-white p-9 md:p-10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
+                  style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+                >
+                  <div className="flex items-center gap-2.5 mb-5">
+                    {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83]">{cs.industry}</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-semibold text-[#1D1D1F] tracking-tight">{cs.name}</h3>
+                  <p className="mt-4 text-[15px] text-[#3A3A3C] leading-relaxed line-clamp-3">{cs.startingPoint}</p>
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {cs.services.slice(0, 4).map((s) => (
+                      <li key={s} className="text-[12px] rounded-full border border-black/8 bg-[#F5F5F7] px-3 py-1.5 text-[#1D1D1F]">
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-[#1D1D1F] group-hover:text-[#4B2E83] transition-colors">
+                    Read the case study <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </span>
+                </Link>
+              );
+            })}
+
+            {/* Space for future projects */}
+            <div className="rounded-[24px] border border-dashed border-black/15 bg-transparent p-9 md:p-10 flex flex-col justify-center md:col-span-2">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#6E6E73] mb-3">Next engagement</p>
+              <p className="text-xl md:text-2xl font-semibold text-[#1D1D1F] tracking-tight max-w-2xl">
+                This space is reserved for the next transformation programme — it could be yours.
+              </p>
+              <div className="mt-6">
+                <Cta to="/contact" variant="solid-dark">
+                  Start the conversation <span aria-hidden>→</span>
+                </Cta>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-white py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Client perspective</p>
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] mb-14 max-w-3xl text-balance">
+            What partners say about working with us.
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.map((t) => (
+              <figure key={t.author} className="rounded-[24px] border border-black/8 bg-[#F5F5F7] p-9 flex flex-col">
+                <blockquote className="text-[17px] text-[#1D1D1F] leading-relaxed flex-1">“{t.quote}”</blockquote>
+                <figcaption className="mt-7 pt-6 border-t border-black/8">
+                  <p className="text-[15px] font-semibold text-[#1D1D1F]">{t.author}</p>
+                  <p className="text-[13px] text-[#6E6E73] mt-0.5">{t.role}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7 — WHY NILE REACH */}
+      <section className="bg-[#F5F5F7] py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-16">
+          <div>
+            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Why Nile Reach</p>
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+              A growth partner that thinks like an operator.
+            </h2>
+            <p className="mt-6 text-lg text-[#6E6E73] leading-relaxed max-w-lg">
+              Founded in Kigali in 2023, Nile Reach exists to give African companies the same calibre
+              of digital and AI capability that global enterprises take for granted.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
+            {whyNileReach.map((w, i) => (
+              <div key={w.title}>
+                <p className="text-[12px] tracking-[0.22em] text-[#4B2E83] mb-3">0{i + 1}</p>
+                <h3 className="text-xl font-semibold text-[#1D1D1F] tracking-tight">{w.title}</h3>
+                <p className="mt-2.5 text-[15px] text-[#6E6E73] leading-relaxed">{w.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INSIGHTS */}
+      <section className="bg-white py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-end justify-between gap-8 flex-wrap mb-14">
+            <div className="max-w-2xl">
+              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Insights</p>
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+                Thinking for leaders building digital businesses in Africa.
+              </h2>
+            </div>
+            <Link to="/insights" className="text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0">
+              All insights →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {insights.slice(0, 3).map((a) => (
+              <Link
+                key={a.title}
+                to="/insights"
+                className="group rounded-[24px] border border-black/8 bg-[#F5F5F7] p-8 transition-all duration-500 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)]"
+                style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+              >
+                <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-4">{a.category}</p>
+                <h3 className="text-xl font-semibold text-[#1D1D1F] leading-snug tracking-tight">{a.title}</h3>
+                <p className="mt-3 text-[14px] text-[#6E6E73] leading-relaxed">{a.excerpt}</p>
+                <p className="mt-6 text-[13px] text-[#6E6E73]">{a.readTime}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8 — CONSULTATION CTA */}
+      <section className="on-dark relative overflow-hidden hero-silk text-white py-24 md:py-32">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-white/70 mb-6">Strategy consultation</p>
+          <h2 className="text-white text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-balance">
+            Ready to transform your business?
+          </h2>
+          <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
+            Schedule a consultation with Nile Reach and discover opportunities to improve your digital
+            presence, automate operations, and grow revenue.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <Cta to="/contact" variant="solid-light">
+              Book Consultation <span aria-hidden>→</span>
+            </Cta>
+            <Cta to="/contact" hash="audit" variant="outline-light">
+              Request free growth audit
+            </Cta>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ */}
       <section className="bg-[#F5F5F7] py-24 md:py-32">
@@ -335,6 +457,48 @@ function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+/** Abstract analytics/AI dashboard visual for the hero. */
+function DashboardVisual() {
+  const bars = [38, 52, 44, 68, 60, 82, 74, 96];
+  return (
+    <div className="hidden lg:block">
+      <div className="rounded-[24px] border border-white/15 bg-white/8 backdrop-blur-xl p-7 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.7)]">
+        <div className="flex items-center justify-between">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-white/60">Growth index</p>
+          <span className="text-[11px] rounded-full border border-white/20 px-2.5 py-1 text-white/70">Live</span>
+        </div>
+        <p className="mt-4 text-4xl font-semibold tracking-tight text-white">+218%</p>
+        <p className="text-[13px] text-white/55">Qualified inbound, trailing 12 months</p>
+
+        <div className="mt-7 flex items-end gap-2 h-32">
+          {bars.map((h, i) => (
+            <div
+              key={i}
+              className="flex-1 rounded-t-md"
+              style={{
+                height: `${h}%`,
+                background: "linear-gradient(180deg, #8A7CFF 0%, rgba(138,124,255,0.25) 100%)",
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="mt-7 grid grid-cols-2 gap-3">
+          {[
+            { k: "AI workflows live", v: "24/7" },
+            { k: "Manual hours saved", v: "40+/wk" },
+          ].map((m) => (
+            <div key={m.k} className="rounded-2xl border border-white/12 bg-white/5 p-4">
+              <p className="text-lg font-semibold text-white tracking-tight">{m.v}</p>
+              <p className="text-[12px] text-white/55 mt-0.5">{m.k}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
