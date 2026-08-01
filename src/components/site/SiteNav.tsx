@@ -33,31 +33,33 @@ const nav: NavItem[] = [
     to: "/services",
     label: "Services",
     children: [
-      { to: "/services", label: "SEO", desc: "Rank where intent already lives.", icon: IconTarget },
-      { to: "/services", label: "Paid Media", desc: "ROAS-first performance systems.", icon: IconChart },
-      { to: "/services", label: "Brand Strategy", desc: "Positioning that travels.", icon: IconCompass },
-      { to: "/services", label: "Content Marketing", desc: "Editorial that compounds.", icon: IconPen },
-      { to: "/services", label: "Web Development", desc: "Sites engineered to convert.", icon: IconCode },
-      { to: "/services", label: "UI / UX", desc: "Interfaces with a point of view.", icon: IconLayers },
-      { to: "/services", label: "Automation", desc: "Workflows that remove friction.", icon: IconSpark },
-      { to: "/services", label: "AI Solutions", desc: "Agents, chat, and prediction.", icon: IconBrain },
-      { to: "/services", label: "Consulting", desc: "Growth architecture, quarterly.", icon: IconBook },
+      { to: "/services", label: "Digital Transformation", desc: "Strategy, assessment, roadmap.", icon: IconCompass },
+      { to: "/services", label: "AI & Automation", desc: "Assistants, bots, workflows.", icon: IconBrain },
+      { to: "/services", label: "Growth Marketing", desc: "SEO, paid, content, email.", icon: IconChart },
+      { to: "/services", label: "Web & Software", desc: "Sites, platforms, CRM.", icon: IconCode },
+      { to: "/services", label: "Data & Analytics", desc: "Dashboards and reporting.", icon: IconLayers },
+      { to: "/industries", label: "Industries", desc: "Sector-specific playbooks.", icon: IconGrid },
+      { to: "/insights", label: "Insights", desc: "Thinking for leaders.", icon: IconBook },
+      { to: "/pricing", label: "Investment", desc: "How engagements are priced.", icon: IconTarget },
+      { to: "/contact", label: "Growth Audit", desc: "Free digital assessment.", icon: IconSpark },
     ],
   },
   { to: "/work", label: "Work" },
   { to: "/case-studies", label: "Case Studies" },
+  { to: "/insights", label: "Insights" },
   {
     to: "/about",
     label: "About",
     children: [
       { to: "/about", label: "Our Story", desc: "Kigali, 2023 — and forward.", icon: IconFlag },
       { to: "/industries", label: "Industries", desc: "Sectors we know deeply.", icon: IconGrid },
+      { to: "/team", label: "Team", desc: "The people behind the work.", icon: IconPen },
       { to: "/careers", label: "Careers", desc: "Build Nile Reach with us.", icon: IconSpark },
     ],
   },
-  { to: "/team", label: "Team" },
   { to: "/pricing", label: "Pricing" },
   { to: "/contact", label: "Contact" },
+
 ];
 
 /* ------------------------------------------------------- magnetic link */
