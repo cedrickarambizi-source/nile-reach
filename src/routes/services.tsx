@@ -1,97 +1,110 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
+import { Cta } from "../components/site/Cta";
+import { Scene3D } from "../components/site/Scene3D";
 import { canonical } from "../lib/seo";
+import { serviceCategories, process } from "../lib/consulting";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Nile Reach" },
-      { name: "description", content: "SEO, social media, paid ads, web design, branding, AI automation and business process automation from Kigali." },
-      { property: "og:title", content: "Services — Nile Reach" },
-      { property: "og:description", content: "Nine capabilities, one integrated growth engine." },
+      { title: "Services — Digital Transformation & AI Consulting | Nile Reach" },
+      {
+        name: "description",
+        content:
+          "Digital transformation consulting, AI & business automation, growth marketing, web & software solutions, and data analytics for companies across Africa.",
+      },
+      { property: "og:title", content: "Services — Digital Transformation & AI Consulting | Nile Reach" },
+      {
+        property: "og:description",
+        content: "Five consulting practices covering strategy, AI automation, growth, technology and data.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [canonical("/services")],
   }),
   component: Services,
 });
 
-const services = [
-  { n: "01", title: "Search Engine Optimization", tag: "SEO",
-    body: "Technical, local, international and AI-native SEO that captures buyers already searching for you.",
-    details: ["Technical SEO audits", "Local & Google Business Profile", "International & multilingual", "AI-native content strategy"] },
-  { n: "02", title: "Social Media Marketing", tag: "Social",
-    body: "Editorial calendars, community management and creators tuned for how Africa actually scrolls.",
-    details: ["Facebook & Instagram", "TikTok & X", "LinkedIn thought leadership", "Content production"] },
-  { n: "03", title: "Paid Advertising", tag: "Media",
-    body: "Full-funnel media across Google, Meta, LinkedIn & TikTok — measured against pipeline, not clicks.",
-    details: ["Google & YouTube Ads", "Meta & LinkedIn Ads", "Programmatic & display", "Creative testing engine"] },
-  { n: "04", title: "AI Automation", tag: "AI",
-    body: "Chatbots, CRM workflows and WhatsApp automations that answer, qualify and convert 24/7.",
-    details: ["AI chatbots & voice", "WhatsApp automation", "CRM & email flows", "Custom LLM agents"] },
-  { n: "05", title: "Website Design & Development", tag: "Web",
-    body: "Fast, accessible, conversion-focused websites, storefronts and landing pages.",
-    details: ["Marketing sites", "E-commerce", "Landing pages & CRO", "UI/UX design systems"] },
-  { n: "06", title: "Branding", tag: "Brand",
-    body: "Positioning, naming, identity and voice — a brand your team can apply long after we hand off.",
-    details: ["Positioning & naming", "Visual identity", "Brand guidelines", "Launch campaigns"] },
-  { n: "07", title: "Business Process Automation", tag: "Ops",
-    body: "Automating internal ops so your team spends time on customers, not spreadsheets.",
-    details: ["Lead qualification", "Appointment booking", "Sales-to-CRM handoffs", "Reporting dashboards"] },
-  { n: "08", title: "Lead Generation", tag: "Growth",
-    body: "Predictable pipeline through outbound, inbound, paid and partner-driven channels.",
-    details: ["Outbound + intent data", "Lead magnets & funnels", "SDR playbooks", "Nurture automation"] },
-  { n: "09", title: "Analytics & Growth Strategy",  tag: "Insight",
-    body: "AI-powered dashboards and quarterly growth planning grounded in what your data actually says.",
-    details: ["GA4 + Looker Studio", "Attribution modelling", "KPI dashboards", "Quarterly strategy"] },
-];
-
 function Services() {
   return (
     <>
       <PageHeader
-        eyebrow="Capabilities"
-        title={<>Nine capabilities.<br /><span className="gradient-text">One growth engine.</span></>}
-        intro="We combine performance marketing craft with artificial intelligence to deliver smarter, faster and measurable business growth."
+        eyebrow="Our services"
+        title={<>Five practices.<br />One transformation partner.</>}
+        intro="We combine consulting rigour with hands-on delivery — strategy, AI automation, growth marketing, technology and data, under one accountable team."
+        scene="prism"
       />
 
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s) => (
+      <section className="bg-white py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 space-y-6">
+          {serviceCategories.map((s, i) => (
             <article
-              key={s.n}
-              className="glass-layer rounded-2xl p-8 hover:border-nile-gold/50 hover:-translate-y-1 transition-all duration-300 group"
+              key={s.title}
+              className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center rounded-[28px] border border-black/8 bg-[#F5F5F7] p-8 md:p-12"
             >
-              <div className="flex items-baseline justify-between mb-6">
-                <span className="text-nile-gold font-semibold text-lg">{s.n}.</span>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-nile-clay/40">{s.tag}</span>
+              <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-4">{s.letter}</p>
+                <h2 className="text-3xl md:text-[42px] font-semibold tracking-tight text-[#1D1D1F] leading-[1.08] text-balance">
+                  {s.title}
+                </h2>
+                <p className="mt-5 text-[17px] text-[#3A3A3C] leading-relaxed max-w-xl">{s.body}</p>
+                <ul className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                  {s.items.map((it) => (
+                    <li key={it} className="text-[15px] text-[#1D1D1F] flex gap-3 border-b border-black/8 pb-3">
+                      <span className="text-[#4B2E83]">—</span>
+                      {it}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h2 className="text-xl font-semibold mb-3 group-hover:gradient-text transition-colors">{s.title}</h2>
-              <p className="text-nile-clay/60 leading-relaxed mb-6 text-sm">{s.body}</p>
-              <ul className="space-y-2 border-t border-white/5 pt-5">
-                {s.details.map((d) => (
-                  <li key={d} className="text-xs text-nile-clay/70 flex gap-3">
-                    <span className="text-nile-gold">—</span>
-                    {d}
-                  </li>
-                ))}
-              </ul>
+              <div
+                className={`h-64 md:h-80 rounded-[22px] overflow-hidden relative ${i % 2 === 1 ? "lg:order-1" : ""}`}
+                style={{ background: "radial-gradient(circle at 50% 55%, #EEEBFF 0%, #FFFFFF 55%, #F5F3FF 100%)" }}
+              >
+                <Scene3D variant={s.visual} className="absolute inset-0" />
+              </div>
             </article>
           ))}
         </div>
+      </section>
 
-        <div className="max-w-7xl mx-auto px-6 mt-20 glass-layer rounded-3xl p-12 flex flex-wrap gap-6 justify-between items-center">
-          <div className="max-w-xl">
-            <p className="eyebrow mb-3">Not sure where to start?</p>
-            <h3 className="text-2xl md:text-3xl font-semibold">
-              We'll audit your current performance and recommend the moves that matter most.
-            </h3>
+      <section className="bg-[#F5F5F7] py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Engagement model</p>
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] mb-14 max-w-3xl text-balance">
+            How every engagement runs.
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {process.map((step, i) => (
+              <div key={step.title} className="rounded-[24px] bg-white border border-black/8 p-8">
+                <p className="text-[44px] font-semibold leading-none text-black/10 tracking-tight">0{i + 1}</p>
+                <h3 className="mt-5 text-xl font-semibold text-[#1D1D1F] tracking-tight">{step.title}</h3>
+                <p className="mt-3 text-[15px] text-[#6E6E73] leading-relaxed">{step.body}</p>
+              </div>
+            ))}
           </div>
-          <Link
-            to="/contact"
-            className="bg-gradient-to-r from-nile-river to-nile-gold text-nile-dark px-7 py-4 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:opacity-95 transition-opacity"
-          >
-            Request an audit
-          </Link>
+
+          <div className="mt-16 rounded-[28px] bg-white border border-black/8 p-10 md:p-12 flex flex-wrap gap-8 justify-between items-center">
+            <div className="max-w-xl">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-3">Not sure where to start?</p>
+              <h3 className="text-2xl md:text-3xl font-semibold text-[#1D1D1F] tracking-tight">
+                We'll audit your digital performance and show you the moves that matter most.
+              </h3>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Cta to="/contact" variant="solid-dark">
+                Book a strategy consultation <span aria-hidden>→</span>
+              </Cta>
+              <Link
+                to="/pricing"
+                className="inline-flex items-center gap-2 rounded-full border border-black/15 px-7 py-3.5 text-sm font-medium text-[#1D1D1F] hover:border-[#4B2E83] hover:text-[#4B2E83] transition-colors"
+              >
+                View investment levels
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>
