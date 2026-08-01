@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 export type Problem = {
   problem: string;
   pain: string;
@@ -215,5 +213,3 @@ export const insights: Insight[] = [
     readTime: "5 min read",
   },
 ];
-
-export type { ReactNode };
