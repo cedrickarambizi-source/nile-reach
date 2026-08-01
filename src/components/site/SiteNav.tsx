@@ -45,16 +45,17 @@ const nav: NavItem[] = [
     ],
   },
   { to: "/work", label: "Work" },
+  { to: "/case-studies", label: "Case Studies" },
   {
     to: "/about",
     label: "About",
     children: [
       { to: "/about", label: "Our Story", desc: "Kigali, 2023 — and forward.", icon: IconFlag },
-      { to: "/team", label: "Team", desc: "The people doing the work.", icon: IconUsers },
       { to: "/industries", label: "Industries", desc: "Sectors we know deeply.", icon: IconGrid },
       { to: "/careers", label: "Careers", desc: "Build Nile Reach with us.", icon: IconSpark },
     ],
   },
+  { to: "/team", label: "Team" },
   { to: "/pricing", label: "Pricing" },
   { to: "/contact", label: "Contact" },
 ];
@@ -127,7 +128,7 @@ export function SiteNav() {
 
   return (
     <header
-      className={`on-dark fixed top-0 inset-x-0 z-50 transition-[transform,background-color,backdrop-filter,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`on-dark fixed top-0 inset-x-0 z-50 print:hidden transition-[transform,background-color,backdrop-filter,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         hidden ? "-translate-y-full" : "translate-y-0"
       } ${
         scrolled || openMenu

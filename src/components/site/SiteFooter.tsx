@@ -43,7 +43,7 @@ const groups = [
 
 export function SiteFooter() {
   return (
-    <footer className="on-dark relative overflow-hidden text-white">
+    <footer className="on-dark relative overflow-hidden text-white print:hidden">
       {/* Closing CTA */}
       <div className="relative">
         <div className="absolute inset-0 bg-[linear-gradient(125deg,#0A0A1F_0%,#1E1B4B_45%,#4338CA_100%)]" />
