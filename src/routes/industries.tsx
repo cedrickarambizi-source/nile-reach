@@ -1,69 +1,83 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
+import { Cta } from "../components/site/Cta";
 import { canonical } from "../lib/seo";
+import { industries } from "../lib/consulting";
 
 export const Route = createFileRoute("/industries")({
   head: () => ({
     meta: [
-      { title: "Industries — Nile Reach" },
-      { name: "description", content: "Digital and AI marketing for healthcare, retail, construction, hospitality, education, corporate and e-commerce brands across Africa." },
-      { property: "og:title", content: "Industries — Nile Reach" },
-      { property: "og:description", content: "Vertical expertise across ten sectors driving African growth." },
+      { title: "Industries We Transform — Nile Reach" },
+      {
+        name: "description",
+        content:
+          "Digital transformation and AI growth programmes for construction, engineering, real estate, healthcare, hospitality, retail and growing enterprises across Africa.",
+      },
+      { property: "og:title", content: "Industries We Transform — Nile Reach" },
+      {
+        property: "og:description",
+        content: "Sector-specific digital growth playbooks for the industries building Africa's economy.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [canonical("/industries")],
   }),
   component: Industries,
 });
 
-const industries = [
-  { name: "Healthcare",   body: "Hospitals, clinics and health-tech growing qualified patient inquiries with compliant messaging.", icon: "✚" },
-  { name: "Retail",       body: "Store networks and consumer brands turning digital reach into footfall and loyalty.", icon: "◆" },
-  { name: "Construction", body: "Contractors and developers generating qualified project leads through SEO and paid media.", icon: "△" },
-  { name: "Manufacturing",body: "B2B manufacturers building authority and pipeline with technical content and outbound.", icon: "◼" },
-  { name: "Hotels & Hospitality", body: "Hotels, lodges and tour operators winning direct bookings across regional markets.", icon: "◈" },
-  { name: "Education",    body: "Universities, schools and edtech attracting students with digital-first admissions journeys.", icon: "✦" },
-  { name: "Government",   body: "Public-sector programs communicating clearly at scale with modern digital campaigns.", icon: "❖" },
-  { name: "Financial Services", body: "Banks, fintech and insurance building trust and conversion in high-consideration funnels.", icon: "◐" },
-  { name: "NGOs",         body: "Non-profits amplifying impact stories and mobilising donors through story-led media.", icon: "♢" },
-  { name: "E-commerce",   body: "DTC and marketplace sellers scaling category leadership with SEO, paid and CRO.", icon: "▲" },
-];
+const outcomes: Record<string, string[]> = {
+  "Construction & Engineering": ["Tender-ready digital credibility", "Qualified project inquiries", "Local search dominance"],
+  "Real Estate": ["Buyer lead pipelines", "Listing & sales portals", "CRM-driven follow-up"],
+  Healthcare: ["Patient engagement journeys", "Appointment automation", "Trusted online presence"],
+  Hospitality: ["Direct booking growth", "Reputation management", "Seasonal demand campaigns"],
+  Retail: ["Omnichannel customer experience", "E-commerce platforms", "Loyalty & retention flows"],
+  "SMEs & Growing Enterprises": ["Digital foundations", "Operational automation", "Affordable growth roadmap"],
+};
 
 function Industries() {
   return (
     <>
       <PageHeader
-        eyebrow="Who we work with"
-        title={<>Vertical expertise across <span className="gradient-text">ten sectors</span>.</>}
-        intro="We specialize in the industries moving Africa's economy — connecting brands with customers and turning them into future-ready leaders."
+        eyebrow="Sector expertise"
+        title={<>Industries<br />we transform.</>}
+        intro="We build sector-specific playbooks rather than reusing one template — because a contractor, a hotel and a clinic do not win customers the same way."
+        scene="orbit"
       />
-      <section className="py-24">
+
+      <section className="bg-white py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industries.map((i, idx) => (
+          {industries.map((ind, i) => (
             <article
-              key={i.name}
-              className="glass-layer rounded-2xl p-8 hover:border-nile-gold/50 hover:-translate-y-1 transition-all duration-300"
+              key={ind.name}
+              className="rounded-[24px] border border-black/8 bg-[#F5F5F7] p-9 transition-all duration-500 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
+              style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
             >
-              <div className="flex items-baseline justify-between mb-6">
-                <span className="text-nile-gold text-3xl">{i.icon}</span>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-nile-clay/40">0{idx + 1}</span>
-              </div>
-              <h2 className="text-xl font-semibold mb-3">{i.name}</h2>
-              <p className="text-nile-clay/65 leading-relaxed text-sm">{i.body}</p>
+              <p className="text-[12px] tracking-[0.22em] text-[#4B2E83] mb-5">0{i + 1}</p>
+              <h2 className="text-[24px] font-semibold text-[#1D1D1F] tracking-tight leading-snug">{ind.name}</h2>
+              <p className="mt-4 text-[15px] text-[#6E6E73] leading-relaxed">{ind.body}</p>
+              <ul className="mt-7 pt-6 border-t border-black/8 space-y-2.5">
+                {(outcomes[ind.name] ?? []).map((o) => (
+                  <li key={o} className="text-[14px] text-[#3A3A3C] flex gap-3">
+                    <span className="text-[#4B2E83]">—</span>
+                    {o}
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
+      </section>
 
-        <div className="max-w-7xl mx-auto px-6 mt-20 flex flex-wrap gap-4 justify-between items-center">
-          <p className="text-nile-clay/60 max-w-xl">
-            Working in another sector? We regularly build custom playbooks for
-            organisations outside our core industries.
+      <section className="on-dark relative overflow-hidden hero-silk text-white py-20 md:py-24">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8">
+          <p className="text-lg md:text-xl text-white/80 max-w-xl font-light leading-relaxed">
+            Working in another sector? We regularly build custom transformation programmes outside our
+            core industries.
           </p>
-          <Link
-            to="/contact"
-            className="border border-white/15 text-nile-clay px-7 py-4 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:border-nile-gold hover:text-nile-gold transition-colors"
-          >
-            Talk to us
-          </Link>
+          <Cta to="/contact" variant="solid-light">
+            Talk to a consultant <span aria-hidden>→</span>
+          </Cta>
         </div>
       </section>
     </>
