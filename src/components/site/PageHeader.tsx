@@ -22,7 +22,7 @@ export function PageHeader({
         </div>
       )}
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <p className="text-[13px] uppercase tracking-[0.15em] font-medium text-[#8A7CFF] mb-6 print:text-[#4B2E83]">{eyebrow}</p>
+        <p className="text-[13px] uppercase tracking-[0.15em] font-medium text-[#C99A46] mb-6 print:text-[#175E52]">{eyebrow}</p>
         <h1 className="text-white text-5xl md:text-7xl lg:text-[84px] font-semibold leading-[1.02] tracking-[-0.03em] text-balance max-w-5xl print:text-black print:text-4xl">
           {title}
         </h1>

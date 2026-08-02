@@ -39,13 +39,13 @@ function Insights() {
 
       <section className="bg-white py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <article className="rounded-[28px] border border-black/8 bg-[#F5F5F7] p-10 md:p-14 mb-6">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-5">Featured · {lead.category}</p>
-            <h2 className="text-3xl md:text-[46px] font-semibold tracking-tight text-[#1D1D1F] leading-[1.08] max-w-3xl text-balance">
+          <article className="rounded-[28px] border border-black/8 bg-[#F2F0E9] p-10 md:p-14 mb-6">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-[#175E52] mb-5">Featured · {lead.category}</p>
+            <h2 className="text-3xl md:text-[46px] font-semibold tracking-tight text-[#10201C] leading-[1.08] max-w-3xl text-balance">
               {lead.title}
             </h2>
-            <p className="mt-6 text-lg text-[#3A3A3C] leading-relaxed max-w-2xl">{lead.excerpt}</p>
-            <p className="mt-8 text-[13px] text-[#6E6E73]">{lead.readTime}</p>
+            <p className="mt-6 text-lg text-[#3F4B47] leading-relaxed max-w-2xl">{lead.excerpt}</p>
+            <p className="mt-8 text-[13px] text-[#5C6864]">{lead.readTime}</p>
           </article>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -55,10 +55,10 @@ function Insights() {
                 className="rounded-[24px] border border-black/8 bg-white p-8 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)]"
                 style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
               >
-                <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-4">{a.category}</p>
-                <h3 className="text-xl font-semibold text-[#1D1D1F] leading-snug tracking-tight">{a.title}</h3>
-                <p className="mt-3 text-[14px] text-[#6E6E73] leading-relaxed">{a.excerpt}</p>
-                <p className="mt-6 text-[13px] text-[#6E6E73]">{a.readTime}</p>
+                <p className="text-[11px] uppercase tracking-[0.22em] text-[#175E52] mb-4">{a.category}</p>
+                <h3 className="text-xl font-semibold text-[#10201C] leading-snug tracking-tight">{a.title}</h3>
+                <p className="mt-3 text-[14px] text-[#5C6864] leading-relaxed">{a.excerpt}</p>
+                <p className="mt-6 text-[13px] text-[#5C6864]">{a.readTime}</p>
               </article>
             ))}
           </div>

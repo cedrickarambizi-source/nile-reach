@@ -52,7 +52,7 @@ function Pop({
         {trigger}
       </button>
       {open && (
-        <div className="dropdown-in absolute right-0 top-[calc(100%+10px)] z-50 rounded-[16px] border border-black/5 bg-[var(--nile-card)] p-2 text-[#1D1D1F] shadow-[0_18px_50px_-20px_rgba(0,0,0,0.35)]">
+        <div className="dropdown-in absolute right-0 top-[calc(100%+10px)] z-50 rounded-[16px] border border-black/5 bg-[var(--nile-card)] p-2 text-[#10201C] shadow-[0_18px_50px_-20px_rgba(0,0,0,0.35)]">
           {children(() => setOpen(false))}
         </div>
       )}
@@ -87,7 +87,7 @@ export function NavControls() {
                   key={m.id}
                   onClick={() => setMode(m.id)}
                   className={`flex items-center justify-center gap-1.5 rounded-[9px] py-2 text-[12px] font-medium transition-all duration-300 ${
-                    mode === m.id ? "bg-[var(--nile-card)] shadow-[0_2px_10px_rgba(0,0,0,0.10)]" : "text-[#6E6E73] hover:text-[#1D1D1F]"
+                    mode === m.id ? "bg-[var(--nile-card)] shadow-[0_2px_10px_rgba(0,0,0,0.10)]" : "text-[#5C6864] hover:text-[#10201C]"
                   }`}
                 >
                   <Icon d={m.icon} />
@@ -95,7 +95,7 @@ export function NavControls() {
                 </button>
               ))}
             </div>
-            <p className="px-2 pb-1.5 pt-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#6E6E73]">Accent</p>
+            <p className="px-2 pb-1.5 pt-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#5C6864]">Accent</p>
             <div className="grid grid-cols-10 gap-1.5 px-1 pb-1">
               {ACCENT_THEMES.map((a) => (
                 <button
@@ -114,7 +114,7 @@ export function NavControls() {
                 />
               ))}
             </div>
-            <p className="px-2 pb-1 pt-2 text-[11.5px] text-[#6E6E73]">{accent.name}</p>
+            <p className="px-2 pb-1 pt-2 text-[11.5px] text-[#5C6864]">{accent.name}</p>
           </div>
         )}
       </Pop>
@@ -135,7 +135,7 @@ export function NavControls() {
                 key={l.id}
                 onClick={() => { setLang(l.id); close(); }}
                 className={`flex w-full items-center justify-between rounded-[10px] px-3 py-2 text-[13.5px] transition-colors duration-200 hover:bg-black/[0.04] ${
-                  lang === l.id ? "font-medium" : "text-[#6E6E73]"
+                  lang === l.id ? "font-medium" : "text-[#5C6864]"
                 }`}
               >
                 {l.label}

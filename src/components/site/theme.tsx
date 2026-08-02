@@ -17,8 +17,9 @@ export type AccentTheme = {
 
 /** 20 curated navigation / brand accent themes. */
 export const ACCENT_THEMES: AccentTheme[] = [
-  { id: "midnight", name: "Midnight Black", river: "#0B0B0F", gold: "#2A2A35", soft: "#6E6E73", glow: "#8A8A99" },
-  { id: "pure", name: "Pure White", river: "#1D1D1F", gold: "#4A4A52", soft: "#B8B8C0", glow: "#D4D4DC" },
+  { id: "nile", name: "Nile Green", river: "#175E52", gold: "#C99A46", soft: "#2E8677", glow: "#C99A46" },
+  { id: "midnight", name: "Midnight Black", river: "#0A1714", gold: "#2A2A35", soft: "#5C6864", glow: "#8A8A99" },
+  { id: "pure", name: "Pure White", river: "#10201C", gold: "#4A4A52", soft: "#B8B8C0", glow: "#D4D4DC" },
   { id: "royal", name: "Royal Blue", river: "#2563EB", gold: "#1D4ED8", soft: "#93C5FD", glow: "#60A5FA" },
   { id: "electric", name: "Electric Purple", river: "#7C3AED", gold: "#6D28D9", soft: "#C4B5FD", glow: "#A78BFA" },
   { id: "emerald", name: "Emerald", river: "#10B981", gold: "#059669", soft: "#6EE7B7", glow: "#34D399" },
@@ -27,7 +28,7 @@ export const ACCENT_THEMES: AccentTheme[] = [
   { id: "gold", name: "Luxury Gold", river: "#B58900", gold: "#FACC15", soft: "#FDE68A", glow: "#FACC15" },
   { id: "aqua", name: "Ocean Aqua", river: "#06B6D4", gold: "#0891B2", soft: "#67E8F9", glow: "#22D3EE" },
   { id: "sapphire", name: "Sapphire", river: "#1D4ED8", gold: "#2563EB", soft: "#93C5FD", glow: "#3B82F6" },
-  { id: "indigo", name: "Indigo", river: "#4338CA", gold: "#7C3AED", soft: "#A78BFA", glow: "#8A7CFF" },
+  { id: "indigo", name: "Indigo", river: "#4338CA", gold: "#7C3AED", soft: "#A78BFA", glow: "#C99A46" },
   { id: "rose", name: "Rose", river: "#F43F5E", gold: "#E11D48", soft: "#FDA4AF", glow: "#FB7185" },
   { id: "violet", name: "Violet", river: "#8B5CF6", gold: "#7C3AED", soft: "#C4B5FD", glow: "#A78BFA" },
   { id: "teal", name: "Teal", river: "#0F766E", gold: "#14B8A6", soft: "#5EEAD4", glow: "#2DD4BF" },
@@ -36,7 +37,7 @@ export const ACCENT_THEMES: AccentTheme[] = [
   { id: "neon", name: "Neon Green", river: "#22C55E", gold: "#16A34A", soft: "#86EFAC", glow: "#4ADE80" },
   { id: "sky", name: "Sky Blue", river: "#0284C7", gold: "#38BDF8", soft: "#BAE6FD", glow: "#38BDF8" },
   { id: "copper", name: "Copper", river: "#C2410C", gold: "#9A3412", soft: "#FDBA74", glow: "#EA8C55" },
-  { id: "aurora", name: "Aurora Gradient", river: "#6E5BFF", gold: "#8A7CFF", soft: "#A9B8FF", glow: "#06B6D4" },
+  { id: "aurora", name: "Aurora Gradient", river: "#2E8677", gold: "#C99A46", soft: "#A9B8FF", glow: "#06B6D4" },
 ];
 
 export type Lang = "en" | "fr" | "rw";
@@ -75,7 +76,7 @@ type Ctx = {
 
 const ThemeCtx = createContext<Ctx | null>(null);
 
-const DEFAULT_ACCENT = ACCENT_THEMES.find((a) => a.id === "indigo")!;
+const DEFAULT_ACCENT = ACCENT_THEMES.find((a) => a.id === "nile")!;
 
 function applyAccent(a: AccentTheme) {
   const r = document.documentElement.style;

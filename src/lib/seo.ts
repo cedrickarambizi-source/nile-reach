@@ -7,7 +7,7 @@ export const SITE_NAME = "Nile Reach";
 export const BUSINESS = {
   phone: "+250 796 692 269",
   phoneHref: "tel:+250796692269",
-  email: "hello@nilereach.rw",
+  email: "hello@nilereach.site",
   addressLine: "Remera, Kigali, Rwanda",
   locality: "Kigali",
   country: "RW",
