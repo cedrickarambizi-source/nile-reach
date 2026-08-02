@@ -134,7 +134,7 @@ export function SiteNav() {
         hidden ? "-translate-y-full" : "translate-y-0"
       } ${
         scrolled || openMenu
-          ? "bg-[#0B0B0F]/85 backdrop-blur-[30px] border-b border-white/10 shadow-[0_10px_40px_-24px_rgba(0,0,0,0.8)]"
+          ? "bg-[#0A1714]/85 backdrop-blur-[30px] border-b border-white/10 shadow-[0_10px_40px_-24px_rgba(0,0,0,0.8)]"
           : "bg-transparent border-b border-transparent"
       }`}
       onMouseLeave={close}
@@ -188,7 +188,7 @@ export function SiteNav() {
           </div>
           <Link
             to="/contact"
-            className="btn-glow hidden sm:inline-flex items-center rounded-[12px] bg-white text-[#0B0B0F] px-4 h-9 text-[13px] font-medium transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03]"
+            className="btn-glow hidden sm:inline-flex items-center rounded-[12px] bg-white text-[#0A1714] px-4 h-9 text-[13px] font-medium transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03]"
           >
             {t("Book a call")}
           </Link>
@@ -210,28 +210,28 @@ export function SiteNav() {
       {active?.children && (
         <div className="hidden xl:block absolute inset-x-0 top-full">
           <div className="mx-auto w-full max-w-[1440px] px-6">
-            <div className="dropdown-in bg-white text-[#1D1D1F] rounded-[20px] shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-black/5 p-6 grid grid-cols-[1fr_260px] gap-6 mb-8">
+            <div className="dropdown-in bg-white text-[#10201C] rounded-[20px] shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-black/5 p-6 grid grid-cols-[1fr_260px] gap-6 mb-8">
               <div className="grid grid-cols-3 gap-1">
                 {active.children.map((s) => (
                   <Link
                     key={s.label}
                     to={s.to}
                     onClick={close}
-                    className="group flex items-start gap-3 rounded-[16px] p-3 transition-colors duration-300 hover:bg-[#F5F5F7]"
+                    className="group flex items-start gap-3 rounded-[16px] p-3 transition-colors duration-300 hover:bg-[#F2F0E9]"
                   >
-                    <span className="grid place-items-center size-9 shrink-0 rounded-[12px] bg-[#F5F5F7] text-[#4B2E83] transition-colors duration-300 group-hover:bg-white">
+                    <span className="grid place-items-center size-9 shrink-0 rounded-[12px] bg-[#F2F0E9] text-[#175E52] transition-colors duration-300 group-hover:bg-white">
                       {s.icon}
                     </span>
                     <span className="min-w-0">
                       <span className="block text-[14px] font-medium">{s.label}</span>
-                      <span className="block text-[12.5px] leading-snug text-[#6E6E73] mt-0.5">{s.desc}</span>
+                      <span className="block text-[12.5px] leading-snug text-[#5C6864] mt-0.5">{s.desc}</span>
                     </span>
                   </Link>
                 ))}
               </div>
-              <div className="rounded-[16px] p-5 flex flex-col justify-between bg-[linear-gradient(150deg,#1B1035,#4B2E83_55%,#6E5BFF)] text-white">
+              <div className="rounded-[16px] p-5 flex flex-col justify-between bg-[linear-gradient(150deg,#0A1F1A,#175E52_55%,#2E8677)] text-white">
                 <div>
-                  <p className="text-[11px] uppercase tracking-[1.5px] text-[#8A7CFF]">Start here</p>
+                  <p className="text-[11px] uppercase tracking-[1.5px] text-[#C99A46]">Start here</p>
                   <p className="mt-3 text-[19px] leading-[1.25] font-medium tracking-[-0.01em]">
                     A 30-minute growth diagnostic. No deck, no pitch.
                   </p>
@@ -239,7 +239,7 @@ export function SiteNav() {
                 <Link
                   to="/contact"
                   onClick={close}
-                  className="mt-6 inline-flex items-center gap-2 self-start rounded-[12px] bg-white px-4 py-2 text-[13px] font-medium text-[#1B1035] transition-transform duration-300 hover:scale-[1.03]"
+                  className="mt-6 inline-flex items-center gap-2 self-start rounded-[12px] bg-white px-4 py-2 text-[13px] font-medium text-[#0A1F1A] transition-transform duration-300 hover:scale-[1.03]"
                 >
                   Book a call <span aria-hidden>→</span>
                 </Link>
@@ -253,7 +253,7 @@ export function SiteNav() {
 
       {/* Mobile */}
       {mobileOpen && (
-        <div className="xl:hidden border-t border-white/10 bg-[#0B0B0F]/95 backdrop-blur-[30px] px-6 pb-8 pt-4 max-h-[calc(100dvh-72px)] overflow-y-auto">
+        <div className="xl:hidden border-t border-white/10 bg-[#0A1714]/95 backdrop-blur-[30px] px-6 pb-8 pt-4 max-h-[calc(100dvh-72px)] overflow-y-auto">
           <ul className="divide-y divide-white/10">
             {nav.map((item) => (
               <li key={item.label} className="py-1">
@@ -303,7 +303,7 @@ export function SiteNav() {
           <Link
             to="/contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-6 flex items-center justify-center rounded-[12px] bg-white text-[#0B0B0F] px-4 py-3 text-[14px] font-medium"
+            className="mt-6 flex items-center justify-center rounded-[12px] bg-white text-[#0A1714] px-4 py-3 text-[14px] font-medium"
           >
             {t("Book a call")}
           </Link>

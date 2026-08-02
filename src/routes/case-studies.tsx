@@ -46,15 +46,15 @@ function CaseStudies() {
                   key={cs.slug}
                   to="/case-studies/$slug"
                   params={{ slug: cs.slug }}
-                  className="group block rounded-[24px] border border-black/8 bg-[#F5F5F7] p-8 md:p-10 transition-all duration-300 hover:border-[#4B2E83]/30 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)]"
+                  className="group block rounded-[24px] border border-black/8 bg-[#F2F0E9] p-8 md:p-10 transition-all duration-300 hover:border-[#175E52]/30 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)]"
                 >
                   <div className="flex items-center gap-2.5 mb-5">
                     {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
-                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83]">{cs.industry}</span>
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#175E52]">{cs.industry}</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-semibold text-[#1D1D1F] tracking-tight">{cs.name}</h2>
-                  <p className="mt-4 text-[15px] text-[#3A3A3C] leading-relaxed line-clamp-3">{cs.startingPoint}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#1D1D1F] group-hover:text-[#4B2E83] transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-[#10201C] tracking-tight">{cs.name}</h2>
+                  <p className="mt-4 text-[15px] text-[#3F4B47] leading-relaxed line-clamp-3">{cs.startingPoint}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#10201C] group-hover:text-[#175E52] transition-colors">
                     Read the case study
                     <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </span>

@@ -43,7 +43,7 @@ function Careers() {
                 <p className="text-sm uppercase tracking-[0.2em] text-nile-clay/50">{r.location}</p>
                 <p className="text-sm uppercase tracking-[0.2em] text-nile-clay/50">{r.mode}</p>
                 <a
-                  href={`mailto:careers@nilereach.rw?subject=Application: ${encodeURIComponent(r.title)}`}
+                  href={`mailto:careers@nilereach.site?subject=Application: ${encodeURIComponent(r.title)}`}
                   className="justify-self-start md:justify-self-end border border-white/15 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.2em] hover:border-nile-gold hover:text-nile-gold transition-colors"
                 >
                   Apply
@@ -59,10 +59,10 @@ function Careers() {
               Send us a note about how you'd contribute. If it lands, we'll open the conversation.
             </p>
             <a
-              href="mailto:careers@nilereach.rw"
+              href="mailto:careers@nilereach.site"
               className="inline-block bg-nile-gold text-nile-dark px-7 py-4 text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white transition-colors"
             >
-              careers@nilereach.rw
+              careers@nilereach.site
             </a>
           </div>
         </div>

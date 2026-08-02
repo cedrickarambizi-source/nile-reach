@@ -1,32 +1,29 @@
 import { projects, faviconUrl } from "@/lib/projects";
 
-export function LogoMarquee() {
-  const items = projects.filter((p) => p.domain);
-  const loop = [...items, ...items];
+/** Client logo strip — real clients only, listed once (no Nile Reach, no duplicates). */
+export function LogoStrip() {
+  const seen = new Set<string>();
+  const items = projects.filter((p) => {
+    if (!p.domain || p.slug === "nile-reach") return false;
+    if (seen.has(p.domain)) return false;
+    seen.add(p.domain);
+    return true;
+  });
 
   return (
-    <section className="bg-white border-y border-black/5 py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <p className="text-center text-[11px] uppercase tracking-[0.28em] text-[#6E6E73] mb-10">
-          Trusted by businesses across Rwanda
+    <section className="bg-paper border-y border-line py-20 md:py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="mono-label text-center text-stone mb-10">
+          Companies we have built and launched
         </p>
-        <div
-          className="relative overflow-hidden"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
-          }}
-        >
-          <div className="flex gap-14 animate-[marquee_38s_linear_infinite] w-max">
-            {loop.map((p, i) => (
+        <ul className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+          {items.map((p) => (
+            <li key={p.slug}>
               <a
-                key={`${p.slug}-${i}`}
                 href={p.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 shrink-0 opacity-70 hover:opacity-100 transition-opacity"
+                className="flex items-center gap-3 opacity-75 hover:opacity-100 transition-opacity duration-300"
                 title={p.name}
               >
                 <img
@@ -35,14 +32,17 @@ export function LogoMarquee() {
                   loading="lazy"
                   className="size-7 rounded-md"
                 />
-                <span className="text-[15px] font-medium text-[#1D1D1F] whitespace-nowrap tracking-tight">
+                <span className="text-[15px] font-medium text-ink whitespace-nowrap tracking-[-0.01em]">
                   {p.name}
                 </span>
               </a>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
 }
+
+/** Back-compat alias for existing imports. */
+export const LogoMarquee = LogoStrip;

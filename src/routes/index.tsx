@@ -1,28 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { Scene3D } from "@/components/site/Scene3D";
-import { Counter } from "@/components/site/Counter";
-import { LogoMarquee } from "@/components/site/LogoMarquee";
+import { LogoStrip } from "@/components/site/LogoMarquee";
 import { Cta } from "@/components/site/Cta";
+import { Reveal } from "@/components/site/Reveal";
+import { RiverDelta } from "@/components/site/RiverDelta";
 import { canonical } from "@/lib/seo";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 import { faviconUrl } from "@/lib/projects";
-import { problems, serviceCategories, industries, process, whyNileReach, testimonials, insights } from "@/lib/consulting";
+import {
+  problems,
+  serviceCategories,
+  industries,
+  process,
+  whyNileReach,
+  testimonials,
+  insights,
+} from "@/lib/consulting";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nile Reach — Digital Growth & AI Transformation Partner" },
+      { title: "Nile Reach — Digital Systems & AI Automation, Kigali" },
       {
         name: "description",
         content:
-          "Nile Reach partners with African businesses to build digital systems, automate operations with AI, and accelerate revenue growth — consulting, technology, and data.",
+          "Nile Reach builds the websites, automation and growth infrastructure that take Rwandan and East African companies from known clients to markets they haven't reached yet.",
       },
-      { property: "og:title", content: "Nile Reach — Digital Growth & AI Transformation Partner" },
+      { property: "og:title", content: "Nile Reach — Digital Systems & AI Automation, Kigali" },
       {
         property: "og:description",
         content:
-          "Digital transformation consulting, AI automation, growth marketing, web & software, and analytics for ambitious companies across Africa.",
+          "Digital transformation, AI automation, growth marketing, web engineering and analytics for companies across Rwanda and East Africa.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,26 +39,42 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+/** Mono category tags for the challenges — these are categories, not a sequence. */
+const PROBLEM_TAGS = ["Visibility", "Pipeline", "Operations", "Decisions"];
+
+const SECTOR_CHIPS = [
+  "Construction & Engineering",
+  "Real Estate",
+  "Healthcare",
+  "Hospitality",
+  "Retail",
+  "SMEs & Growing Enterprises",
+];
+
 const faqs = [
   {
     q: "How is Nile Reach different from a marketing agency?",
-    a: "We start with the business, not the channel. Every engagement opens with a digital audit and a growth roadmap — then we implement the websites, automation, campaigns and dashboards that roadmap calls for, and stay on to optimise them.",
+    a: "An agency sells channels. We start with a digital audit of how customers find you, how inquiries are handled, and where operations lose hours — then build the websites, automation, campaigns and dashboards that audit calls for, and stay on to improve them quarterly.",
   },
   {
-    q: "Which industries do you specialise in?",
-    a: "Construction and engineering, real estate, healthcare, hospitality, retail, and growing SMEs and enterprises across Africa. We build sector-specific playbooks rather than reusing one template.",
+    q: "Which sectors do you actually know?",
+    a: "MEP and civil engineering, construction, real estate, healthcare, hospitality, retail, and growing SMEs. Our deepest track record is engineering and contracting — companies like MEP Erictric and Pro Mep Technology, where credibility in tenders is the commercial problem.",
   },
   {
-    q: "What does a typical engagement look like?",
-    a: "Discovery and audit, then a strategy and roadmap, then phased implementation, then a continuous optimisation cycle with quarterly business reviews. Most partnerships run twelve months or longer.",
+    q: "What does an engagement cost?",
+    a: "Monthly partnerships run from RWF 300,000 to RWF 1,500,000 depending on scope. One-time builds start at RWF 300,000 for a business website and RWF 700,000 for e-commerce. Every price is on the pricing page — no quote-on-request games.",
   },
   {
-    q: "Do you work with companies outside Rwanda?",
-    a: "Yes. We work across East Africa and internationally, delivered remotely with executive syncs and on-site workshops where the work demands it.",
+    q: "How long before we see anything?",
+    a: "The audit and roadmap take two weeks. A corporate website with SEO and a verified Google Business Profile is typically live in four to six weeks. Automation and analytics work follows in phases after that.",
+  },
+  {
+    q: "Do you work outside Rwanda?",
+    a: "Yes — across East Africa and remotely beyond it, with on-site workshops in Kigali when the work needs a room and a whiteboard.",
   },
   {
     q: "How do we start?",
-    a: "Book a strategy consultation, or request the free digital growth audit. Both begin with a structured conversation about where your revenue and operations lose momentum today.",
+    a: "Book a strategy consultation. It is 45 minutes, there is no deck, and you leave with three prioritised moves whether or not you engage us.",
   },
 ];
 
@@ -60,183 +83,188 @@ function Home() {
 
   return (
     <>
-      {/* 1 — HERO */}
-      <section className="on-dark relative overflow-hidden hero-silk min-h-[92vh] flex items-center pt-40 pb-28 text-white">
-        <div className="absolute inset-0 opacity-50 pointer-events-none">
-          <Scene3D variant="constellation" className="absolute inset-0" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
-          <div>
-            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-8" style={{ color: "#8A7CFF" }}>
-              Digital Growth &amp; AI Transformation Partner
-            </p>
-            <h1 className="text-white text-[40px] leading-[1.06] sm:text-5xl md:text-6xl lg:text-[72px] font-semibold tracking-[-0.03em] text-balance">
-              Transform your business with digital growth,{" "}
-              <span className="italic font-light bg-gradient-to-r from-white via-violet-100 to-indigo-200 bg-clip-text text-transparent">
-                AI automation &amp; technology
-              </span>
-            </h1>
-            <p className="mt-8 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed font-light">
-              Nile Reach partners with ambitious companies to build digital systems, attract more
-              customers, automate operations, and accelerate business growth.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Cta to="/contact" variant="solid-light">
-                Book a Strategy Consultation <span aria-hidden>→</span>
-              </Cta>
-              <Cta to="/contact" hash="audit" variant="outline-light">
-                Request Free Digital Growth Audit
-              </Cta>
-            </div>
+      {/* ------------------------------------------------------------ HERO */}
+      <section className="on-dark relative overflow-hidden hero-silk text-white pt-40 pb-24 md:pt-48 md:pb-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <p className="mono-label text-[#C99A46] mb-8">
+            Nile Reach — Digital &amp; AI Transformation, Kigali
+          </p>
+          <h1 className="text-white text-[42px] sm:text-6xl md:text-7xl lg:text-[86px] font-semibold leading-[1.05] tracking-[-0.022em] max-w-5xl text-balance">
+            Digital systems that carry your business further.
+          </h1>
+          <p className="mt-9 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed font-light">
+            We build the websites, automation, and growth infrastructure that take African companies
+            from known clients to markets they haven't reached yet.
+          </p>
+          <div className="mt-11 flex flex-wrap gap-3">
+            <Cta to="/contact" variant="solid-light">
+              Book a strategy consultation <span aria-hidden>→</span>
+            </Cta>
+            <a
+              href="#process"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-medium text-white transition-colors duration-300 hover:border-white/60"
+            >
+              See how we work
+            </a>
           </div>
 
-          <DashboardVisual />
+          {/* River delta */}
+          <div className="mt-20 md:mt-24 overflow-x-auto">
+            <RiverDelta className="min-w-[680px] w-full max-w-4xl h-[240px] md:h-[300px] text-white/85" />
+          </div>
         </div>
       </section>
 
-      {/* PROOF BAR */}
-      <section className="bg-white border-b border-black/5">
-        <div className="max-w-7xl mx-auto px-6 py-14 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { to: 6, suffix: "+", l: "Transformation engagements" },
-            { to: 5, suffix: "", l: "Industries served" },
-            { to: 100, suffix: "%", l: "Client retention to date" },
-            { to: 2023, suffix: "", l: "Founded in Kigali", plain: true },
-          ].map((x) => (
-            <div key={x.l} className="text-center">
-              <div className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F]">
-                {x.plain ? "2023" : <Counter to={x.to} suffix={x.suffix} />}
-              </div>
-              <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#6E6E73]">{x.l}</div>
-            </div>
-          ))}
+      {/* --------------------------------------------------- SECTOR CHIPS */}
+      <section className="bg-paper border-b border-line">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+          <Reveal>
+            <ul className="flex flex-wrap gap-2.5">
+              {SECTOR_CHIPS.map((c) => (
+                <li key={c} className="mono-tag">
+                  {c}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-7 text-[15px] text-stone">
+              Founded in Kigali, 2023 · building for companies across Rwanda &amp; East Africa.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      <LogoMarquee />
+      <LogoStrip />
 
-      {/* 2 — BUSINESS PROBLEMS WE SOLVE */}
-      <section className="bg-white py-24 md:py-32">
+      {/* ------------------------------------------------------ CHALLENGES */}
+      <section className="bg-paper py-32 md:py-48">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mb-16">
-            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">The mandate</p>
-            <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+          <Reveal className="max-w-3xl mb-20">
+            <p className="mono-label text-nile mb-6">The mandate</p>
+            <h2 className="text-4xl md:text-6xl font-semibold text-ink text-balance">
               Business challenges we help solve.
             </h2>
-            <p className="mt-6 text-lg text-[#6E6E73] leading-relaxed max-w-2xl">
+            <p className="mt-7 text-lg text-stone leading-relaxed max-w-2xl">
               Most growth problems are not marketing problems. They are visibility, pipeline, process
               and data problems — and each one has an engineering answer.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 gap-6">
             {problems.map((p, i) => (
-              <article
-                key={p.problem}
-                className="group rounded-[24px] border border-black/8 bg-[#F5F5F7] p-9 md:p-10 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#4B2E83]/25 hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
-                style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83]">Challenge 0{i + 1}</span>
-                  <span className="grid place-items-center size-9 rounded-full bg-white border border-black/8 text-[#4B2E83]">
-                    {p.icon}
-                  </span>
-                </div>
-                <h3 className="text-2xl md:text-[28px] font-semibold text-[#1D1D1F] tracking-tight leading-snug">
-                  {p.problem}
-                </h3>
-                <p className="mt-4 text-[15px] text-[#3A3A3C] leading-relaxed">{p.pain}</p>
-                <div className="mt-7 pt-6 border-t border-black/8">
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-[#6E6E73] mb-3">How we solve it</p>
-                  <ul className="flex flex-wrap gap-2">
-                    {p.solutions.map((s) => (
-                      <li
-                        key={s}
-                        className="text-[12px] rounded-full border border-black/8 bg-white text-[#1D1D1F] px-3 py-1.5"
-                      >
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
+              <Reveal key={p.problem} delay={i * 70}>
+                <article
+                  className="group h-full rounded-[16px] border border-line bg-paper-dim p-9 md:p-11 transition-all duration-500 hover:-translate-y-1 hover:border-nile/35"
+                  style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+                >
+                  <p className="mono-label text-nile mb-7">{PROBLEM_TAGS[i]}</p>
+                  <h3 className="text-2xl md:text-[30px] font-semibold text-ink leading-[1.12]">
+                    {p.problem}
+                  </h3>
+                  <p className="mt-5 text-[15.5px] text-[#3F4B47] leading-relaxed">{p.pain}</p>
+                  <div className="mt-9 pt-7 border-t border-line">
+                    <p className="mono-label text-stone mb-4">How we solve it</p>
+                    <ul className="flex flex-wrap gap-2">
+                      {p.solutions.map((s) => (
+                        <li
+                          key={s}
+                          className="text-[13px] rounded-full border border-line bg-paper px-3 py-1.5 text-ink"
+                        >
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3 — SERVICES */}
-      <section className="bg-[#F5F5F7] py-24 md:py-32">
+      {/* -------------------------------------------------------- PRACTICES */}
+      <section className="bg-paper-dim py-32 md:py-48">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between gap-8 flex-wrap mb-16">
+          <Reveal className="flex items-end justify-between gap-8 flex-wrap mb-20">
             <div className="max-w-3xl">
-              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Our services</p>
-              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+              <p className="mono-label text-nile mb-6">Practices</p>
+              <h2 className="text-4xl md:text-6xl font-semibold text-ink text-balance">
                 Five practices. One transformation partner.
               </h2>
             </div>
-            <Link
-              to="/services"
-              className="text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0"
-            >
+            <Link to="/services" className="link-underline text-sm font-medium text-ink shrink-0">
               Explore all services →
             </Link>
-          </div>
+          </Reveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {serviceCategories.map((s) => (
-              <article
-                key={s.title}
-                className="group bg-white rounded-[24px] p-9 border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_18px_50px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-500 flex flex-col"
-                style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
-              >
-                <div
-                  className="mb-7 h-40 rounded-2xl overflow-hidden relative"
-                  style={{ background: "radial-gradient(circle at 50% 55%, #EEEBFF 0%, #FFFFFF 55%, #F5F3FF 100%)" }}
+          <div className="border-t border-line">
+            {serviceCategories.map((s, i) => (
+              <Reveal key={s.title} delay={i * 60}>
+                <Link
+                  to="/services"
+                  className="group grid md:grid-cols-[100px_1fr_1.25fr] items-start gap-8 py-12 border-b border-line transition-colors duration-300 hover:bg-paper"
                 >
-                  <Scene3D variant={s.visual} className="absolute inset-0" />
-                </div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-2">{s.letter}</p>
-                <h3 className="text-[22px] font-semibold text-[#1D1D1F] leading-snug mb-3 tracking-tight">{s.title}</h3>
-                <p className="text-[15px] text-[#6E6E73] leading-relaxed">{s.body}</p>
-                <ul className="mt-6 space-y-2.5 border-t border-black/6 pt-5">
-                  {s.items.map((it) => (
-                    <li key={it} className="text-[14px] text-[#3A3A3C] flex gap-3">
-                      <span className="text-[#4B2E83]">—</span>
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                  <span className="mono-label text-stone pt-2">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="text-2xl md:text-[32px] font-semibold text-ink group-hover:text-nile transition-colors leading-[1.12]">
+                    {s.title}
+                  </h3>
+                  <div>
+                    <p className="text-[15.5px] text-[#3F4B47] leading-relaxed max-w-xl">{s.body}</p>
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {s.items.map((it) => (
+                        <li key={it} className="text-[13px] text-stone">
+                          {it}
+                          <span aria-hidden className="text-line ml-2">
+                            /
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4 — INDUSTRIES */}
-      <section className="bg-white py-24 md:py-32">
+      {/* ------------------------------------------- FEATURED PULL QUOTE */}
+      {/* TODO: replace the placeholder attribution below with the real named
+          contact and title at MEP Erictric Technology Ltd before launch. */}
+      <section className="on-dark relative overflow-hidden bg-[#0C332C] py-32 md:py-44 text-white">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <p className="mono-label text-[#C99A46] mb-10">Client perspective</p>
+          <blockquote className="pull-quote text-white text-[30px] md:text-[52px] leading-[1.18] text-balance">
+            “{testimonials[0].quote}”
+          </blockquote>
+          <figcaption className="mt-10 mono-label text-white/60">
+            {testimonials[0].author} · {testimonials[0].role}
+          </figcaption>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------------- SECTORS */}
+      <section className="bg-paper py-32 md:py-48">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mb-14">
-            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Sector expertise</p>
-            <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+          <Reveal className="max-w-3xl mb-16">
+            <p className="mono-label text-nile mb-6">Sector expertise</p>
+            <h2 className="text-4xl md:text-6xl font-semibold text-ink text-balance">
               Industries we transform.
             </h2>
-          </div>
-          <div className="border-t border-black/10">
-            {industries.map((ind, i) => (
+          </Reveal>
+          <div className="border-t border-line">
+            {industries.map((ind) => (
               <Link
                 key={ind.name}
                 to="/industries"
-                className="group grid md:grid-cols-[80px_1fr_1.3fr_40px] items-start gap-6 py-8 border-b border-black/10 transition-colors hover:bg-[#FAFAFC]"
+                className="group grid md:grid-cols-[1fr_1.3fr_40px] items-start gap-8 py-10 border-b border-line transition-colors duration-300 hover:bg-paper-dim"
               >
-                <span className="text-[12px] tracking-[0.22em] text-[#6E6E73] pt-1.5">0{i + 1}</span>
-                <h3 className="text-2xl md:text-[28px] font-semibold tracking-tight text-[#1D1D1F] group-hover:text-[#4B2E83] transition-colors">
+                <h3 className="text-2xl md:text-[30px] font-semibold text-ink group-hover:text-nile transition-colors leading-[1.12]">
                   {ind.name}
                 </h3>
-                <p className="text-[15px] text-[#6E6E73] leading-relaxed max-w-xl">{ind.body}</p>
+                <p className="text-[15.5px] text-stone leading-relaxed max-w-xl">{ind.body}</p>
                 <span
                   aria-hidden
-                  className="hidden md:block text-[#1D1D1F] pt-1.5 transition-transform duration-300 group-hover:translate-x-1.5"
+                  className="hidden md:block text-ink pt-1.5 transition-transform duration-300 group-hover:translate-x-1.5"
                 >
                   →
                 </span>
@@ -246,25 +274,27 @@ function Home() {
         </div>
       </section>
 
-      {/* 5 — PROCESS */}
-      <section className="on-dark relative overflow-hidden hero-silk text-white py-24 md:py-32">
+      {/* --------------------------------------------------------- PROCESS */}
+      <section id="process" className="on-dark relative overflow-hidden hero-silk text-white py-32 md:py-48">
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mb-16">
-            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#8A7CFF]">How we work</p>
-            <h2 className="text-white text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-balance">
-              A digital transformation process built for boards, not briefs.
+          <div className="max-w-3xl mb-20">
+            <p className="mono-label text-[#C99A46] mb-6">How we work</p>
+            <h2 className="text-white text-4xl md:text-6xl font-semibold text-balance">
+              Four phases, in this order, every time.
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/12 rounded-[24px] overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/12 rounded-[16px] overflow-hidden">
             {process.map((step, i) => (
-              <div key={step.title} className="bg-[#0A0A1F]/60 backdrop-blur-sm p-8 md:p-9">
-                <p className="text-[52px] font-semibold leading-none text-white/15 tracking-tight">0{i + 1}</p>
-                <h3 className="mt-6 text-xl font-semibold text-white tracking-tight">{step.title}</h3>
-                <p className="mt-3 text-[15px] text-white/70 leading-relaxed">{step.body}</p>
-                <ul className="mt-5 space-y-2">
+              <div key={step.title} className="bg-[#0A1F1A]/70 backdrop-blur-sm p-9 md:p-10">
+                <p className="font-mono text-[13px] tracking-[0.2em] text-[#C99A46]">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-7 text-xl font-semibold text-white">{step.title}</h3>
+                <p className="mt-3.5 text-[15px] text-white/70 leading-relaxed">{step.body}</p>
+                <ul className="mt-6 space-y-2">
                   {step.outputs.map((o) => (
                     <li key={o} className="text-[13px] text-white/55 flex gap-2.5">
-                      <span className="text-[#8A7CFF]">•</span>
+                      <span className="text-[#C99A46]">—</span>
                       {o}
                     </li>
                   ))}
@@ -275,262 +305,182 @@ function Home() {
         </div>
       </section>
 
-      {/* 6 — CASE STUDIES */}
-      <section className="bg-[#FAFAFC] py-24 md:py-32 border-t border-black/5">
+      {/* ---------------------------------------------------- SELECTED WORK */}
+      <section className="bg-paper-dim py-32 md:py-48">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between gap-8 flex-wrap mb-14">
-            <div className="max-w-2xl">
-              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Selected work</p>
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
-                Challenge. Solution. Result.
-              </h2>
-            </div>
-            <Link
-              to="/case-studies"
-              className="text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0"
-            >
-              All case studies →
-            </Link>
-          </div>
+          <Reveal className="max-w-3xl mb-16">
+            <p className="mono-label text-nile mb-6">Selected work</p>
+            <h2 className="text-4xl md:text-6xl font-semibold text-ink text-balance">
+              Two engineering firms. Both invisible online. Both findable now.
+            </h2>
+          </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {caseStudies.map((cs) => {
+          <div className="grid md:grid-cols-3 gap-6">
+            {caseStudies.map((cs, i) => {
               const favicon = faviconUrl(cs.domain);
               return (
-                <Link
-                  key={cs.slug}
-                  to="/case-studies/$slug"
-                  params={{ slug: cs.slug }}
-                  className="group block rounded-[24px] border border-black/8 bg-white p-9 md:p-10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
-                  style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
-                >
-                  <div className="flex items-center gap-2.5 mb-5">
-                    {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
-                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83]">{cs.industry}</span>
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-semibold text-[#1D1D1F] tracking-tight">{cs.name}</h3>
-                  <p className="mt-4 text-[15px] text-[#3A3A3C] leading-relaxed line-clamp-3">{cs.startingPoint}</p>
-                  <ul className="mt-6 flex flex-wrap gap-2">
-                    {cs.services.slice(0, 4).map((s) => (
-                      <li key={s} className="text-[12px] rounded-full border border-black/8 bg-[#F5F5F7] px-3 py-1.5 text-[#1D1D1F]">
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                  <span className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-[#1D1D1F] group-hover:text-[#4B2E83] transition-colors">
-                    Read the case study <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </span>
-                </Link>
+                <Reveal key={cs.slug} delay={i * 80}>
+                  <Link
+                    to="/case-studies/$slug"
+                    params={{ slug: cs.slug }}
+                    className="group flex h-full flex-col rounded-[16px] border border-line bg-paper p-9 md:p-10 transition-all duration-500 hover:-translate-y-1 hover:border-nile/35"
+                    style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+                  >
+                    <div className="flex items-center gap-2.5 mb-6">
+                      {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+                      <span className="mono-label text-nile">{cs.industry}</span>
+                    </div>
+                    <h3 className="text-2xl font-semibold text-ink leading-[1.15]">{cs.name}</h3>
+                    <p className="mt-4 text-[15px] text-[#3F4B47] leading-relaxed line-clamp-4 flex-1">
+                      {cs.startingPoint}
+                    </p>
+                    <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-ink group-hover:text-nile transition-colors">
+                      Read the case study
+                      <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </span>
+                  </Link>
+                </Reveal>
               );
             })}
 
-            {/* Space for future projects */}
-            <div className="rounded-[24px] border border-dashed border-black/15 bg-transparent p-9 md:p-10 flex flex-col justify-center md:col-span-2">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[#6E6E73] mb-3">Next engagement</p>
-              <p className="text-xl md:text-2xl font-semibold text-[#1D1D1F] tracking-tight max-w-2xl">
-                This space is reserved for the next transformation programme — it could be yours.
-              </p>
-              <div className="mt-6">
-                <Cta to="/contact" variant="solid-dark">
-                  Start the conversation <span aria-hidden>→</span>
-                </Cta>
+            <Reveal delay={160}>
+              <div className="flex h-full flex-col justify-between rounded-[16px] border border-dashed border-nile/35 bg-transparent p-9 md:p-10">
+                <div>
+                  <p className="mono-label text-nile mb-6">Next engagement</p>
+                  <p className="text-2xl font-semibold text-ink leading-[1.15]">
+                    The third case study hasn't been written yet. It could be your company.
+                  </p>
+                  <p className="mt-4 text-[15px] text-stone leading-relaxed">
+                    We take on a small number of transformation programmes each quarter so each one gets
+                    partner attention.
+                  </p>
+                </div>
+                <div className="mt-9">
+                  <Cta to="/contact" variant="solid-dark">
+                    Start the conversation <span aria-hidden>→</span>
+                  </Cta>
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-white py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Client perspective</p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] mb-14 max-w-3xl text-balance">
-            What partners say about working with us.
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <figure key={t.role} className="rounded-[24px] border border-black/8 bg-[#F5F5F7] p-9 flex flex-col">
-                <blockquote className="text-[17px] text-[#1D1D1F] leading-relaxed flex-1">“{t.quote}”</blockquote>
-                <figcaption className="mt-7 pt-6 border-t border-black/8">
-                  <p className="text-[15px] font-semibold text-[#1D1D1F]">{t.author}</p>
-                  <p className="text-[13px] text-[#6E6E73] mt-0.5">{t.role}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7 — WHY NILE REACH */}
-      <section className="bg-[#F5F5F7] py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-16">
-          <div>
-            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Why Nile Reach</p>
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
+      {/* ---------------------------------------------------- WHY NILE REACH */}
+      <section className="bg-paper py-32 md:py-48">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[0.85fr_1.15fr] gap-20">
+          <Reveal>
+            <p className="mono-label text-nile mb-6">Why Nile Reach</p>
+            <h2 className="text-4xl md:text-5xl font-semibold text-ink text-balance">
               A growth partner that thinks like an operator.
             </h2>
-            <p className="mt-6 text-lg text-[#6E6E73] leading-relaxed max-w-lg">
-              Founded in Kigali in 2023, Nile Reach exists to give African companies the same calibre
-              of digital and AI capability that global enterprises take for granted.
+            <p className="mt-7 text-lg text-stone leading-relaxed max-w-lg">
+              Founded in Kigali in 2023 to give African companies the same digital and AI capability
+              global enterprises take for granted — at a price a Rwandan SME can actually sign off.
             </p>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
+          </Reveal>
+          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
             {whyNileReach.map((w, i) => (
-              <div key={w.title}>
-                <p className="text-[12px] tracking-[0.22em] text-[#4B2E83] mb-3">0{i + 1}</p>
-                <h3 className="text-xl font-semibold text-[#1D1D1F] tracking-tight">{w.title}</h3>
-                <p className="mt-2.5 text-[15px] text-[#6E6E73] leading-relaxed">{w.body}</p>
-              </div>
+              <Reveal key={w.title} delay={i * 50}>
+                <h3 className="text-xl font-semibold text-ink">{w.title}</h3>
+                <p className="mt-3 text-[15.5px] text-stone leading-relaxed">{w.body}</p>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* INSIGHTS */}
-      <section className="bg-white py-24 md:py-32">
+      {/* ---------------------------------------------- REMAINING TESTIMONIALS */}
+      {/* TODO: replace "Management" with the real named contact and job title
+          for each client once approvals come back. */}
+      <section className="bg-paper-dim py-32 md:py-44">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between gap-8 flex-wrap mb-14">
+          <p className="mono-label text-nile mb-14">In their words</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {testimonials.slice(1).map((t, i) => (
+              <Reveal key={t.role} delay={i * 70}>
+                <figure className="h-full rounded-[16px] border border-line bg-paper p-10 flex flex-col">
+                  <blockquote className="pull-quote text-[21px] md:text-[24px] text-ink leading-[1.4] flex-1">
+                    “{t.quote}”
+                  </blockquote>
+                  <figcaption className="mt-8 pt-6 border-t border-line">
+                    <p className="text-[15px] font-semibold text-ink">{t.author}</p>
+                    <p className="mono-label text-stone mt-1.5">{t.role}</p>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* -------------------------------------------------------- INSIGHTS */}
+      <section className="bg-paper py-32 md:py-48">
+        <div className="max-w-7xl mx-auto px-6">
+          <Reveal className="flex items-end justify-between gap-8 flex-wrap mb-16">
             <div className="max-w-2xl">
-              <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Insights</p>
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05] text-balance">
-                Thinking for leaders building digital businesses in Africa.
+              <p className="mono-label text-nile mb-6">Insights</p>
+              <h2 className="text-4xl md:text-5xl font-semibold text-ink text-balance">
+                Notes from the work, written for the people who sign off on it.
               </h2>
             </div>
-            <Link to="/insights" className="text-sm font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors shrink-0">
+            <Link to="/insights" className="link-underline text-sm font-medium text-ink shrink-0">
               All insights →
             </Link>
-          </div>
+          </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
-            {insights.slice(0, 3).map((a) => (
-              <Link
-                key={a.title}
-                to="/insights"
-                className="group rounded-[24px] border border-black/8 bg-[#F5F5F7] p-8 transition-all duration-500 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)]"
-                style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
-              >
-                <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-4">{a.category}</p>
-                <h3 className="text-xl font-semibold text-[#1D1D1F] leading-snug tracking-tight">{a.title}</h3>
-                <p className="mt-3 text-[14px] text-[#6E6E73] leading-relaxed">{a.excerpt}</p>
-                <p className="mt-6 text-[13px] text-[#6E6E73]">{a.readTime}</p>
-              </Link>
+            {insights.slice(0, 3).map((a, i) => (
+              <Reveal key={a.slug} delay={i * 70}>
+                <Link
+                  to="/insights/$slug"
+                  params={{ slug: a.slug }}
+                  className="group flex h-full flex-col rounded-[16px] border border-line bg-paper-dim p-9 transition-all duration-500 hover:-translate-y-1 hover:bg-paper hover:border-nile/35"
+                  style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+                >
+                  <p className="mono-label text-nile mb-5">{a.category}</p>
+                  <h3 className="text-xl font-semibold text-ink leading-snug">{a.title}</h3>
+                  <p className="mt-3.5 text-[14.5px] text-stone leading-relaxed flex-1">{a.excerpt}</p>
+                  <p className="mt-7 mono-label text-stone">{a.readTime}</p>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8 — CONSULTATION CTA */}
-      <section className="on-dark relative overflow-hidden hero-silk text-white py-24 md:py-32">
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-white/70 mb-6">Strategy consultation</p>
-          <h2 className="text-white text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-balance">
-            Ready to transform your business?
-          </h2>
-          <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
-            Schedule a consultation with Nile Reach and discover opportunities to improve your digital
-            presence, automate operations, and grow revenue.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Cta to="/contact" variant="solid-light">
-              Book Consultation <span aria-hidden>→</span>
-            </Cta>
-            <Cta to="/contact" hash="audit" variant="outline-light">
-              Request free growth audit
-            </Cta>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-[#F5F5F7] py-24 md:py-32">
+      {/* ------------------------------------------------------------- FAQ */}
+      <section className="bg-paper-dim py-32 md:py-48 border-t border-line">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="mb-14">
-            <p className="text-[13px] uppercase tracking-[0.15em] font-medium mb-5 text-[#4B2E83]">Frequently asked</p>
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05]">
-              Answers, without the pitch.
+          <Reveal className="mb-16">
+            <p className="mono-label text-nile mb-6">Frequently asked</p>
+            <h2 className="text-4xl md:text-5xl font-semibold text-ink">
+              Straight answers, including the prices.
             </h2>
-          </div>
-          <div className="border-t border-black/10">
+          </Reveal>
+          <div className="border-t border-line">
             {faqs.map((f, i) => (
-              <AccordionRow key={f.q} q={f.q} a={f.a} defaultOpen={i === 0} />
+              <details key={f.q} className="nr-details border-b border-line group" open={i === 0}>
+                <summary className="flex items-center justify-between gap-6 py-7 text-left">
+                  <span className="text-[19px] md:text-[21px] font-semibold text-ink leading-snug font-display">
+                    {f.q}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="nr-chev shrink-0 grid place-items-center size-8 rounded-full border border-line text-ink transition-transform duration-300"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
+                      <path d="M2.5 4.5 6 8l3.5-3.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <p className="pb-8 pr-12 text-[16px] text-[#3F4B47] leading-[1.7] max-w-3xl">{f.a}</p>
+              </details>
             ))}
           </div>
         </div>
       </section>
     </>
-  );
-}
-
-/** Abstract analytics/AI dashboard visual for the hero. */
-function DashboardVisual() {
-  const bars = [38, 52, 44, 68, 60, 82, 74, 96];
-  return (
-    <div className="hidden lg:block">
-      <div className="rounded-[24px] border border-white/15 bg-white/8 backdrop-blur-xl p-7 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.7)]">
-        <div className="flex items-center justify-between">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-white/60">Growth index</p>
-          <span className="text-[11px] rounded-full border border-white/20 px-2.5 py-1 text-white/70">Live</span>
-        </div>
-        <p className="mt-4 text-4xl font-semibold tracking-tight text-white">+218%</p>
-        <p className="text-[13px] text-white/55">Qualified inbound, trailing 12 months</p>
-
-        <div className="mt-7 flex items-end gap-2 h-32">
-          {bars.map((h, i) => (
-            <div
-              key={i}
-              className="flex-1 rounded-t-md"
-              style={{
-                height: `${h}%`,
-                background: "linear-gradient(180deg, #8A7CFF 0%, rgba(138,124,255,0.25) 100%)",
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="mt-7 grid grid-cols-2 gap-3">
-          {[
-            { k: "AI workflows live", v: "24/7" },
-            { k: "Manual hours saved", v: "40+/wk" },
-          ].map((m) => (
-            <div key={m.k} className="rounded-2xl border border-white/12 bg-white/5 p-4">
-              <p className="text-lg font-semibold text-white tracking-tight">{m.v}</p>
-              <p className="text-[12px] text-white/55 mt-0.5">{m.k}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AccordionRow({ q, a, defaultOpen }: { q: string; a: string; defaultOpen?: boolean }) {
-  const [open, setOpen] = useState(!!defaultOpen);
-  return (
-    <div className="border-b border-black/10">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between text-left py-6 gap-6 group"
-      >
-        <span className="text-[20px] font-semibold text-[#1D1D1F] leading-snug">{q}</span>
-        <span
-          className={`shrink-0 grid place-items-center size-8 rounded-full border border-black/15 text-[#1D1D1F] transition-transform duration-300 ${
-            open ? "rotate-180" : ""
-          }`}
-          aria-hidden
-        >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <path d="M2.5 4.5 6 8l3.5-3.5" />
-          </svg>
-        </span>
-      </button>
-      <div
-        className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
-      >
-        <div className="overflow-hidden">
-          <p className="pb-7 pr-14 text-base text-[#6E6E73] leading-relaxed max-w-3xl">{a}</p>
-        </div>
-      </div>
-    </div>
   );
 }

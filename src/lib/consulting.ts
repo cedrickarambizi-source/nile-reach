@@ -182,34 +182,127 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-export type Insight = { category: string; title: string; excerpt: string; readTime: string };
+export type Insight = {
+  slug: string;
+  category: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  published: string;
+  /** Article body — plain paragraphs and H2 headings, rendered by /insights/$slug. */
+  body: { heading?: string; text: string }[];
+};
 
 export const insights: Insight[] = [
   {
+    slug: "ai-automation-mid-sized-african-company",
     category: "AI & Automation",
     title: "What AI automation actually changes for a mid-sized African company",
     excerpt:
       "Beyond chatbots: where automation removes real cost from quoting, scheduling and customer follow-up.",
     readTime: "6 min read",
+    published: "2026-03-04",
+    body: [
+      {
+        text: "Most AI conversations in Kigali boardrooms start with a chatbot demo and end with nothing shipped. The reason is simple: a chatbot answers questions the business was already answering. It does not remove a cost line.",
+      },
+      {
+        heading: "Start where work is repeated, not where it is visible",
+        text: "The highest-value automation we deploy is rarely customer-facing. It is the quotation that a project engineer rebuilds in Excel every week, the site report typed twice, the WhatsApp inquiry that never reaches the sales sheet. Each of those is a repeated, rule-shaped task with a measurable hourly cost.",
+      },
+      {
+        heading: "Three automations that pay for themselves",
+        text: "First, inbound capture: every WhatsApp, form and call logged into one pipeline with an owner and a due date. Second, document generation: quotations, proposals and profiles produced from structured data instead of retyped. Third, follow-up: automated sequences so no inquiry goes cold because someone was on site.",
+      },
+      {
+        heading: "What to measure",
+        text: "Hours returned per week, response time to a new inquiry, and the percentage of inquiries that receive a documented follow-up. If an automation does not move one of those three, it is a demo, not a system.",
+      },
+    ],
   },
   {
+    slug: "construction-firms-lose-tenders-before-the-bid",
     category: "Digital Strategy",
     title: "Why construction and engineering firms lose tenders before the bid",
     excerpt:
       "Credibility is now checked online first. What decision-makers look for — and what they find instead.",
     readTime: "5 min read",
+    published: "2026-02-18",
+    body: [
+      {
+        text: "Before a procurement officer reads a technical submission, they search the company name. That search is now part of the evaluation, whether or not it appears on the scoring sheet.",
+      },
+      {
+        heading: "What they are checking",
+        text: "Does the company exist online with a consistent name and address? Is there evidence of completed projects? Is there a real business email rather than a personal Gmail address? Are the certifications, team and equipment visible? Each unanswered question adds perceived risk to awarding the contract.",
+      },
+      {
+        heading: "What they usually find",
+        text: "In our audits of Rwandan MEP and civil contractors, the most common result is no website at all, an unclaimed Google listing with a wrong phone number, and a company profile PDF circulating in three different versions.",
+      },
+      {
+        heading: "The fix is unglamorous",
+        text: "A corporate site with a project register, a verified Google Business Profile, one controlled company profile document, and branded email. This is roughly four weeks of work and it changes how a firm is read in every tender that follows.",
+      },
+    ],
   },
   {
+    slug: "four-numbers-every-ceo-should-see-weekly",
     category: "Data & Analytics",
     title: "The four numbers every CEO should see every Monday",
     excerpt:
       "A simple leadership dashboard that connects marketing activity to pipeline and revenue.",
     readTime: "4 min read",
+    published: "2026-01-27",
+    body: [
+      {
+        text: "Leadership dashboards fail when they show everything. A weekly executive view needs four numbers, each one tied to a decision someone can make that week.",
+      },
+      {
+        heading: "1 — New qualified inquiries",
+        text: "Not traffic, not impressions. Inquiries that match your target sector and budget, counted by source so you know which channel to fund next.",
+      },
+      {
+        heading: "2 — Response time to first contact",
+        text: "The single most predictive number in African B2B sales. Under one hour converts materially better than same-day, and same-day beats next-day by a wide margin.",
+      },
+      {
+        heading: "3 — Pipeline value by stage",
+        text: "What is quoted, what is in negotiation, what is awarded. If your team cannot produce this in under five minutes, the CRM is not being used.",
+      },
+      {
+        heading: "4 — Revenue against plan",
+        text: "Month-to-date and quarter-to-date, with the variance called out. Everything else on the dashboard exists to explain this line.",
+      },
+    ],
   },
   {
+    slug: "google-business-profile-highest-roi-asset-rwanda",
     category: "Growth Marketing",
     title: "Google Business Profile is still the highest-ROI asset in Rwanda",
     excerpt: "How local search intent converts, and the setup mistakes that quietly cost inquiries.",
     readTime: "5 min read",
+    published: "2026-01-09",
+    body: [
+      {
+        text: "For most Rwandan companies, the cheapest source of qualified demand is not advertising. It is a properly configured Google Business Profile — and it is usually either missing or half finished.",
+      },
+      {
+        heading: "Why it converts",
+        text: "Someone searching \"electrical contractor Kigali\" is not browsing. They have a project and a shortlist to build. A verified profile with photos, service categories, hours and reviews puts you on that shortlist before any website is opened.",
+      },
+      {
+        heading: "The mistakes we correct most often",
+        text: "Unverified listings; a category that does not match what the business actually sells; a phone number nobody answers; zero photos of completed work; and no review requests built into project handover.",
+      },
+      {
+        heading: "The routine that keeps it working",
+        text: "One post a month, photos from each completed project, and a review request sent at handover while the client is still satisfied. Thirty minutes a month, compounding.",
+      },
+    ],
   },
 ];
+
+export function getInsight(slug: string) {
+  return insights.find((a) => a.slug === slug);
+}

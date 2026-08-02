@@ -27,11 +27,11 @@ export function ProjectCard({ project }: { project: Project }) {
               <div className="text-4xl font-semibold tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
                 {project.name.split(" ")[0]}
               </div>
-              <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-[#6E6E73]">Case study</p>
+              <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-[#5C6864]">Case study</p>
             </div>
           </div>
         )}
-        <div className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur px-2.5 py-1 text-[11px] font-medium text-[#1D1D1F] border border-black/5">
+        <div className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur px-2.5 py-1 text-[11px] font-medium text-[#10201C] border border-black/5">
           {favicon && (
             <img src={favicon} alt="" className="size-3.5 rounded-sm" />
           )}
@@ -41,21 +41,21 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {/* Body */}
       <div className="flex flex-col flex-1 p-6">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-[#4B2E83] mb-2">{project.industry}</p>
-        <h3 className="text-[19px] font-semibold text-[#1D1D1F] leading-snug">{project.name}</h3>
-        <p className="mt-3 text-[14px] text-[#6E6E73] leading-relaxed line-clamp-3">{project.description}</p>
+        <p className="text-[11px] uppercase tracking-[0.22em] text-[#175E52] mb-2">{project.industry}</p>
+        <h3 className="text-[19px] font-semibold text-[#10201C] leading-snug">{project.name}</h3>
+        <p className="mt-3 text-[14px] text-[#5C6864] leading-relaxed line-clamp-3">{project.description}</p>
 
         <ul className="mt-5 flex flex-wrap gap-1.5">
           {project.services.slice(0, 4).map((s) => (
             <li
               key={s}
-              className="text-[11px] rounded-full border border-black/8 bg-[#F5F5F7] text-[#3A3A3C] px-2.5 py-1"
+              className="text-[11px] rounded-full border border-black/8 bg-[#F2F0E9] text-[#3F4B47] px-2.5 py-1"
             >
               {s}
             </li>
           ))}
           {project.services.length > 4 && (
-            <li className="text-[11px] text-[#6E6E73] px-1 py-1">+{project.services.length - 4}</li>
+            <li className="text-[11px] text-[#5C6864] px-1 py-1">+{project.services.length - 4}</li>
           )}
         </ul>
 
@@ -63,7 +63,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <Link
             to="/work"
             hash={project.slug}
-            className="inline-flex items-center gap-1.5 font-medium text-[#1D1D1F] hover:text-[#4B2E83] transition-colors"
+            className="inline-flex items-center gap-1.5 font-medium text-[#10201C] hover:text-[#175E52] transition-colors"
           >
             View project <span aria-hidden>→</span>
           </Link>

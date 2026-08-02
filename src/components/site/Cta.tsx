@@ -30,10 +30,10 @@ const base =
 
 const variantStyles: Record<CtaVariant, string> = {
   // Dark pill on light surfaces — e.g. "Visit live website", "Live site"
-  "solid-dark": "bg-[#1D1D1F] text-white hover:bg-[#4B2E83] focus-visible:ring-[#4B2E83]",
+  "solid-dark": "bg-[#10201C] text-white hover:bg-[#175E52] focus-visible:ring-[#175E52]",
   // White pill on dark sections — primary CTA on hero/footer
   "solid-light":
-    "bg-white text-[#0A0A1F] hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(255,255,255,0.35)] focus-visible:ring-white",
+    "bg-white text-[#0C332C] hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(255,255,255,0.35)] focus-visible:ring-white",
   // Transparent pill on dark sections — secondary CTA
   "outline-light": "border border-white/25 text-white hover:border-white/60 focus-visible:ring-white/60",
 };
