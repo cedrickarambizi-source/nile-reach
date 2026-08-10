@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { NileReachMark } from "./NileReachLogo";
-import { Cta } from "./Cta";
 import { BUSINESS } from "@/lib/seo";
 
 const groups = [
@@ -32,65 +31,64 @@ const groups = [
       { to: "/pricing", label: "Pricing" },
     ],
   },
-  {
-    title: "Contact",
-    links: [
-      { to: "/contact", label: BUSINESS.email },
-      { to: "/contact", label: BUSINESS.phone },
-      { to: "/contact", label: BUSINESS.addressLine },
-    ],
-  },
+] as const;
+
+/** Three solid colour blocks — the institutional "next step" pattern. */
+const blocks = [
+  { to: "/services", label: "Why work with Nile Reach?", bg: "bg-[#A6192E]" },
+  { to: "/case-studies", label: "Browse our client results", bg: "bg-[#1F3A5F]" },
+  { to: "/contact", label: "Book a strategy consultation", bg: "bg-[#1A1A1A]" },
 ] as const;
 
 export function SiteFooter() {
   return (
-    <footer className="on-dark relative overflow-hidden text-white print:hidden">
-      {/* Closing CTA */}
-      <div className="relative hero-silk">
-        <div className="relative max-w-5xl mx-auto px-6 pt-32 pb-28 md:pt-40 md:pb-36 text-center">
-          <p className="mono-label text-[#C99A46] mb-8">Next step</p>
-          <h2 className="text-white text-[40px] md:text-7xl font-semibold leading-[1.04] tracking-[-0.02em] max-w-4xl mx-auto">
-            Tell us where the business stalls. We'll show you the system that fixes it.
-          </h2>
-          <p className="mt-7 text-white/70 max-w-xl mx-auto text-lg font-light">
-            A 45-minute consultation with a Nile Reach partner: current-state review, three prioritised
-            moves, and what each one costs.
-          </p>
-          <div className="mt-11 flex flex-wrap justify-center gap-3">
-            <Cta to="/contact" variant="solid-light">
-              Book a strategy consultation
-              <span aria-hidden>→</span>
-            </Cta>
-            <Cta to="/case-studies" variant="outline-light">
-              Read the case studies
-            </Cta>
-          </div>
+    <footer className="relative print:hidden">
+      {/* Colour-block CTA row */}
+      <div className="bg-[#E9E9E9]">
+        <div className="max-w-[1400px] mx-auto px-6 py-16 md:py-20 grid gap-6 md:grid-cols-3">
+          {blocks.map((b) => (
+            <Link
+              key={b.label}
+              to={b.to}
+              className={`${b.bg} group flex items-center justify-center min-h-[190px] px-8 text-center text-white transition-transform duration-300 hover:-translate-y-1`}
+            >
+              <span className="text-[22px] md:text-[24px] font-bold leading-[1.2] tracking-[-0.02em]">
+                {b.label}{" "}
+                <span aria-hidden className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
 
       {/* Footer grid */}
-      <div className="relative bg-[#0A1714]">
-        <div className="max-w-7xl mx-auto px-6 pt-24 pb-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-12">
+      <div className="bg-[#F2F2F2] text-[#1A1A1A] border-t border-[#DCDCDC]">
+        <div className="max-w-[1400px] mx-auto px-6 pt-16 pb-10">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
             <div className="col-span-2 md:col-span-1">
-              <Link to="/" className="flex items-center gap-2.5 text-white">
-                <span className="grid place-items-center size-9 rounded-[10px] bg-white p-1.5 shrink-0">
+              <Link to="/" className="flex items-center gap-2.5">
+                <span className="grid place-items-center size-9 bg-[#A6192E] p-1.5 shrink-0">
                   <NileReachMark className="h-full w-full" />
                 </span>
-                <span className="text-base font-medium tracking-[-0.01em]">Nile Reach</span>
+                <span className="text-base font-bold tracking-[-0.02em] text-[#A6192E]">Nile Reach</span>
               </Link>
-              <p className="mt-5 text-sm text-white/55 leading-relaxed max-w-xs">
+              <p className="mt-5 text-sm text-[#5A5A5A] leading-relaxed max-w-xs">
                 Digital transformation, AI automation and growth infrastructure. Founded in Kigali, 2023.
               </p>
             </div>
 
             {groups.map((g) => (
               <div key={g.title}>
-                <p className="mono-label text-white/45 mb-5">{g.title}</p>
-                <ul className="space-y-3">
+                <p className="mono-label text-[#1A1A1A] mb-4">{g.title}</p>
+                <ul className="space-y-2.5">
                   {g.links.map((l) => (
                     <li key={l.label}>
-                      <Link to={l.to} className="text-sm text-white/75 hover:text-white transition-colors">
+                      <Link
+                        to={l.to}
+                        className="text-sm text-[#5A5A5A] hover:text-[#A6192E] underline-offset-4 hover:underline transition-colors"
+                      >
                         {l.label}
                       </Link>
                     </li>
@@ -98,14 +96,31 @@ export function SiteFooter() {
                 </ul>
               </div>
             ))}
+
+            <div>
+              <p className="mono-label text-[#1A1A1A] mb-4">Contact</p>
+              <ul className="space-y-2.5 text-sm text-[#5A5A5A]">
+                <li>
+                  <a href={`mailto:${BUSINESS.email}`} className="hover:text-[#A6192E] transition-colors">
+                    {BUSINESS.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={BUSINESS.phoneHref} className="hover:text-[#A6192E] transition-colors">
+                    {BUSINESS.phone}
+                  </a>
+                </li>
+                <li>{BUSINESS.addressLine}</li>
+              </ul>
+            </div>
           </div>
 
-          <div className="mt-20 pt-6 border-t border-white/10 flex flex-wrap gap-4 items-center justify-between text-[12px] text-white/45">
+          <div className="mt-16 pt-6 border-t border-[#DCDCDC] flex flex-wrap gap-4 items-center justify-between text-[12px] text-[#5A5A5A]">
             <p>© {new Date().getFullYear()} Nile Reach Ltd. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link to="/privacy" className="hover:text-white/80 transition-colors">Privacy</Link>
-              <Link to="/terms" className="hover:text-white/80 transition-colors">Terms</Link>
-              <Link to="/cookies" className="hover:text-white/80 transition-colors">Cookies</Link>
+              <Link to="/privacy" className="hover:text-[#A6192E] transition-colors">Privacy</Link>
+              <Link to="/terms" className="hover:text-[#A6192E] transition-colors">Terms</Link>
+              <Link to="/cookies" className="hover:text-[#A6192E] transition-colors">Cookies</Link>
             </div>
           </div>
         </div>
