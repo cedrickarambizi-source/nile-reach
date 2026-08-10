@@ -111,15 +111,17 @@ html.dark {
     -moz-osx-font-smoothing: grayscale;
     transition: background-color .5s cubic-bezier(0.16,1,0.3,1), color .5s cubic-bezier(0.16,1,0.3,1);
   }
-  ::selection { background: var(--gold); color: var(--ink); }
+  ::selection { background: var(--nile); color: #FFFFFF; }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.018em;
-    line-height: 1.06;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
     color: var(--color-nile-clay);
   }
-  h1 { letter-spacing: -0.022em; line-height: 1.04; }
+  h1 { letter-spacing: -0.025em; line-height: 1.02; }
+  p, li { font-family: var(--font-sans); }
+
 
   /* Overlay classes designed for dark surfaces, remapped onto paper. */
   html:not(.dark) .border-white\/5  { border-color: rgba(16,32,28,0.07) !important; }
