@@ -69,7 +69,7 @@ function Article() {
                 key={a.slug}
                 to="/insights/$slug"
                 params={{ slug: a.slug }}
-                className="group rounded-[16px] border border-line bg-paper p-8 transition-all duration-500 hover:-translate-y-1 hover:border-nile/40"
+                className="group rounded-none border border-line bg-paper p-8 transition-all duration-500 hover:-translate-y-1 hover:border-nile/40"
                 style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
               >
                 <p className="mono-label text-nile mb-4">{a.category}</p>

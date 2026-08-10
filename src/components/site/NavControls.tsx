@@ -52,7 +52,7 @@ function Pop({
         {trigger}
       </button>
       {open && (
-        <div className="dropdown-in absolute right-0 top-[calc(100%+10px)] z-50 rounded-[16px] border border-black/5 bg-[var(--nile-card)] p-2 text-[#1A1A1A] shadow-[0_18px_50px_-20px_rgba(0,0,0,0.35)]">
+        <div className="dropdown-in absolute right-0 top-[calc(100%+10px)] z-50 rounded-none border border-black/5 bg-[var(--nile-card)] p-2 text-[#1A1A1A] shadow-[0_18px_50px_-20px_rgba(0,0,0,0.35)]">
           {children(() => setOpen(false))}
         </div>
       )}
@@ -81,7 +81,7 @@ export function NavControls() {
       >
         {() => (
           <div className="w-[268px]">
-            <div className="grid grid-cols-3 gap-1 rounded-[12px] bg-black/[0.04] p-1">
+            <div className="grid grid-cols-3 gap-1 rounded-none bg-black/[0.04] p-1">
               {MODES.map((m) => (
                 <button
                   key={m.id}

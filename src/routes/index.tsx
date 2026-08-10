@@ -204,7 +204,7 @@ function Home() {
             {problems.map((p, i) => (
               <Reveal key={p.problem} delay={i * 70}>
                 <article
-                  className="group h-full rounded-[16px] border border-line bg-paper-dim p-9 md:p-11 transition-all duration-500 hover:-translate-y-1 hover:border-nile/35"
+                  className="group h-full rounded-none border border-line bg-paper-dim p-9 md:p-11 transition-all duration-500 hover:-translate-y-1 hover:border-nile/35"
                   style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
                 >
                   <p className="mono-label text-nile mb-7">{PROBLEM_TAGS[i]}</p>
@@ -334,7 +334,7 @@ function Home() {
               Four phases, in this order, every time.
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/12 rounded-[16px] overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/12 rounded-none overflow-hidden">
             {process.map((step, i) => (
               <div key={step.title} className="bg-[#7A1122]/70 backdrop-blur-sm p-9 md:p-10">
                 <p className="font-mono text-[13px] tracking-[0.2em] text-[#FFFFFF]">
@@ -374,7 +374,7 @@ function Home() {
                   <Link
                     to="/case-studies/$slug"
                     params={{ slug: cs.slug }}
-                    className="group flex h-full flex-col rounded-[16px] border border-line bg-paper p-9 md:p-10 transition-all duration-500 hover:-translate-y-1 hover:border-nile/35"
+                    className="group flex h-full flex-col rounded-none border border-line bg-paper p-9 md:p-10 transition-all duration-500 hover:-translate-y-1 hover:border-nile/35"
                     style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
                   >
                     <div className="flex items-center gap-2.5 mb-6">
@@ -397,7 +397,7 @@ function Home() {
             })}
 
             <Reveal delay={160}>
-              <div className="flex h-full flex-col justify-between rounded-[16px] border border-dashed border-nile/35 bg-transparent p-9 md:p-10">
+              <div className="flex h-full flex-col justify-between rounded-none border border-dashed border-nile/35 bg-transparent p-9 md:p-10">
                 <div>
                   <p className="mono-label text-nile mb-6">Next engagement</p>
                   <p className="text-2xl font-semibold text-ink leading-[1.15]">
@@ -452,7 +452,7 @@ function Home() {
           <div className="grid md:grid-cols-2 gap-6">
             {testimonials.slice(1).map((t, i) => (
               <Reveal key={t.role} delay={i * 70}>
-                <figure className="h-full rounded-[16px] border border-line bg-paper p-10 flex flex-col">
+                <figure className="h-full rounded-none border border-line bg-paper p-10 flex flex-col">
                   <blockquote className="pull-quote text-[21px] md:text-[24px] text-ink leading-[1.4] flex-1">
                     “{t.quote}”
                   </blockquote>
@@ -487,7 +487,7 @@ function Home() {
                 <Link
                   to="/insights/$slug"
                   params={{ slug: a.slug }}
-                  className="group flex h-full flex-col rounded-[16px] border border-line bg-paper-dim p-9 transition-all duration-500 hover:-translate-y-1 hover:bg-paper hover:border-nile/35"
+                  className="group flex h-full flex-col rounded-none border border-line bg-paper-dim p-9 transition-all duration-500 hover:-translate-y-1 hover:bg-paper hover:border-nile/35"
                   style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
                 >
                   <p className="mono-label text-nile mb-5">{a.category}</p>

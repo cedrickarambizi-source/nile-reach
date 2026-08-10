@@ -62,7 +62,7 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
   return (
     <div className="fixed inset-0 z-[80] flex items-start justify-center px-4 pt-[14vh]" role="dialog" aria-modal="true" aria-label="Command palette">
       <button aria-label="Close" onClick={onClose} className="absolute inset-0 bg-[#08080C]/60 backdrop-blur-[6px] animate-[fade-in_.2s_ease-out]" />
-      <div className="palette-in relative w-full max-w-[640px] overflow-hidden rounded-[20px] border border-black/5 bg-[var(--nile-card)] shadow-[0_24px_80px_-24px_rgba(0,0,0,0.45)]">
+      <div className="palette-in relative w-full max-w-[640px] overflow-hidden rounded-none border border-black/5 bg-[var(--nile-card)] shadow-[0_24px_80px_-24px_rgba(0,0,0,0.45)]">
         <div className="flex items-center gap-3 border-b border-black/5 px-5 py-4">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-[18px] text-[#5A5A5A]">
             <path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM20 20l-3.6-3.6" strokeLinecap="round" />
@@ -91,7 +91,7 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
                 <button
                   onMouseEnter={() => setIndex(i)}
                   onClick={() => { onClose(); navigate({ to: r.to }); }}
-                  className={`flex w-full items-center justify-between gap-4 rounded-[12px] px-3 py-2.5 text-left transition-colors duration-200 ${
+                  className={`flex w-full items-center justify-between gap-4 rounded-none px-3 py-2.5 text-left transition-colors duration-200 ${
                     i === index ? "bg-[color-mix(in_oklab,var(--nile-river)_10%,transparent)]" : ""
                   }`}
                 >

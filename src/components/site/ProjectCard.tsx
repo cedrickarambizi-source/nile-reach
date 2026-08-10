@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article
-      className="group relative flex flex-col bg-white rounded-[20px] border border-black/5 overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_50px_rgba(15,15,45,0.14)] hover:-translate-y-1.5 transition-all duration-500"
+      className="group relative flex flex-col bg-white rounded-none border border-black/5 overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_50px_rgba(15,15,45,0.14)] hover:-translate-y-1.5 transition-all duration-500"
       style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
     >
       {/* Preview */}
