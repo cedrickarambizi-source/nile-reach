@@ -201,7 +201,7 @@ html.dark {
 }
 
 @utility gradient-text {
-  background: linear-gradient(120deg, var(--nile) 0%, var(--nile-light) 100%);
+  background: linear-gradient(120deg, #FFFFFF 0%, #FFD3DA 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
