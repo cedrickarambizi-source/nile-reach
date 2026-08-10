@@ -3,6 +3,8 @@ import { LogoStrip } from "@/components/site/LogoMarquee";
 import { Cta } from "@/components/site/Cta";
 import { Reveal } from "@/components/site/Reveal";
 import { RiverDelta } from "@/components/site/RiverDelta";
+import teamPhoto from "@/assets/team-developers.jpg";
+
 import { canonical } from "@/lib/seo";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 import { faviconUrl } from "@/lib/projects";
