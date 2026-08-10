@@ -17,7 +17,7 @@ export type AccentTheme = {
 
 /** 20 curated navigation / brand accent themes. */
 export const ACCENT_THEMES: AccentTheme[] = [
-  { id: "nile", name: "Nile Green", river: "#A6192E", gold: "#FFFFFF", soft: "#C8102E", glow: "#FFFFFF" },
+  { id: "nile", name: "Nile Red", river: "#A6192E", gold: "#C8102E", soft: "#E4573D", glow: "#C8102E" },
   { id: "midnight", name: "Midnight Black", river: "#1A1A1A", gold: "#2A2A35", soft: "#5A5A5A", glow: "#8A8A99" },
   { id: "pure", name: "Pure White", river: "#1A1A1A", gold: "#4A4A52", soft: "#B8B8C0", glow: "#D4D4DC" },
   { id: "royal", name: "Royal Blue", river: "#2563EB", gold: "#1D4ED8", soft: "#93C5FD", glow: "#60A5FA" },
