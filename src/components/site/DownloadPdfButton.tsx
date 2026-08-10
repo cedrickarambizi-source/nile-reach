@@ -20,7 +20,7 @@ export function DownloadPdfButton({
   const variantClass =
     variant === "dark"
       ? "border-white/25 text-white hover:border-white/60"
-      : "border-black/15 text-[#10201C] hover:border-[#175E52] hover:text-[#175E52]";
+      : "border-black/15 text-[#1A1A1A] hover:border-[#A6192E] hover:text-[#A6192E]";
   return (
     <button
       type="button"

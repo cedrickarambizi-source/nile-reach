@@ -172,7 +172,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
       <SmoothScroll />
-      <div className="min-h-screen bg-white text-[#10201C]">
+      <div className="min-h-screen bg-white text-[#1A1A1A]">
         <SiteNav />
         <main>
           <Outlet />

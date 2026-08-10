@@ -50,16 +50,16 @@ function Industries() {
           {industries.map((ind, i) => (
             <article
               key={ind.name}
-              className="rounded-[24px] border border-black/8 bg-[#F2F0E9] p-9 transition-all duration-500 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
+              className="rounded-[24px] border border-black/8 bg-[#F2F2F2] p-9 transition-all duration-500 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
               style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
             >
-              <p className="text-[12px] tracking-[0.22em] text-[#175E52] mb-5">0{i + 1}</p>
-              <h2 className="text-[24px] font-semibold text-[#10201C] tracking-tight leading-snug">{ind.name}</h2>
-              <p className="mt-4 text-[15px] text-[#5C6864] leading-relaxed">{ind.body}</p>
+              <p className="text-[12px] tracking-[0.22em] text-[#A6192E] mb-5">0{i + 1}</p>
+              <h2 className="text-[24px] font-semibold text-[#1A1A1A] tracking-tight leading-snug">{ind.name}</h2>
+              <p className="mt-4 text-[15px] text-[#5A5A5A] leading-relaxed">{ind.body}</p>
               <ul className="mt-7 pt-6 border-t border-black/8 space-y-2.5">
                 {(outcomes[ind.name] ?? []).map((o) => (
                   <li key={o} className="text-[14px] text-[#3F4B47] flex gap-3">
-                    <span className="text-[#175E52]">—</span>
+                    <span className="text-[#A6192E]">—</span>
                     {o}
                   </li>
                 ))}

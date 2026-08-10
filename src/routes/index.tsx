@@ -281,9 +281,9 @@ function Home() {
       {/* ------------------------------------------- FEATURED PULL QUOTE */}
       {/* TODO: replace the placeholder attribution below with the real named
           contact and title at MEP Erictric Technology Ltd before launch. */}
-      <section className="on-dark relative overflow-hidden bg-[#0C332C] py-32 md:py-44 text-white">
+      <section className="on-dark relative overflow-hidden bg-[#7A1122] py-32 md:py-44 text-white">
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <p className="mono-label text-[#C99A46] mb-10">Client perspective</p>
+          <p className="mono-label text-[#FFFFFF] mb-10">Client perspective</p>
           <blockquote className="pull-quote text-white text-[30px] md:text-[52px] leading-[1.18] text-balance">
             “{testimonials[0].quote}”
           </blockquote>
@@ -329,15 +329,15 @@ function Home() {
       <section id="process" className="on-dark relative overflow-hidden hero-silk text-white py-32 md:py-48">
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-20">
-            <p className="mono-label text-[#C99A46] mb-6">How we work</p>
+            <p className="mono-label text-[#FFFFFF] mb-6">How we work</p>
             <h2 className="text-white text-4xl md:text-6xl font-semibold text-balance">
               Four phases, in this order, every time.
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/12 rounded-[16px] overflow-hidden">
             {process.map((step, i) => (
-              <div key={step.title} className="bg-[#0A1F1A]/70 backdrop-blur-sm p-9 md:p-10">
-                <p className="font-mono text-[13px] tracking-[0.2em] text-[#C99A46]">
+              <div key={step.title} className="bg-[#7A1122]/70 backdrop-blur-sm p-9 md:p-10">
+                <p className="font-mono text-[13px] tracking-[0.2em] text-[#FFFFFF]">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-7 text-xl font-semibold text-white">{step.title}</h3>
@@ -345,7 +345,7 @@ function Home() {
                 <ul className="mt-6 space-y-2">
                   {step.outputs.map((o) => (
                     <li key={o} className="text-[13px] text-white/55 flex gap-2.5">
-                      <span className="text-[#C99A46]">—</span>
+                      <span className="text-[#FFFFFF]">—</span>
                       {o}
                     </li>
                   ))}
