@@ -50,29 +50,29 @@ function Contact() {
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[0.75fr_1.25fr] gap-16">
           <aside className="space-y-10">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[#175E52] mb-3">Office</p>
-              <p className="text-xl font-semibold text-[#10201C] tracking-tight">{BUSINESS.addressLine}</p>
-              <p className="text-sm text-[#5C6864] mt-1">By appointment</p>
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-3">Office</p>
+              <p className="text-xl font-semibold text-[#1A1A1A] tracking-tight">{BUSINESS.addressLine}</p>
+              <p className="text-sm text-[#5A5A5A] mt-1">By appointment</p>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[#175E52] mb-3">Email</p>
-              <a href={`mailto:${BUSINESS.email}`} className="text-xl font-semibold text-[#10201C] hover:text-[#175E52] transition-colors">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-3">Email</p>
+              <a href={`mailto:${BUSINESS.email}`} className="text-xl font-semibold text-[#1A1A1A] hover:text-[#A6192E] transition-colors">
                 {BUSINESS.email}
               </a>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[#175E52] mb-3">Phone &amp; WhatsApp</p>
-              <a href={BUSINESS.phoneHref} className="text-xl font-semibold text-[#10201C] hover:text-[#175E52] transition-colors">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-3">Phone &amp; WhatsApp</p>
+              <a href={BUSINESS.phoneHref} className="text-xl font-semibold text-[#1A1A1A] hover:text-[#A6192E] transition-colors">
                 {BUSINESS.phone}
               </a>
             </div>
-            <div className="rounded-[24px] border border-black/8 bg-[#F2F0E9] p-7">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[#175E52] mb-3">Consultation slots</p>
+            <div className="rounded-none border border-black/8 bg-[#F2F2F2] p-7">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-3">Consultation slots</p>
               <p className="text-[15px] text-[#3F4B47] leading-relaxed">
                 Monday – Friday, 09:00 – 17:00 CAT. Sessions run 45 minutes, remotely or at our Kigali
                 office, with a senior consultant — not a sales rep.
               </p>
-              <ul className="mt-5 space-y-2 text-[14px] text-[#5C6864]">
+              <ul className="mt-5 space-y-2 text-[14px] text-[#5A5A5A]">
                 <li>— Review of your current digital position</li>
                 <li>— Two or three prioritised opportunities</li>
                 <li>— Indicative roadmap and investment range</li>
@@ -85,21 +85,21 @@ function Contact() {
               e.preventDefault();
               setSent(true);
             }}
-            className="rounded-[28px] border border-black/8 bg-[#F2F0E9] p-8 md:p-10 space-y-6"
+            className="rounded-none border border-black/8 bg-[#F2F2F2] p-8 md:p-10 space-y-6"
           >
             {sent ? (
               <div className="py-16 text-center">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-[#175E52] mb-4">Thank you</p>
-                <h2 className="text-3xl md:text-4xl font-semibold text-[#10201C] tracking-tight mb-3">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-4">Thank you</p>
+                <h2 className="text-3xl md:text-4xl font-semibold text-[#1A1A1A] tracking-tight mb-3">
                   Your request is in.
                 </h2>
-                <p className="text-[#5C6864]">A consultant will reply within one working day.</p>
+                <p className="text-[#5A5A5A]">A consultant will reply within one working day.</p>
               </div>
             ) : (
               <>
                 <div>
-                  <h2 className="text-2xl font-semibold text-[#10201C] tracking-tight">Book a consultation</h2>
-                  <p className="mt-2 text-[15px] text-[#5C6864]">
+                  <h2 className="text-2xl font-semibold text-[#1A1A1A] tracking-tight">Book a consultation</h2>
+                  <p className="mt-2 text-[15px] text-[#5A5A5A]">
                     Prefer to talk now? Call {BUSINESS.phone}.
                   </p>
                 </div>
@@ -110,13 +110,13 @@ function Contact() {
                   <Field label="Phone" name="phone" type="tel" placeholder="+250 ..." />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="goal" className="text-[11px] uppercase tracking-[0.22em] text-[#175E52]">
+                  <label htmlFor="goal" className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E]">
                     What do you need help with?
                   </label>
                   <select
                     id="goal"
                     name="goal"
-                    className="w-full rounded-xl bg-white border border-black/10 p-4 text-[15px] text-[#10201C] focus:outline-none focus:border-[#175E52] transition-colors"
+                    className="w-full rounded-none bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
                   >
                     {goals.map((g) => (
                       <option key={g}>{g}</option>
@@ -126,13 +126,13 @@ function Contact() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   <Field label="Preferred date" name="date" type="date" />
                   <div className="space-y-2">
-                    <label htmlFor="time" className="text-[11px] uppercase tracking-[0.22em] text-[#175E52]">
+                    <label htmlFor="time" className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E]">
                       Preferred time
                     </label>
                     <select
                       id="time"
                       name="time"
-                      className="w-full rounded-xl bg-white border border-black/10 p-4 text-[15px] text-[#10201C] focus:outline-none focus:border-[#175E52] transition-colors"
+                      className="w-full rounded-none bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
                     >
                       {["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"].map((t) => (
                         <option key={t}>{t} CAT</option>
@@ -141,7 +141,7 @@ function Contact() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="brief" className="text-[11px] uppercase tracking-[0.22em] text-[#175E52]">
+                  <label htmlFor="brief" className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E]">
                     Where is growth stalling today?
                   </label>
                   <textarea
@@ -150,17 +150,17 @@ function Contact() {
                     rows={5}
                     required
                     maxLength={1000}
-                    className="w-full rounded-xl bg-white border border-black/10 p-4 text-[15px] text-[#10201C] focus:outline-none focus:border-[#175E52] transition-colors resize-y"
+                    className="w-full rounded-none bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors resize-y"
                     placeholder="Tell us about your business, market and timeline."
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full rounded-full py-4 bg-[#10201C] text-white text-sm font-medium hover:bg-[#175E52] transition-colors"
+                  className="w-full rounded-full py-4 bg-[#1A1A1A] text-white text-sm font-medium hover:bg-[#A6192E] transition-colors"
                 >
                   Book consultation →
                 </button>
-                <p className="text-[13px] text-[#5C6864] text-center">
+                <p className="text-[13px] text-[#5A5A5A] text-center">
                   No obligation. We'll confirm the slot by email.
                 </p>
               </>
@@ -185,7 +185,7 @@ function Field({
 }) {
   return (
     <div className="space-y-2">
-      <label htmlFor={name} className="text-[11px] uppercase tracking-[0.22em] text-[#175E52]">
+      <label htmlFor={name} className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E]">
         {label}
       </label>
       <input
@@ -195,7 +195,7 @@ function Field({
         required
         maxLength={120}
         placeholder={placeholder}
-        className="w-full rounded-xl bg-white border border-black/10 p-4 text-[15px] text-[#10201C] focus:outline-none focus:border-[#175E52] transition-colors"
+        className="w-full rounded-none bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
       />
     </div>
   );

@@ -65,7 +65,7 @@ function About() {
       {/* MISSION / VISION */}
       <section className="py-20 border-t border-white/5 bg-nile-deep/40">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-          <div className="glass-layer rounded-2xl p-10">
+          <div className="glass-layer rounded-none p-10">
             <p className="eyebrow mb-4">Mission</p>
             <h3 className="text-2xl md:text-3xl leading-tight mb-4">
               Give every ambitious African business an AI-powered growth partner.
@@ -75,7 +75,7 @@ function About() {
               businesses that want to compete beyond their borders.
             </p>
           </div>
-          <div className="glass-layer rounded-2xl p-10">
+          <div className="glass-layer rounded-none p-10">
             <p className="eyebrow mb-4">Vision</p>
             <h3 className="text-2xl md:text-3xl leading-tight mb-4">
               Africa's most trusted AI-native marketing agency.
@@ -97,7 +97,7 @@ function About() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
-              <div key={v.t} className="glass-layer rounded-2xl p-8">
+              <div key={v.t} className="glass-layer rounded-none p-8">
                 <span className="text-nile-gold font-semibold text-sm">0{i + 1}</span>
                 <h3 className="text-xl font-semibold mt-3 mb-3">{v.t}</h3>
                 <p className="text-sm text-nile-clay/65 leading-relaxed">{v.b}</p>

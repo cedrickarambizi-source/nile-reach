@@ -166,7 +166,7 @@ function Pricing() {
           {tiers.map((t) => (
             <article
               key={t.name}
-              className={`relative rounded-3xl p-8 flex flex-col transition-all ${
+              className={`relative rounded-none p-8 flex flex-col transition-all ${
                 t.highlight
                   ? "bg-gradient-to-b from-nile-river/20 via-nile-deep to-nile-dark border border-nile-gold/60 shadow-[0_0_60px_-15px_rgba(0,217,255,0.55)]"
                   : "glass-layer hover:border-nile-gold/40"
@@ -232,7 +232,7 @@ function Pricing() {
             {whoWeHelp.map((industry) => (
               <div
                 key={industry}
-                className="glass-layer rounded-xl px-6 py-5 text-sm font-medium text-nile-clay/85 flex items-center gap-3"
+                className="glass-layer rounded-none px-6 py-5 text-sm font-medium text-nile-clay/85 flex items-center gap-3"
               >
                 <span className="size-1.5 rounded-full bg-nile-gold shrink-0" />
                 {industry}
@@ -258,7 +258,7 @@ function Pricing() {
       {/* CTA */}
       <section className="py-24 border-t border-white/5">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="glass-layer rounded-3xl p-12 md:p-16 text-center relative overflow-hidden">
+          <div className="glass-layer rounded-none p-12 md:p-16 text-center relative overflow-hidden">
             <div className="absolute -top-32 -right-32 size-96 bg-nile-river/30 rounded-full blur-[120px]" />
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl mb-4">
@@ -293,7 +293,7 @@ function Pricing() {
 function FaqRow({ q, a, defaultOpen }: { q: string; a: string; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(!!defaultOpen);
   return (
-    <div className="glass-layer rounded-xl overflow-hidden">
+    <div className="glass-layer rounded-none overflow-hidden">
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between text-left px-6 py-5 hover:bg-white/5 transition-colors"

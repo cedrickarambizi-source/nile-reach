@@ -24,24 +24,24 @@ type CtaVariant = "solid-dark" | "solid-light" | "outline-light";
 type CtaSize = "default" | "sm";
 
 const base =
-  "inline-flex items-center justify-center rounded-full font-medium transition-all " +
-  "active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
+  "inline-flex items-center justify-center font-semibold transition-all " +
+  "active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
   "disabled:opacity-50 disabled:pointer-events-none";
 
 const variantStyles: Record<CtaVariant, string> = {
-  // Dark pill on light surfaces — e.g. "Visit live website", "Live site"
-  "solid-dark": "bg-[#10201C] text-white hover:bg-[#175E52] focus-visible:ring-[#175E52]",
-  // White pill on dark sections — primary CTA on hero/footer
-  "solid-light":
-    "bg-white text-[#0C332C] hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(255,255,255,0.35)] focus-visible:ring-white",
-  // Transparent pill on dark sections — secondary CTA
-  "outline-light": "border border-white/25 text-white hover:border-white/60 focus-visible:ring-white/60",
+  // Red block on light surfaces — e.g. "Visit live website", "Live site"
+  "solid-dark": "bg-[#A6192E] text-white hover:bg-[#1A1A1A] focus-visible:ring-[#A6192E]",
+  // White block on red/dark sections — primary CTA
+  "solid-light": "bg-white text-[#A6192E] hover:bg-[#1A1A1A] hover:text-white focus-visible:ring-white",
+  // Outlined block on red/dark sections — secondary CTA
+  "outline-light": "border border-white/60 text-white hover:bg-white hover:text-[#A6192E] focus-visible:ring-white",
 };
 
 const sizeStyles: Record<CtaSize, string> = {
   default: "gap-2 px-7 py-3.5 text-sm",
   sm: "gap-1.5 px-3.5 py-1.5 text-[12px]",
 };
+
 
 function ctaClassName(variant: CtaVariant, size: CtaSize, className?: string) {
   return [base, variantStyles[variant], sizeStyles[size], className].filter(Boolean).join(" ");

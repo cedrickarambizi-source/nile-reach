@@ -14,12 +14,12 @@ const CanvasLazy = lazy(async () => {
       <group ref={g}>
         <mesh>
           <icosahedronGeometry args={[1, 1]} />
-          <meshStandardMaterial color="#175E52" roughness={0.25} metalness={0.6} emissive="#2E8677" emissiveIntensity={0.15} />
+          <meshStandardMaterial color="#A6192E" roughness={0.25} metalness={0.6} emissive="#C8102E" emissiveIntensity={0.15} />
         </mesh>
         {[1.6, 2.1, 2.6].map((r, i) => (
           <mesh key={i} rotation={[Math.PI / 2 + i * 0.3, i * 0.4, 0]}>
             <torusGeometry args={[r, 0.012, 8, 128]} />
-            <meshBasicMaterial color="#C99A46" transparent opacity={0.5 - i * 0.12} />
+            <meshBasicMaterial color="#FFFFFF" transparent opacity={0.5 - i * 0.12} />
           </mesh>
         ))}
       </group>
@@ -34,7 +34,7 @@ const CanvasLazy = lazy(async () => {
     return (
       <mesh ref={m}>
         <torusKnotGeometry args={[0.9, 0.28, 200, 32]} />
-        <meshStandardMaterial color="#2E8677" roughness={0.15} metalness={0.8} emissive="#175E52" emissiveIntensity={0.4} />
+        <meshStandardMaterial color="#C8102E" roughness={0.15} metalness={0.8} emissive="#A6192E" emissiveIntensity={0.4} />
       </mesh>
     );
   }
@@ -58,7 +58,7 @@ const CanvasLazy = lazy(async () => {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[positions, 3]} />
         </bufferGeometry>
-        <pointsMaterial size={0.035} color="#C99A46" transparent opacity={0.85} sizeAttenuation />
+        <pointsMaterial size={0.035} color="#FFFFFF" transparent opacity={0.85} sizeAttenuation />
       </points>
     );
   }
@@ -71,7 +71,7 @@ const CanvasLazy = lazy(async () => {
     return (
       <mesh ref={m}>
         <octahedronGeometry args={[1.2, 0]} />
-        <meshStandardMaterial color="#0A1F1A" roughness={0.1} metalness={0.95} emissive="#2E8677" emissiveIntensity={0.35} flatShading />
+        <meshStandardMaterial color="#7A1122" roughness={0.1} metalness={0.95} emissive="#C8102E" emissiveIntensity={0.35} flatShading />
       </mesh>
     );
   }
@@ -100,14 +100,14 @@ const CanvasLazy = lazy(async () => {
         {nodes.map((p, i) => (
           <mesh key={i} position={p}>
             <sphereGeometry args={[0.05, 12, 12]} />
-            <meshBasicMaterial color="#C99A46" />
+            <meshBasicMaterial color="#FFFFFF" />
           </mesh>
         ))}
         <lineSegments>
           <bufferGeometry>
             <bufferAttribute attach="attributes-position" args={[linePositions, 3]} />
           </bufferGeometry>
-          <lineBasicMaterial color="#2E8677" transparent opacity={0.35} />
+          <lineBasicMaterial color="#C8102E" transparent opacity={0.35} />
         </lineSegments>
       </group>
     );
@@ -128,7 +128,7 @@ const CanvasLazy = lazy(async () => {
     return (
       <mesh ref={m} rotation={[-Math.PI / 3, 0, 0]}>
         <planeGeometry args={[3.2, 3.2, 40, 40]} />
-        <meshStandardMaterial color="#175E52" wireframe emissive="#C99A46" emissiveIntensity={0.6} />
+        <meshStandardMaterial color="#A6192E" wireframe emissive="#FFFFFF" emissiveIntensity={0.6} />
       </mesh>
     );
   }
@@ -138,15 +138,15 @@ const CanvasLazy = lazy(async () => {
     return (
       <Canvas dpr={[1, 1.6]} camera={{ position: [0, 0, 4.2], fov: 45 }} frameloop={reduce ? "demand" : "always"} gl={{ antialias: true, alpha: true }}>
         <ambientLight intensity={0.6} />
-        <pointLight position={[3, 3, 3]} intensity={1.2} color="#C99A46" />
-        <pointLight position={[-3, -2, 2]} intensity={0.6} color="#2E8677" />
+        <pointLight position={[3, 3, 3]} intensity={1.2} color="#FFFFFF" />
+        <pointLight position={[-3, -2, 2]} intensity={0.6} color="#C8102E" />
         {variant === "orbit" && <Orbit />}
         {variant === "ribbon" && <Ribbon />}
         {variant === "particles" && <Particles />}
         {variant === "prism" && <Prism />}
         {variant === "constellation" && <Constellation />}
         {variant === "wave" && <Wave />}
-        <hemisphereLight args={["#C99A46", "#0A1F1A", 0.5]} />
+        <hemisphereLight args={["#FFFFFF", "#7A1122", 0.5]} />
       </Canvas>
     );
   };
@@ -154,7 +154,7 @@ const CanvasLazy = lazy(async () => {
 });
 
 const fallbackGradient = (
-  <div className="w-full h-full bg-gradient-to-br from-[#0A1F1A]/10 via-[#175E52]/10 to-[#2E8677]/10" />
+  <div className="w-full h-full bg-gradient-to-br from-[#7A1122]/10 via-[#A6192E]/10 to-[#C8102E]/10" />
 );
 
 /**

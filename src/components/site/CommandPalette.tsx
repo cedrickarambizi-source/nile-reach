@@ -62,9 +62,9 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
   return (
     <div className="fixed inset-0 z-[80] flex items-start justify-center px-4 pt-[14vh]" role="dialog" aria-modal="true" aria-label="Command palette">
       <button aria-label="Close" onClick={onClose} className="absolute inset-0 bg-[#08080C]/60 backdrop-blur-[6px] animate-[fade-in_.2s_ease-out]" />
-      <div className="palette-in relative w-full max-w-[640px] overflow-hidden rounded-[20px] border border-black/5 bg-[var(--nile-card)] shadow-[0_24px_80px_-24px_rgba(0,0,0,0.45)]">
+      <div className="palette-in relative w-full max-w-[640px] overflow-hidden rounded-none border border-black/5 bg-[var(--nile-card)] shadow-[0_24px_80px_-24px_rgba(0,0,0,0.45)]">
         <div className="flex items-center gap-3 border-b border-black/5 px-5 py-4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-[18px] text-[#5C6864]">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-[18px] text-[#5A5A5A]">
             <path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM20 20l-3.6-3.6" strokeLinecap="round" />
           </svg>
           <input
@@ -73,33 +73,33 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search pages, services, actions…"
             aria-label="Search Nile Reach"
-            className="w-full bg-transparent text-[15px] text-[#10201C] outline-none placeholder:text-[#5C6864]"
+            className="w-full bg-transparent text-[15px] text-[#1A1A1A] outline-none placeholder:text-[#5A5A5A]"
           />
-          <kbd className="rounded-[6px] border border-black/10 px-1.5 py-0.5 text-[10px] text-[#5C6864]">ESC</kbd>
+          <kbd className="rounded-[6px] border border-black/10 px-1.5 py-0.5 text-[10px] text-[#5A5A5A]">ESC</kbd>
         </div>
         <div className="max-h-[52vh] overflow-y-auto p-2">
           {results.length === 0 && (
-            <p className="px-4 py-8 text-center text-[13px] text-[#5C6864]">No matches. Try “SEO” or “pricing”.</p>
+            <p className="px-4 py-8 text-center text-[13px] text-[#5A5A5A]">No matches. Try “SEO” or “pricing”.</p>
           )}
           {results.map((r, i) => {
             const header = r.group !== lastGroup ? ((lastGroup = r.group), r.group) : null;
             return (
               <div key={`${r.group}-${r.label}`}>
                 {header && (
-                  <p className="px-3 pb-1 pt-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#5C6864]">{header}</p>
+                  <p className="px-3 pb-1 pt-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">{header}</p>
                 )}
                 <button
                   onMouseEnter={() => setIndex(i)}
                   onClick={() => { onClose(); navigate({ to: r.to }); }}
-                  className={`flex w-full items-center justify-between gap-4 rounded-[12px] px-3 py-2.5 text-left transition-colors duration-200 ${
+                  className={`flex w-full items-center justify-between gap-4 rounded-none px-3 py-2.5 text-left transition-colors duration-200 ${
                     i === index ? "bg-[color-mix(in_oklab,var(--nile-river)_10%,transparent)]" : ""
                   }`}
                 >
                   <span className="min-w-0">
-                    <span className="block truncate text-[14px] font-medium text-[#10201C]">{r.label}</span>
-                    <span className="block truncate text-[12.5px] text-[#5C6864]">{r.hint}</span>
+                    <span className="block truncate text-[14px] font-medium text-[#1A1A1A]">{r.label}</span>
+                    <span className="block truncate text-[12.5px] text-[#5A5A5A]">{r.hint}</span>
                   </span>
-                  <span aria-hidden className="text-[13px] text-[#5C6864]">↵</span>
+                  <span aria-hidden className="text-[13px] text-[#5A5A5A]">↵</span>
                 </button>
               </div>
             );
