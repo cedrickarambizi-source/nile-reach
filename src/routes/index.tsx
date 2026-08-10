@@ -84,36 +84,85 @@ function Home() {
   return (
     <>
       {/* ------------------------------------------------------------ HERO */}
-      <section className="on-dark relative overflow-hidden hero-silk text-white pt-40 pb-24 md:pt-48 md:pb-32">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <p className="mono-label text-[#C99A46] mb-8">
+      <section className="on-dark relative overflow-hidden hero-silk text-white pt-[140px] pb-14 md:pt-[176px] md:pb-16">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+          <p className="text-[11.5px] uppercase tracking-[0.16em] font-semibold text-white/70 mb-6">
             Nile Reach — Digital &amp; AI Transformation, Kigali
           </p>
-          <h1 className="text-white text-[42px] sm:text-6xl md:text-7xl lg:text-[86px] font-semibold leading-[1.05] tracking-[-0.022em] max-w-5xl text-balance">
+          <h1 className="text-white text-[46px] sm:text-6xl md:text-7xl lg:text-[88px] font-bold leading-[1.0] tracking-[-0.035em] max-w-5xl text-balance">
             Digital systems that carry your business further.
           </h1>
-          <p className="mt-9 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed font-light">
+          <p className="mt-8 font-serif text-lg md:text-2xl text-white/85 max-w-3xl leading-relaxed">
             We build the websites, automation, and growth infrastructure that take African companies
             from known clients to markets they haven't reached yet.
           </p>
-          <div className="mt-11 flex flex-wrap gap-3">
-            <Cta to="/contact" variant="solid-light">
-              Book a strategy consultation <span aria-hidden>→</span>
-            </Cta>
+          <div className="mt-9 flex flex-wrap items-center gap-8">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-3 text-[15px] font-semibold text-white border-b-2 border-white/50 pb-1 transition-colors hover:border-white"
+            >
+              Read More
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </Link>
             <a
               href="#process"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-medium text-white transition-colors duration-300 hover:border-white/60"
+              className="group inline-flex items-center gap-3 text-[15px] font-semibold text-white/85 border-b-2 border-transparent pb-1 transition-colors hover:border-white/60 hover:text-white"
             >
               See how we work
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
+        </div>
 
-          {/* River delta */}
-          <div className="mt-20 md:mt-24 overflow-x-auto">
-            <RiverDelta className="min-w-[680px] w-full max-w-4xl h-[240px] md:h-[300px] text-white/85" />
+        {/* Bottom tab strip — quick routes into the four core practices */}
+        <div className="relative z-10 mt-14 border-t border-white/25">
+          <div className="max-w-[1400px] mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/25">
+            {[
+              { to: "/services", label: "Explore our services" },
+              { to: "/industries", label: "See the industries we serve" },
+              { to: "/case-studies", label: "Read client results" },
+              { to: "/contact", label: "Book a consultation" },
+            ].map((tab) => (
+              <Link
+                key={tab.label}
+                to={tab.to}
+                className="group flex items-center justify-between gap-4 px-0 sm:px-6 py-5 text-[14px] font-medium text-white/85 transition-colors hover:text-white"
+              >
+                {tab.label}
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* --------------------------------------------- TEAM / CAPABILITY BAND */}
+      <section className="bg-white">
+        <div className="max-w-[1400px] mx-auto px-6 py-16 md:py-24 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] items-center">
+          <div>
+            <p className="mono-label text-nile mb-5">Built by engineers</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-ink leading-[1.06] tracking-[-0.025em] text-balance">
+              A team of developers, strategists and analysts — in Kigali.
+            </h2>
+            <p className="mt-6 font-serif text-lg text-stone leading-relaxed max-w-xl">
+              Every website, automation and dashboard we ship is built in-house by the same team that
+              runs the audit — so the strategy and the code never drift apart.
+            </p>
+            <div className="mt-8 overflow-x-auto">
+              <RiverDelta className="min-w-[560px] w-full max-w-2xl h-[200px] text-nile" />
+            </div>
+          </div>
+          <img
+            src={teamPhoto}
+            alt="Nile Reach developers reviewing code together in the Kigali studio"
+            width={1600}
+            height={1104}
+            loading="lazy"
+            className="w-full h-[420px] md:h-[560px] object-cover"
+          />
+        </div>
+      </section>
+
 
       {/* --------------------------------------------------- SECTOR CHIPS */}
       <section className="bg-paper border-b border-line">
