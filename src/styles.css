@@ -160,38 +160,38 @@ html.dark {
 @utility glass-layer {
   background: #FFFFFF;
   border: 1px solid var(--line);
-  box-shadow: 0 1px 2px rgba(16,32,28,0.03), 0 14px 40px -24px rgba(12,51,44,0.18);
-  border-radius: 16px;
+  box-shadow: none;
+  border-radius: 2px;
 }
 @utility text-balance { text-wrap: balance; }
 
-/* Mono label / eyebrow / tag system */
+/* Label / eyebrow / tag system — institutional, uppercase, tight */
 @utility eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--nile);
 }
 @utility mono-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 @utility mono-tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 2px;
   padding: 0.3rem 0.7rem;
   color: var(--nile);
-  background: rgba(23, 94, 82, 0.05);
+  background: rgba(166, 25, 46, 0.05);
 }
 @utility pull-quote {
   font-family: var(--font-serif);
@@ -201,34 +201,25 @@ html.dark {
 }
 
 @utility gradient-text {
-  background: linear-gradient(120deg, var(--nile-light) 0%, var(--gold) 100%);
+  background: linear-gradient(120deg, var(--nile) 0%, var(--nile-light) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Deep-water hero / dark block background */
+/* Institutional red hero band — flat with a faint diagonal chevron field */
 @utility hero-silk {
   background:
-    radial-gradient(900px 640px at 82% 18%, rgba(46,134,119,0.42), transparent 62%),
-    radial-gradient(820px 700px at 12% 88%, rgba(201,154,70,0.18), transparent 60%),
-    linear-gradient(140deg, #0A1F1A 0%, #0C332C 48%, #175E52 100%);
-  background-size: 180% 180%;
-  animation: silk-drift 26s ease-in-out infinite;
+    linear-gradient(115deg, rgba(255,255,255,0.05) 0 22%, transparent 22% 46%, rgba(0,0,0,0.06) 46% 60%, transparent 60%),
+    linear-gradient(180deg, #A6192E 0%, #8E1526 100%);
   &::before {
     content: "";
     position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 22% 28%, rgba(255,255,255,0.05), transparent 42%),
-      radial-gradient(circle at 78% 72%, rgba(255,255,255,0.03), transparent 42%);
-    mix-blend-mode: screen;
+    background: linear-gradient(100deg, rgba(0,0,0,0.10), transparent 55%);
     pointer-events: none;
   }
 }
-@keyframes silk-drift {
-  0%, 100% { background-position: 0% 50%, 100% 50%, 0% 0%; }
-  50% { background-position: 26% 60%, 72% 42%, 100% 100%; }
-}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-silk { animation: none; }
 }
