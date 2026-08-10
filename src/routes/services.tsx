@@ -42,7 +42,7 @@ function Services() {
           {serviceCategories.map((s, i) => (
             <article
               key={s.title}
-              className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center rounded-[28px] border border-black/8 bg-[#F2F2F2] p-8 md:p-12"
+              className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center rounded-none border border-black/8 bg-[#F2F2F2] p-8 md:p-12"
             >
               <div className={i % 2 === 1 ? "lg:order-2" : ""}>
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-4">{s.letter}</p>
@@ -78,7 +78,7 @@ function Services() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {process.map((step, i) => (
-              <div key={step.title} className="rounded-[24px] bg-white border border-black/8 p-8">
+              <div key={step.title} className="rounded-none bg-white border border-black/8 p-8">
                 <p className="text-[44px] font-semibold leading-none text-black/10 tracking-tight">0{i + 1}</p>
                 <h3 className="mt-5 text-xl font-semibold text-[#1A1A1A] tracking-tight">{step.title}</h3>
                 <p className="mt-3 text-[15px] text-[#5A5A5A] leading-relaxed">{step.body}</p>
@@ -86,7 +86,7 @@ function Services() {
             ))}
           </div>
 
-          <div className="mt-16 rounded-[28px] bg-white border border-black/8 p-10 md:p-12 flex flex-wrap gap-8 justify-between items-center">
+          <div className="mt-16 rounded-none bg-white border border-black/8 p-10 md:p-12 flex flex-wrap gap-8 justify-between items-center">
             <div className="max-w-xl">
               <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-3">Not sure where to start?</p>
               <h3 className="text-2xl md:text-3xl font-semibold text-[#1A1A1A] tracking-tight">

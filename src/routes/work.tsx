@@ -91,10 +91,10 @@ function Work() {
               <article
                 key={p.slug}
                 id={p.slug}
-                className="scroll-mt-28 grid md:grid-cols-2 gap-10 items-center bg-white rounded-[24px] p-6 md:p-10 border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.05)]"
+                className="scroll-mt-28 grid md:grid-cols-2 gap-10 items-center bg-white rounded-none p-6 md:p-10 border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.05)]"
               >
                 <div
-                  className={`relative aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-50 to-violet-50 ${
+                  className={`relative aspect-[16/10] rounded-none overflow-hidden bg-gradient-to-br from-indigo-50 to-violet-50 ${
                     i % 2 === 1 ? "md:order-2" : ""
                   }`}
                 >

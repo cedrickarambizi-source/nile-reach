@@ -52,7 +52,7 @@ function Careers() {
             ))}
           </div>
 
-          <div className="mt-20 glass-layer rounded-xl p-10">
+          <div className="mt-20 glass-layer rounded-none p-10">
             <p className="eyebrow mb-4">Don't see your role?</p>
             <h2 className="font-serif text-3xl mb-4">We're always meeting talent.</h2>
             <p className="text-nile-clay/60 mb-6 max-w-2xl">

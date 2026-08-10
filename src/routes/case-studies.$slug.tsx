@@ -65,7 +65,7 @@ function CaseStudyDetail() {
       <article className="bg-white py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
           {shot && (
-            <div className="mb-16 rounded-2xl overflow-hidden border border-black/8 print:hidden">
+            <div className="mb-16 rounded-none overflow-hidden border border-black/8 print:hidden">
               <img src={shot} alt={`${cs.name} website`} className="w-full h-auto" loading="lazy" />
             </div>
           )}
@@ -98,7 +98,7 @@ function CaseStudyDetail() {
             <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-4">The results</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {cs.results.map((r) => (
-                <div key={r.label} className="rounded-2xl border border-black/8 bg-[#F2F2F2] p-5 print:bg-white">
+                <div key={r.label} className="rounded-none border border-black/8 bg-[#F2F2F2] p-5 print:bg-white">
                   <p className="text-2xl font-semibold text-[#1A1A1A] tracking-tight">{r.value}</p>
                   <p className="mt-1 text-[13px] text-[#5A5A5A]">{r.label}</p>
                 </div>

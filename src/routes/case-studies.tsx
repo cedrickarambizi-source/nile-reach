@@ -46,7 +46,7 @@ function CaseStudies() {
                   key={cs.slug}
                   to="/case-studies/$slug"
                   params={{ slug: cs.slug }}
-                  className="group block rounded-[24px] border border-black/8 bg-[#F2F2F2] p-8 md:p-10 transition-all duration-300 hover:border-[#A6192E]/30 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)]"
+                  className="group block rounded-none border border-black/8 bg-[#F2F2F2] p-8 md:p-10 transition-all duration-300 hover:border-[#A6192E]/30 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)]"
                 >
                   <div className="flex items-center gap-2.5 mb-5">
                     {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}

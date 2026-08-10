@@ -50,7 +50,7 @@ function Industries() {
           {industries.map((ind, i) => (
             <article
               key={ind.name}
-              className="rounded-[24px] border border-black/8 bg-[#F2F2F2] p-9 transition-all duration-500 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
+              className="rounded-none border border-black/8 bg-[#F2F2F2] p-9 transition-all duration-500 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]"
               style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
             >
               <p className="text-[12px] tracking-[0.22em] text-[#A6192E] mb-5">0{i + 1}</p>

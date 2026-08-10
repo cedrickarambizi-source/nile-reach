@@ -39,7 +39,7 @@ function Insights() {
 
       <section className="bg-white py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <article className="rounded-[28px] border border-black/8 bg-[#F2F2F2] p-10 md:p-14 mb-6">
+          <article className="rounded-none border border-black/8 bg-[#F2F2F2] p-10 md:p-14 mb-6">
             <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-5">Featured · {lead.category}</p>
             <h2 className="text-3xl md:text-[46px] font-semibold tracking-tight text-[#1A1A1A] leading-[1.08] max-w-3xl text-balance">
               {lead.title}
@@ -52,7 +52,7 @@ function Insights() {
             {rest.map((a) => (
               <article
                 key={a.title}
-                className="rounded-[24px] border border-black/8 bg-white p-8 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)]"
+                className="rounded-none border border-black/8 bg-white p-8 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)]"
                 style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
               >
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-4">{a.category}</p>

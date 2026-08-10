@@ -66,7 +66,7 @@ function Contact() {
                 {BUSINESS.phone}
               </a>
             </div>
-            <div className="rounded-[24px] border border-black/8 bg-[#F2F2F2] p-7">
+            <div className="rounded-none border border-black/8 bg-[#F2F2F2] p-7">
               <p className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E] mb-3">Consultation slots</p>
               <p className="text-[15px] text-[#3F4B47] leading-relaxed">
                 Monday – Friday, 09:00 – 17:00 CAT. Sessions run 45 minutes, remotely or at our Kigali
@@ -85,7 +85,7 @@ function Contact() {
               e.preventDefault();
               setSent(true);
             }}
-            className="rounded-[28px] border border-black/8 bg-[#F2F2F2] p-8 md:p-10 space-y-6"
+            className="rounded-none border border-black/8 bg-[#F2F2F2] p-8 md:p-10 space-y-6"
           >
             {sent ? (
               <div className="py-16 text-center">
@@ -116,7 +116,7 @@ function Contact() {
                   <select
                     id="goal"
                     name="goal"
-                    className="w-full rounded-xl bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
+                    className="w-full rounded-none bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
                   >
                     {goals.map((g) => (
                       <option key={g}>{g}</option>
@@ -132,7 +132,7 @@ function Contact() {
                     <select
                       id="time"
                       name="time"
-                      className="w-full rounded-xl bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
+                      className="w-full rounded-none bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
                     >
                       {["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"].map((t) => (
                         <option key={t}>{t} CAT</option>
@@ -150,7 +150,7 @@ function Contact() {
                     rows={5}
                     required
                     maxLength={1000}
-                    className="w-full rounded-xl bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors resize-y"
+                    className="w-full rounded-none bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors resize-y"
                     placeholder="Tell us about your business, market and timeline."
                   />
                 </div>
@@ -195,7 +195,7 @@ function Field({
         required
         maxLength={120}
         placeholder={placeholder}
-        className="w-full rounded-xl bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
+        className="w-full rounded-none bg-white border border-black/10 p-4 text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#A6192E] transition-colors"
       />
     </div>
   );
