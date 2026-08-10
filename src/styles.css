@@ -5,47 +5,48 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ---- Nile Reach palette (2026 identity) ---- */
-  --paper: #FAFAF6;
-  --paper-dim: #F2F0E9;
-  --ink: #10201C;
-  --nile: #175E52;
-  --nile-deep-c: #0C332C;
-  --nile-light: #2E8677;
-  --gold: #C99A46;
-  --clay: #9C4A2E;
-  --stone: #5C6864;
-  --line: #DEDAD0;
+  /* ---- Nile Reach identity (institutional red, 2026) ---- */
+  --paper: #FFFFFF;
+  --paper-dim: #F2F2F2;
+  --ink: #1A1A1A;
+  --nile: #A6192E;            /* primary brand red */
+  --nile-deep-c: #7A1122;     /* deep red for dark blocks */
+  --nile-light: #C8102E;      /* bright red */
+  --gold: #C8102E;            /* accent = red (was gold) */
+  --clay: #1F3A5F;            /* rare navy tertiary */
+  --stone: #5A5A5A;
+  --line: #DCDCDC;
 
   /* Runtime surface + accent vars consumed by the token layer below. */
   --nile-dark: var(--paper);       /* page bg */
   --nile-deep: var(--paper-dim);   /* alt section bg */
-  --nile-river: #175E52;           /* accent primary */
-  --nile-gold: #C99A46;            /* accent secondary */
-  --nile-gold-soft: #2E8677;
+  --nile-river: #A6192E;           /* accent primary */
+  --nile-gold: #C8102E;            /* accent secondary */
+  --nile-gold-soft: #E4573D;
   --nile-clay: var(--ink);         /* primary text */
   --nile-clay-dim: var(--stone);   /* muted text */
   --nile-card: #FFFFFF;
   --nile-border: var(--line);
-  --nile-muted: rgba(16, 32, 28, 0.03);
-  --glow: #C99A46;
+  --nile-muted: rgba(26, 26, 26, 0.035);
+  --glow: #C8102E;
 }
 
 html.dark {
-  --nile-dark: #0A1714;
-  --nile-deep: #0C332C;
-  --nile-clay: #F1EFE7;
-  --nile-clay-dim: #9BAAA4;
-  --nile-card: #102420;
+  --nile-dark: #121212;
+  --nile-deep: #1C1C1C;
+  --nile-clay: #F3F1EF;
+  --nile-clay-dim: #A7A2A0;
+  --nile-card: #1A1A1A;
   --nile-border: rgba(255, 255, 255, 0.10);
   --nile-muted: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Fraunces", ui-serif, Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-mono: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
 
   /* Palette tokens */
   --color-paper: var(--paper);
