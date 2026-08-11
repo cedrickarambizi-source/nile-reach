@@ -452,24 +452,39 @@ function Home() {
                   <Link
                     to="/case-studies/$slug"
                     params={{ slug: cs.slug }}
-                    className="group flex h-full flex-col rounded-none border border-line bg-paper p-9 md:p-10 transition-all duration-500 hover:-translate-y-1 hover:border-nile/35"
+                    className="group flex h-full flex-col rounded-none border border-line bg-paper transition-all duration-500 hover:-translate-y-1 hover:border-nile/35"
                     style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
                   >
-                    <div className="flex items-center gap-2.5 mb-6">
-                      {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
-                      <span className="mono-label text-nile">{cs.industry}</span>
+                    <div className="card-photo h-44">
+                      <img
+                        src={SECTOR_IMAGES[i % SECTOR_IMAGES.length]}
+                        alt=""
+                        loading="lazy"
+                        width={1280}
+                        height={960}
+                        className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
+                      />
+                      <div className="relative z-10 flex h-full items-end p-6">
+                        <div className="flex items-center gap-2.5">
+                          {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+                          <span className="mono-label text-white">{cs.industry}</span>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-semibold text-ink leading-[1.15]">{cs.name}</h3>
-                    <p className="mt-4 text-[15px] text-[#3F4B47] leading-relaxed line-clamp-4 flex-1">
-                      {cs.startingPoint}
-                    </p>
-                    <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-ink group-hover:text-nile transition-colors">
-                      Read the case study
-                      <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
-                        →
+                    <div className="flex flex-1 flex-col p-9 md:p-10">
+                      <h3 className="text-2xl font-semibold text-ink leading-[1.15]">{cs.name}</h3>
+                      <p className="mt-4 text-[15px] text-[#3F4B47] leading-relaxed line-clamp-4 flex-1">
+                        {cs.startingPoint}
+                      </p>
+                      <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-ink group-hover:text-nile transition-colors">
+                        Read the case study
+                        <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+                          →
+                        </span>
                       </span>
-                    </span>
+                    </div>
                   </Link>
+
                 </Reveal>
               );
             })}
