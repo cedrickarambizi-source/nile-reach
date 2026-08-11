@@ -220,9 +220,48 @@ html.dark {
   }
 }
 
+/* Photographic hero: brand image + red duotone-ish overlay */
+@utility hero-photo {
+  position: relative;
+  isolation: isolate;
+  background-color: #8E1526;
+  background-size: cover;
+  background-position: center;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(100deg, rgba(122,17,34,0.94) 0%, rgba(166,25,46,0.80) 42%, rgba(166,25,46,0.32) 72%, rgba(166,25,46,0.10) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.10) 45%, rgba(0,0,0,0.42));
+    pointer-events: none;
+  }
+}
+
+/* Card media: same red treatment, tightened for small tiles */
+@utility card-photo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #8E1526;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(160deg, rgba(166,25,46,0.72) 0%, rgba(122,17,34,0.55) 55%, rgba(0,0,0,0.55) 100%);
+    transition: opacity .5s cubic-bezier(0.16,1,0.3,1);
+    pointer-events: none;
+  }
+  &:hover::after { opacity: 0.82; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-silk { animation: none; }
 }
+
 
 @utility whatsapp-float {
   position: fixed;
