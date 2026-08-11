@@ -404,7 +404,12 @@ function Home() {
       </section>
 
       {/* --------------------------------------------------------- PROCESS */}
-      <section id="process" className="on-dark relative overflow-hidden hero-silk text-white py-32 md:py-48">
+      <section
+        id="process"
+        className="on-dark relative overflow-hidden hero-photo text-white py-32 md:py-48"
+        style={{ backgroundImage: `url(${insightStrategy.url})` }}
+      >
+
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-20">
             <p className="mono-label text-[#FFFFFF] mb-6">How we work</p>
