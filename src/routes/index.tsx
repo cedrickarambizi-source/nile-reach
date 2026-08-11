@@ -580,14 +580,27 @@ function Home() {
                 <Link
                   to="/insights/$slug"
                   params={{ slug: a.slug }}
-                  className="group flex h-full flex-col rounded-none border border-line bg-paper-dim p-9 transition-all duration-500 hover:-translate-y-1 hover:bg-paper hover:border-nile/35"
+                  className="group flex h-full flex-col rounded-none border border-line bg-paper-dim transition-all duration-500 hover:-translate-y-1 hover:bg-paper hover:border-nile/35"
                   style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
                 >
-                  <p className="mono-label text-nile mb-5">{a.category}</p>
-                  <h3 className="text-xl font-semibold text-ink leading-snug">{a.title}</h3>
-                  <p className="mt-3.5 text-[14.5px] text-stone leading-relaxed flex-1">{a.excerpt}</p>
-                  <p className="mt-7 mono-label text-stone">{a.readTime}</p>
+                  <div className="card-photo h-36">
+                    <img
+                      src={SECTOR_IMAGES[(i + 4) % SECTOR_IMAGES.length]}
+                      alt=""
+                      loading="lazy"
+                      width={1280}
+                      height={960}
+                      className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
+                    />
+                    <p className="relative z-10 mono-label text-white p-6">{a.category}</p>
+                  </div>
+                  <div className="flex flex-1 flex-col p-9">
+                    <h3 className="text-xl font-semibold text-ink leading-snug">{a.title}</h3>
+                    <p className="mt-3.5 text-[14.5px] text-stone leading-relaxed flex-1">{a.excerpt}</p>
+                    <p className="mt-7 mono-label text-stone">{a.readTime}</p>
+                  </div>
                 </Link>
+
               </Reveal>
             ))}
           </div>
