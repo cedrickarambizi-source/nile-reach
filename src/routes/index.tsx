@@ -1,13 +1,21 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LogoStrip } from "@/components/site/LogoMarquee";
 import { Cta } from "@/components/site/Cta";
 import { Reveal } from "@/components/site/Reveal";
 import { RiverDelta } from "@/components/site/RiverDelta";
 import teamPhoto from "@/assets/team-developers.jpg";
+import heroSilk from "@/assets/hero-silk.jpg.asset.json";
+import sectorConstruction from "@/assets/sector-construction.jpg.asset.json";
+import sectorHealthcare from "@/assets/sector-healthcare.jpg.asset.json";
+import sectorRetail from "@/assets/sector-retail.jpg.asset.json";
+import sectorRealEstate from "@/assets/sector-realestate.jpg.asset.json";
+import insightStrategy from "@/assets/insight-strategy.jpg.asset.json";
 
 import { canonical } from "@/lib/seo";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 import { faviconUrl } from "@/lib/projects";
+
 import {
   problems,
   serviceCategories,
