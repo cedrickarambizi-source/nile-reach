@@ -88,35 +88,74 @@ const faqs = [
   },
 ];
 
+/** Bain-style hero slides — the bottom tab strip swaps the headline in place. */
+const HERO_SLIDES = [
+  {
+    tab: "Digital Transformation",
+    eyebrow: "Digital Transformation",
+    title: "Digital systems that carry your business further.",
+    to: "/services",
+    image: heroSilk.url,
+  },
+  {
+    tab: "Win with AI",
+    eyebrow: "AI & Automation",
+    title: "Win with AI, before your competitors learn how.",
+    to: "/services",
+    image: insightStrategy.url,
+  },
+  {
+    tab: "Engineering & Construction",
+    eyebrow: "Sector Focus 2026",
+    title: "The tender you lose online, you never see.",
+    to: "/industries",
+    image: sectorConstruction.url,
+  },
+  {
+    tab: "Retail & Hospitality",
+    eyebrow: "Growth Marketing",
+    title: "Findable, bookable, measurable — every single day.",
+    to: "/industries",
+    image: sectorRetail.url,
+  },
+] as const;
+
 function Home() {
   const caseStudies = getAllCaseStudies().slice(0, 2);
+  const [slide, setSlide] = useState(0);
+  const active = HERO_SLIDES[slide];
 
   return (
     <>
       {/* ------------------------------------------------------------ HERO */}
-      <section className="on-dark relative overflow-hidden hero-silk text-white pt-[140px] pb-14 md:pt-[176px] md:pb-16">
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6">
-          <p className="text-[11.5px] uppercase tracking-[0.16em] font-semibold text-white/70 mb-6">
-            Nile Reach — Digital &amp; AI Transformation, Kigali
+      <section
+        className="on-dark relative overflow-hidden hero-photo text-white pt-[140px] pb-0 md:pt-[176px] min-h-[88vh] flex flex-col justify-end transition-[background-image] duration-700"
+        style={{ backgroundImage: `url(${active.image})` }}
+      >
+        <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 pb-16 md:pb-24">
+          <p key={`e-${slide}`} className="text-[11.5px] uppercase tracking-[0.16em] font-semibold text-white/75 mb-6">
+            {active.eyebrow}
           </p>
-          <h1 className="text-white text-[46px] sm:text-6xl md:text-7xl lg:text-[88px] font-bold leading-[1.0] tracking-[-0.035em] max-w-5xl text-balance">
-            Digital systems that carry your business further.
+          <h1
+            key={`t-${slide}`}
+            className="text-white text-[46px] sm:text-6xl md:text-7xl lg:text-[84px] font-bold leading-[1.02] tracking-[-0.035em] max-w-4xl text-balance"
+          >
+            {active.title}
           </h1>
-          <p className="mt-8 font-serif text-lg md:text-2xl text-white/85 max-w-3xl leading-relaxed">
-            We build the websites, automation, and growth infrastructure that take African companies
-            from known clients to markets they haven't reached yet.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-8">
+          <div className="mt-10 flex flex-wrap items-center gap-8">
             <Link
-              to="/contact"
-              className="group inline-flex items-center gap-3 text-[15px] font-semibold text-white border-b-2 border-white/50 pb-1 transition-colors hover:border-white"
+              to={active.to}
+              className="group inline-flex items-center gap-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
             >
               Read More
-              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span
+                aria-hidden
+                className="block h-px w-10 bg-white transition-all duration-300 group-hover:w-16"
+              />
             </Link>
             <a
               href="#process"
-              className="group inline-flex items-center gap-3 text-[15px] font-semibold text-white/85 border-b-2 border-transparent pb-1 transition-colors hover:border-white/60 hover:text-white"
+              className="group inline-flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white/80 hover:text-white transition-colors"
             >
               See how we work
               <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -124,27 +163,34 @@ function Home() {
           </div>
         </div>
 
-        {/* Bottom tab strip — quick routes into the four core practices */}
-        <div className="relative z-10 mt-14 border-t border-white/25">
-          <div className="max-w-[1400px] mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/25">
-            {[
-              { to: "/services", label: "Explore our services" },
-              { to: "/industries", label: "See the industries we serve" },
-              { to: "/case-studies", label: "Read client results" },
-              { to: "/contact", label: "Book a consultation" },
-            ].map((tab) => (
-              <Link
-                key={tab.label}
-                to={tab.to}
-                className="group flex items-center justify-between gap-4 px-0 sm:px-6 py-5 text-[14px] font-medium text-white/85 transition-colors hover:text-white"
+        {/* Bottom tab strip — swaps the hero in place, Bain-style */}
+        <div className="relative z-10 border-t border-white/20 bg-black/25 backdrop-blur-[2px]">
+          <div className="max-w-[1400px] mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4">
+            {HERO_SLIDES.map((s, i) => (
+              <button
+                key={s.tab}
+                type="button"
+                onMouseEnter={() => setSlide(i)}
+                onFocus={() => setSlide(i)}
+                onClick={() => setSlide(i)}
+                aria-current={i === slide}
+                className={`relative text-left py-6 pr-6 text-[14px] font-semibold transition-colors ${
+                  i === slide ? "text-white" : "text-white/60 hover:text-white"
+                }`}
               >
-                {tab.label}
-                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </Link>
+                <span
+                  aria-hidden
+                  className={`absolute -top-px left-0 h-[3px] w-16 bg-white transition-opacity duration-300 ${
+                    i === slide ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+                {s.tab}
+              </button>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* --------------------------------------------- TEAM / CAPABILITY BAND */}
       <section className="bg-white">
