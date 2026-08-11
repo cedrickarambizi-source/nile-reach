@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
+import heroSilk from "@/assets/hero-silk.jpg.asset.json";
 
 /**
- * Institutional page masthead: flat red band, small uppercase eyebrow,
- * heavy Poppins headline, serif standfirst on the right.
+ * Institutional page masthead: branded silk photograph under the shared
+ * red overlay treatment, small uppercase eyebrow, heavy Poppins headline,
+ * serif standfirst on the right.
  */
 export function PageHeader({
   eyebrow,
@@ -18,7 +20,11 @@ export function PageHeader({
   scene?: string;
 }) {
   return (
-    <section className="on-dark relative overflow-hidden hero-silk text-white pt-[132px] pb-16 md:pt-[168px] md:pb-20 print:bg-white print:text-black print:pt-8 print:pb-6">
+    <section
+      className="on-dark relative overflow-hidden hero-photo text-white pt-[132px] pb-16 md:pt-[168px] md:pb-20 print:bg-white print:text-black print:pt-8 print:pb-6"
+      style={{ backgroundImage: `url(${heroSilk.url})` }}
+    >
+
       <div className="relative z-10 max-w-[1400px] mx-auto px-6">
         <p className="text-[11.5px] uppercase tracking-[0.16em] font-semibold text-white/70 mb-5 print:text-[#A6192E]">
           {eyebrow}
