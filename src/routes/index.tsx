@@ -52,6 +52,17 @@ export const Route = createFileRoute("/")({
 /** Mono category tags for the challenges — these are categories, not a sequence. */
 const PROBLEM_TAGS = ["Visibility", "Pipeline", "Operations", "Decisions"];
 
+/** Branded sector photography, cycled across the industry cards. */
+const SECTOR_IMAGES = [
+  sectorConstruction.url,
+  sectorRealEstate.url,
+  sectorHealthcare.url,
+  sectorRetail.url,
+  insightStrategy.url,
+  heroSilk.url,
+];
+
+
 const SECTOR_CHIPS = [
   "Construction & Engineering",
   "Real Estate",
