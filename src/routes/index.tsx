@@ -356,26 +356,39 @@ function Home() {
               Industries we transform.
             </h2>
           </Reveal>
-          <div className="border-t border-line">
-            {industries.map((ind) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-line">
+            {industries.map((ind, i) => (
               <Link
                 key={ind.name}
                 to="/industries"
-                className="group grid md:grid-cols-[1fr_1.3fr_40px] items-start gap-8 py-10 border-b border-line transition-colors duration-300 hover:bg-paper-dim"
+                className="group card-photo min-h-[300px] flex flex-col justify-end p-8 md:p-10 text-white"
               >
-                <h3 className="text-2xl md:text-[30px] font-semibold text-ink group-hover:text-nile transition-colors leading-[1.12]">
-                  {ind.name}
-                </h3>
-                <p className="text-[15.5px] text-stone leading-relaxed max-w-xl">{ind.body}</p>
-                <span
-                  aria-hidden
-                  className="hidden md:block text-ink pt-1.5 transition-transform duration-300 group-hover:translate-x-1.5"
-                >
-                  →
-                </span>
+                <img
+                  src={SECTOR_IMAGES[i % SECTOR_IMAGES.length]}
+                  alt=""
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                  className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
+                  style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+                />
+                <div className="relative z-10">
+                  <h3 className="text-[26px] md:text-[30px] font-semibold leading-[1.12] text-white">
+                    {ind.name}
+                  </h3>
+                  <p className="mt-4 text-[15px] text-white/85 leading-relaxed line-clamp-3">{ind.body}</p>
+                  <span className="mt-7 inline-flex items-center gap-3 text-[11.5px] font-bold uppercase tracking-[0.18em] text-white">
+                    Explore
+                    <span
+                      aria-hidden
+                      className="block h-px w-8 bg-white transition-all duration-300 group-hover:w-14"
+                    />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
+
         </div>
       </section>
 
