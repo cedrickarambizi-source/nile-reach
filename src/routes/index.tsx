@@ -6,11 +6,14 @@ import { Reveal } from "@/components/site/Reveal";
 import { RiverDelta } from "@/components/site/RiverDelta";
 import teamPhoto from "@/assets/team-developers.jpg";
 import heroSilk from "@/assets/hero-silk.jpg.asset.json";
+import heroSilkRed from "@/assets/hero-silk-red.jpg.asset.json";
+import heroAiFlow from "@/assets/hero-ai-flow.jpg.asset.json";
+import heroArchitecture from "@/assets/hero-architecture.jpg.asset.json";
+import heroDelta from "@/assets/hero-delta.jpg.asset.json";
 import sectorConstruction from "@/assets/sector-construction.jpg.asset.json";
 import sectorHealthcare from "@/assets/sector-healthcare.jpg.asset.json";
 import sectorRetail from "@/assets/sector-retail.jpg.asset.json";
 import sectorRealEstate from "@/assets/sector-realestate.jpg.asset.json";
-import insightStrategy from "@/assets/insight-strategy.jpg.asset.json";
 
 import { canonical } from "@/lib/seo";
 import { getAllCaseStudies } from "@/lib/caseStudies";
@@ -58,7 +61,7 @@ const SECTOR_IMAGES = [
   sectorRealEstate.url,
   sectorHealthcare.url,
   sectorRetail.url,
-  insightStrategy.url,
+  heroAiFlow.url,
   heroSilk.url,
 ];
 
@@ -106,28 +109,28 @@ const HERO_SLIDES = [
     eyebrow: "Digital Transformation",
     title: "Digital systems that carry your business further.",
     to: "/services",
-    image: heroSilk.url,
+    image: heroSilkRed.url,
   },
   {
     tab: "Win with AI",
     eyebrow: "AI & Automation",
     title: "Win with AI, before your competitors learn how.",
     to: "/services",
-    image: insightStrategy.url,
+    image: heroAiFlow.url,
   },
   {
     tab: "Engineering & Construction",
     eyebrow: "Sector Focus 2026",
     title: "The tender you lose online, you never see.",
     to: "/industries",
-    image: sectorConstruction.url,
+    image: heroArchitecture.url,
   },
   {
     tab: "Retail & Hospitality",
     eyebrow: "Growth Marketing",
     title: "Findable, bookable, measurable — every single day.",
     to: "/industries",
-    image: sectorRetail.url,
+    image: heroDelta.url,
   },
 ] as const;
 
@@ -407,7 +410,7 @@ function Home() {
       <section
         id="process"
         className="on-dark relative overflow-hidden hero-photo text-white py-32 md:py-48"
-        style={{ backgroundImage: `url(${insightStrategy.url})` }}
+        style={{ backgroundImage: `url(${heroSilkRed.url})` }}
       >
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
