@@ -14,7 +14,6 @@ import sectorConstruction from "@/assets/sector-construction.jpg.asset.json";
 import sectorHealthcare from "@/assets/sector-healthcare.jpg.asset.json";
 import sectorRetail from "@/assets/sector-retail.jpg.asset.json";
 import sectorRealEstate from "@/assets/sector-realestate.jpg.asset.json";
-import insightStrategy from "@/assets/insight-strategy.jpg.asset.json";
 
 import { canonical } from "@/lib/seo";
 import { getAllCaseStudies } from "@/lib/caseStudies";
@@ -62,7 +61,7 @@ const SECTOR_IMAGES = [
   sectorRealEstate.url,
   sectorHealthcare.url,
   sectorRetail.url,
-  insightStrategy.url,
+  heroAiFlow.url,
   heroSilk.url,
 ];
 
@@ -411,7 +410,7 @@ function Home() {
       <section
         id="process"
         className="on-dark relative overflow-hidden hero-photo text-white py-32 md:py-48"
-        style={{ backgroundImage: `url(${insightStrategy.url})` }}
+        style={{ backgroundImage: `url(${heroSilkRed.url})` }}
       >
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
