@@ -110,28 +110,28 @@ const HERO_SLIDES = [
     eyebrow: "Digital Transformation",
     title: "Digital systems that carry your business further.",
     to: "/services",
-    image: heroSilk.url,
+    image: heroSilkRed.url,
   },
   {
     tab: "Win with AI",
     eyebrow: "AI & Automation",
     title: "Win with AI, before your competitors learn how.",
     to: "/services",
-    image: insightStrategy.url,
+    image: heroAiFlow.url,
   },
   {
     tab: "Engineering & Construction",
     eyebrow: "Sector Focus 2026",
     title: "The tender you lose online, you never see.",
     to: "/industries",
-    image: sectorConstruction.url,
+    image: heroArchitecture.url,
   },
   {
     tab: "Retail & Hospitality",
     eyebrow: "Growth Marketing",
     title: "Findable, bookable, measurable — every single day.",
     to: "/industries",
-    image: sectorRetail.url,
+    image: heroDelta.url,
   },
 ] as const;
 
