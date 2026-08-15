@@ -17,7 +17,7 @@ import sectorRealEstate from "@/assets/sector-realestate.jpg.asset.json";
 
 import { canonical } from "@/lib/seo";
 import { getAllCaseStudies } from "@/lib/caseStudies";
-import { faviconUrl } from "@/lib/projects";
+import { SiteFavicon } from "@/components/site/RemoteImage";
 
 import {
   problems,
@@ -454,7 +454,6 @@ function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {caseStudies.map((cs, i) => {
-              const favicon = faviconUrl(cs.domain);
               return (
                 <Reveal key={cs.slug} delay={i * 80}>
                   <Link
@@ -474,7 +473,7 @@ function Home() {
                       />
                       <div className="relative z-10 flex h-full items-end p-6">
                         <div className="flex items-center gap-2.5">
-                          {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+                          <SiteFavicon domain={cs.domain} name={cs.name} />
                           <span className="mono-label text-white">{cs.industry}</span>
                         </div>
                       </div>
