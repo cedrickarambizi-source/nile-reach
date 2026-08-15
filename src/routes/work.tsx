@@ -85,43 +85,24 @@ function Work() {
       <section className="bg-[#F2F2F2] py-24">
         <div className="max-w-6xl mx-auto px-6 space-y-16">
           {projects.map((p, i) => {
-            const shot = screenshotUrl(p.domain);
-            const favicon = faviconUrl(p.domain);
             return (
               <article
                 key={p.slug}
                 id={p.slug}
                 className="scroll-mt-28 grid md:grid-cols-2 gap-10 items-center bg-white rounded-none p-6 md:p-10 border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.05)]"
               >
-                <div
-                  className={`relative aspect-[16/10] rounded-none overflow-hidden bg-gradient-to-br from-indigo-50 to-violet-50 ${
-                    i % 2 === 1 ? "md:order-2" : ""
-                  }`}
-                >
-                  {shot ? (
-                    <img
-                      src={shot}
-                      alt={`${p.name} — ${p.industry} website by Nile Reach`}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover object-top"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 grid place-items-center">
-                      <div className="text-center px-6">
-                        <div className="text-5xl font-semibold tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                          {p.name}
-                        </div>
-                        <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-[#5A5A5A]">Case study</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                <SiteShot
+                  domain={p.domain}
+                  name={p.name}
+                  className={`aspect-[16/10] rounded-none ${i % 2 === 1 ? "md:order-2" : ""}`}
+                />
 
                 <div>
                   <div className="flex items-center gap-2.5 mb-4">
-                    {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+                    <SiteFavicon domain={p.domain} name={p.name} />
                     <span className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E]">{p.badge}</span>
                   </div>
+
                   <h3 className="text-3xl md:text-4xl font-semibold text-[#1A1A1A] tracking-tight leading-tight">
                     {p.name}
                   </h3>
