@@ -27,12 +27,12 @@ export function LogoStrip() {
                 className="flex items-center gap-3 opacity-75 hover:opacity-100 transition-opacity duration-300"
                 title={p.name}
               >
-                <img
-                  src={faviconUrl(p.domain)!}
-                  alt={`${p.name} logo`}
-                  loading="lazy"
+                <SiteFavicon
+                  domain={p.domain}
+                  name={p.name}
                   className="size-7 rounded-md"
                 />
+
                 <span className="text-[15px] font-medium text-ink whitespace-nowrap tracking-[-0.01em]">
                   {p.name}
                 </span>
