@@ -63,14 +63,15 @@ function CaseStudyDetail() {
 
       <article className="bg-white py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
-          {shot && (
+          {cs.domain && (
             <div className="mb-16 rounded-none overflow-hidden border border-black/8 print:hidden">
-              <img src={shot} alt={`${cs.name} website`} className="w-full h-auto" loading="lazy" />
+              <SiteShot domain={cs.domain} name={cs.name} className="aspect-[16/10]" />
             </div>
           )}
 
           <div className="flex items-center gap-2.5 mb-10 print:hidden">
-            {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+            <SiteFavicon domain={cs.domain} name={cs.name} />
+
             <span className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E]">{cs.badge}</span>
           </div>
 
