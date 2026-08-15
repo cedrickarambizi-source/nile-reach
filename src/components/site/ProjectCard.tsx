@@ -1,43 +1,28 @@
 import { Link } from "@tanstack/react-router";
-import { type Project, screenshotUrl, faviconUrl } from "@/lib/projects";
+import { type Project } from "@/lib/projects";
 import { Cta, ExternalLinkIcon } from "./Cta";
+import { SiteShot, SiteFavicon } from "./RemoteImage";
 
 export function ProjectCard({ project }: { project: Project }) {
-  const shot = screenshotUrl(project.domain);
-  const favicon = faviconUrl(project.domain);
-
   return (
     <article
       className="group relative flex flex-col bg-white rounded-none border border-black/5 overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_50px_rgba(15,15,45,0.14)] hover:-translate-y-1.5 transition-all duration-500"
       style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
     >
       {/* Preview */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-violet-50">
-        {shot ? (
-          <img
-            src={shot}
-            alt={`${project.name} website preview`}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[900ms] group-hover:scale-[1.04]"
-            style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
-          />
-        ) : (
-          <div className="absolute inset-0 grid place-items-center">
-            <div className="text-center">
-              <div className="text-4xl font-semibold tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                {project.name.split(" ")[0]}
-              </div>
-              <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-[#5A5A5A]">Case study</p>
-            </div>
-          </div>
-        )}
+      <div className="relative">
+        <SiteShot
+          domain={project.domain}
+          name={project.name}
+          className="aspect-[16/10]"
+          imgClassName="transition-transform duration-[900ms] group-hover:scale-[1.04]"
+        />
         <div className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur px-2.5 py-1 text-[11px] font-medium text-[#1A1A1A] border border-black/5">
-          {favicon && (
-            <img src={favicon} alt="" className="size-3.5 rounded-sm" />
-          )}
+          <SiteFavicon domain={project.domain} className="size-3.5 rounded-sm" />
           {project.badge}
         </div>
       </div>
+
 
       {/* Body */}
       <div className="flex flex-col flex-1 p-6">
