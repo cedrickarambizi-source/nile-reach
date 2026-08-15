@@ -393,3 +393,20 @@ html.dark {
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 @utility palette-in { animation: palette-in .28s cubic-bezier(0.16,1,0.3,1) both; }
+
+@keyframes shimmer-sweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+@utility skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: #EFEFEF;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.85), transparent);
+    animation: shimmer-sweep 1.4s infinite;
+  }
+}
