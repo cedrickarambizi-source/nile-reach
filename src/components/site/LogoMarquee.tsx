@@ -1,4 +1,5 @@
-import { projects, faviconUrl } from "@/lib/projects";
+import { projects } from "@/lib/projects";
+import { SiteFavicon } from "./RemoteImage";
 
 /** Client logo strip — real clients only, listed once (no Nile Reach, no duplicates). */
 export function LogoStrip() {
