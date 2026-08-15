@@ -43,9 +43,8 @@ export const Route = createFileRoute("/case-studies/$slug")({
 
 function CaseStudyDetail() {
   const cs = Route.useLoaderData() as FullCaseStudy;
-  const shot = screenshotUrl(cs.domain);
-  const favicon = faviconUrl(cs.domain);
   const all = getAllCaseStudies();
+
   const idx = all.findIndex((c) => c.slug === cs.slug);
   const next = all[(idx + 1) % all.length];
 
