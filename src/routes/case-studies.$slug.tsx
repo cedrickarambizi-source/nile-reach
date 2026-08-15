@@ -3,7 +3,7 @@ import { PageHeader } from "../components/site/PageHeader";
 import { Cta, ExternalLinkIcon } from "../components/site/Cta";
 import { DownloadPdfButton } from "../components/site/DownloadPdfButton";
 import { getCaseStudy, getAllCaseStudies, type FullCaseStudy } from "@/lib/caseStudies";
-import { screenshotUrl, faviconUrl } from "@/lib/projects";
+import { SiteShot, SiteFavicon } from "@/components/site/RemoteImage";
 import { canonical, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/case-studies/$slug")({
