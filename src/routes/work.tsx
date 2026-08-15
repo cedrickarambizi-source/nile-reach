@@ -3,7 +3,8 @@ import { PageHeader } from "../components/site/PageHeader";
 import { ProjectCard } from "../components/site/ProjectCard";
 import { LogoMarquee } from "../components/site/LogoMarquee";
 import { Cta, ExternalLinkIcon } from "../components/site/Cta";
-import { projects, screenshotUrl, faviconUrl } from "@/lib/projects";
+import { projects } from "@/lib/projects";
+import { SiteShot, SiteFavicon } from "@/components/site/RemoteImage";
 import { canonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/work")({
