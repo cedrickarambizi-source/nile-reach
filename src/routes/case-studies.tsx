@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "../components/site/PageHeader";
 import { getAllCaseStudies } from "@/lib/caseStudies";
-import { faviconUrl } from "@/lib/projects";
+import { SiteFavicon } from "@/components/site/RemoteImage";
 import { canonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/case-studies")({
@@ -40,7 +40,6 @@ function CaseStudies() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-6">
             {caseStudies.map((cs) => {
-              const favicon = faviconUrl(cs.domain);
               return (
                 <Link
                   key={cs.slug}
@@ -49,7 +48,7 @@ function CaseStudies() {
                   className="group block rounded-none border border-black/8 bg-[#F2F2F2] p-8 md:p-10 transition-all duration-300 hover:border-[#A6192E]/30 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)]"
                 >
                   <div className="flex items-center gap-2.5 mb-5">
-                    {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+                    <SiteFavicon domain={cs.domain} name={cs.name} />
                     <span className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E]">{cs.industry}</span>
                   </div>
                   <h2 className="text-2xl md:text-3xl font-semibold text-[#1A1A1A] tracking-tight">{cs.name}</h2>

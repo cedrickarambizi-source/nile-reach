@@ -3,7 +3,7 @@ import { PageHeader } from "../components/site/PageHeader";
 import { Cta, ExternalLinkIcon } from "../components/site/Cta";
 import { DownloadPdfButton } from "../components/site/DownloadPdfButton";
 import { getCaseStudy, getAllCaseStudies, type FullCaseStudy } from "@/lib/caseStudies";
-import { screenshotUrl, faviconUrl } from "@/lib/projects";
+import { SiteShot, SiteFavicon } from "@/components/site/RemoteImage";
 import { canonical, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/case-studies/$slug")({
@@ -43,9 +43,8 @@ export const Route = createFileRoute("/case-studies/$slug")({
 
 function CaseStudyDetail() {
   const cs = Route.useLoaderData() as FullCaseStudy;
-  const shot = screenshotUrl(cs.domain);
-  const favicon = faviconUrl(cs.domain);
   const all = getAllCaseStudies();
+
   const idx = all.findIndex((c) => c.slug === cs.slug);
   const next = all[(idx + 1) % all.length];
 
@@ -64,14 +63,15 @@ function CaseStudyDetail() {
 
       <article className="bg-white py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
-          {shot && (
+          {cs.domain && (
             <div className="mb-16 rounded-none overflow-hidden border border-black/8 print:hidden">
-              <img src={shot} alt={`${cs.name} website`} className="w-full h-auto" loading="lazy" />
+              <SiteShot domain={cs.domain} name={cs.name} className="aspect-[16/10]" />
             </div>
           )}
 
           <div className="flex items-center gap-2.5 mb-10 print:hidden">
-            {favicon && <img src={favicon} alt="" className="size-5 rounded-sm" />}
+            <SiteFavicon domain={cs.domain} name={cs.name} />
+
             <span className="text-[11px] uppercase tracking-[0.22em] text-[#A6192E]">{cs.badge}</span>
           </div>
 

@@ -107,12 +107,34 @@ export const projects: Project[] = [
   },
 ];
 
+/**
+ * Live screenshot of a client website.
+ *
+ * Microlink renders the real page and returns a finished PNG. thum.io (the
+ * previous source) answers instantly with an animated "still rendering"
+ * placeholder GIF, which is why the previews looked broken/blank.
+ */
 export function screenshotUrl(domain?: string) {
   if (!domain) return null;
-  return `https://image.thum.io/get/width/1200/crop/800/https://${domain}`;
+  return `https://api.microlink.io/?url=${encodeURIComponent(
+    `https://${domain}`,
+  )}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800`;
+}
+
+/** Secondary source used if the primary screenshot fails to load. */
+export function screenshotFallbackUrl(domain?: string) {
+  if (!domain) return null;
+  return `https://image.thum.io/get/width/1200/crop/800/noanimate/https://${domain}`;
 }
 
 export function faviconUrl(domain?: string) {
   if (!domain) return null;
   return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 }
+
+/** Secondary favicon source (DuckDuckGo) if Google's icon service fails. */
+export function faviconFallbackUrl(domain?: string) {
+  if (!domain) return null;
+  return `https://icons.duckduckgo.com/ip3/${domain}.ico`;
+}
+
