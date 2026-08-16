@@ -143,43 +143,45 @@ function Home() {
     <>
       {/* ------------------------------------------------------------ HERO */}
       <section
-        className="on-dark relative overflow-hidden hero-photo text-white pt-[140px] pb-0 md:pt-[176px] min-h-[88vh] flex flex-col justify-end transition-[background-image] duration-700"
+        className="on-dark relative overflow-hidden hero-cinematic text-white pt-[160px] pb-0 md:pt-[200px] min-h-[100svh] flex flex-col justify-end transition-[background-image] duration-1000"
         style={{ backgroundImage: `url(${active.image})` }}
       >
-        <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 pb-16 md:pb-24">
-          <p key={`e-${slide}`} className="text-[11.5px] uppercase tracking-[0.16em] font-semibold text-white/75 mb-6">
-            {active.eyebrow}
+        <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-10 pb-16 md:pb-24">
+          <p
+            key={`e-${slide}`}
+            className="text-[11px] uppercase tracking-[0.34em] font-medium text-white/80 mb-8"
+          >
+            {active.eyebrow} · Kigali · Rwanda
           </p>
           <h1
             key={`t-${slide}`}
-            className="text-white text-[46px] sm:text-6xl md:text-7xl lg:text-[84px] font-bold leading-[1.02] tracking-[-0.035em] max-w-4xl text-balance"
+            className="font-serif font-normal text-white text-[42px] sm:text-6xl md:text-7xl lg:text-[86px] leading-[1.04] tracking-[-0.015em] max-w-4xl text-balance"
           >
             {active.title}
           </h1>
-          <div className="mt-10 flex flex-wrap items-center gap-8">
+          <p className="mt-8 max-w-xl text-[16px] md:text-[17px] leading-relaxed text-white/80">
+            Digital transformation, AI automation and growth infrastructure for companies
+            across Rwanda and East Africa.
+          </p>
+          <div className="mt-12 flex flex-wrap items-center gap-4">
             <Link
               to={active.to}
-              className="group inline-flex items-center gap-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+              className="inline-flex items-center justify-center px-9 h-[54px] bg-white/95 text-ink text-[12px] font-medium uppercase tracking-[0.22em] transition-colors hover:bg-nile hover:text-white"
             >
-              Read More
-              <span
-                aria-hidden
-                className="block h-px w-10 bg-white transition-all duration-300 group-hover:w-16"
-              />
+              Explore Services
             </Link>
-            <a
-              href="#process"
-              className="group inline-flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.18em] text-white/80 hover:text-white transition-colors"
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center px-9 h-[54px] border border-white/70 text-white text-[12px] font-medium uppercase tracking-[0.22em] transition-colors hover:bg-white hover:text-ink"
             >
-              See how we work
-              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
+              Enquire Now
+            </Link>
           </div>
         </div>
 
-        {/* Bottom tab strip — swaps the hero in place, Bain-style */}
-        <div className="relative z-10 border-t border-white/20 bg-black/25 backdrop-blur-[2px]">
-          <div className="max-w-[1400px] mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4">
+        {/* Bottom tab strip — swaps the hero in place */}
+        <div className="relative z-10 border-t border-white/15 bg-black/25 backdrop-blur-[3px]">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 grid sm:grid-cols-2 lg:grid-cols-4">
             {HERO_SLIDES.map((s, i) => (
               <button
                 key={s.tab}
@@ -188,13 +190,13 @@ function Home() {
                 onFocus={() => setSlide(i)}
                 onClick={() => setSlide(i)}
                 aria-current={i === slide}
-                className={`relative text-left py-6 pr-6 text-[14px] font-semibold transition-colors ${
-                  i === slide ? "text-white" : "text-white/60 hover:text-white"
+                className={`relative text-left py-6 pr-6 text-[11px] uppercase tracking-[0.2em] font-medium transition-colors ${
+                  i === slide ? "text-white" : "text-white/55 hover:text-white"
                 }`}
               >
                 <span
                   aria-hidden
-                  className={`absolute -top-px left-0 h-[3px] w-16 bg-white transition-opacity duration-300 ${
+                  className={`absolute -top-px left-0 h-[2px] w-16 bg-white transition-opacity duration-300 ${
                     i === slide ? "opacity-100" : "opacity-0"
                   }`}
                 />
