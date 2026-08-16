@@ -410,3 +410,22 @@ html.dark {
     animation: shimmer-sweep 1.4s infinite;
   }
 }
+
+/* Cinematic full-bleed hero: photograph reads first, brand red only as a whisper */
+@utility hero-cinematic {
+  position: relative;
+  isolation: isolate;
+  background-color: #14100E;
+  background-size: cover;
+  background-position: center;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(10,8,8,0.62) 0%, rgba(10,8,8,0.12) 32%, rgba(10,8,8,0.30) 62%, rgba(10,8,8,0.82) 100%),
+      linear-gradient(100deg, rgba(122,17,34,0.34) 0%, rgba(122,17,34,0.10) 55%, transparent 85%);
+    pointer-events: none;
+  }
+}

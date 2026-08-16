@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { NileReachMark } from "./NileReachLogo";
 import { CommandPalette } from "./CommandPalette";
@@ -36,6 +36,17 @@ const IconSearch = (
 export function SiteNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // On the home page the nav floats over the cinematic hero until the user scrolls.
+  const overlay = pathname === "/" && !scrolled && !mobileOpen;
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -50,14 +61,20 @@ export function SiteNav() {
   }, []);
 
   const linkBase =
-    "relative py-2 text-[14.5px] font-medium text-[#1A1A1A] transition-colors hover:text-[#A6192E] " +
-    "after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-[3px] after:bg-[#A6192E] after:scale-x-0 " +
+    `relative py-2 text-[11.5px] uppercase tracking-[0.18em] font-medium transition-colors ${
+      overlay ? "text-white hover:text-white" : "text-[#1A1A1A] hover:text-[#A6192E]"
+    } ` +
+    "after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-[2px] after:bg-current after:scale-x-0 " +
     "after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100";
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 print:hidden bg-white border-b border-[#DCDCDC]">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 print:hidden transition-colors duration-500 ${
+        overlay ? "bg-transparent border-b border-white/15 text-white" : "bg-white border-b border-[#DCDCDC]"
+      }`}
+    >
       {/* Utility strip */}
-      <div className="hidden md:block bg-[#1A1A1A] text-white/70">
+      <div className={`hidden md:block text-white/70 transition-colors duration-500 ${overlay ? "bg-transparent" : "bg-[#1A1A1A]"}`}>
         <div className="mx-auto w-full max-w-[1400px] px-6 h-9 flex items-center justify-between text-[12px]">
           <p className="tracking-[0.08em] uppercase">Digital &amp; AI transformation · Kigali, Rwanda</p>
           <div className="flex items-center gap-6">
@@ -76,10 +93,12 @@ export function SiteNav() {
       {/* Main bar */}
       <div className="mx-auto w-full max-w-[1400px] px-6 h-[76px] flex items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-3 shrink-0">
-          <span className="grid place-items-center size-9 bg-[#A6192E] p-1.5">
+          <span className={`grid place-items-center size-9 p-1.5 transition-colors duration-500 ${overlay ? "bg-white/15" : "bg-[#A6192E]"}`}>
             <NileReachMark className="h-full w-full" />
           </span>
-          <span className="text-[19px] font-bold tracking-[-0.02em] text-[#A6192E]">Nile Reach</span>
+          <span className={`text-[16px] font-semibold uppercase tracking-[0.2em] transition-colors duration-500 ${overlay ? "text-white" : "text-[#A6192E]"}`}>
+            Nile Reach
+          </span>
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">
@@ -102,19 +121,23 @@ export function SiteNav() {
           <button
             aria-label="Search"
             onClick={() => setSearchOpen((v) => !v)}
-            className="grid place-items-center size-9 text-[#1A1A1A] hover:text-[#A6192E] transition-colors"
+            className={`grid place-items-center size-9 transition-colors ${overlay ? "text-white hover:text-white/70" : "text-[#1A1A1A] hover:text-[#A6192E]"}`}
           >
             {IconSearch}
           </button>
           <Link
             to="/contact"
-            className="hidden sm:inline-flex items-center border border-[#A6192E] px-5 h-10 text-[13.5px] font-semibold text-[#A6192E] transition-colors hover:bg-[#A6192E] hover:text-white"
+            className={`hidden sm:inline-flex items-center px-6 h-11 text-[11px] font-medium uppercase tracking-[0.2em] border transition-colors ${
+              overlay
+                ? "border-white/70 text-white hover:bg-white hover:text-[#1A1A1A]"
+                : "border-[#A6192E] text-[#A6192E] hover:bg-[#A6192E] hover:text-white"
+            }`}
           >
-            Get a Quote
+            Enquire Now
           </Link>
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="lg:hidden grid place-items-center size-10 text-[#1A1A1A]"
+            className={`lg:hidden grid place-items-center size-10 ${overlay ? "text-white" : "text-[#1A1A1A]"}`}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
           >
